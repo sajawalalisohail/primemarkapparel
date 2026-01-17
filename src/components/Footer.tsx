@@ -10,13 +10,13 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-8 items-start">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-block mb-4">
+            <Link href="/" className="inline-block mb-4 -m-6">
               <Image
                 src="/branding/PrimeMark.svg"
                 alt="PrimeMark Apparel"
                 width={200}
                 height={50}
-                className="h-12 w-auto"
+                className="h-20 w-auto"
               />
             </Link>
             <p className="mt-3 text-sm text-zinc-400 max-w-xs">
