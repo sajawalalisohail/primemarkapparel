@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,11 +10,14 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-8 items-start">
           {/* Brand */}
           <div>
-            <Link
-              href="/"
-              className="text-xl font-semibold text-white hover:text-amber-400 transition-colors"
-            >
-              PrimeMark Apparel
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/branding/PrimeMark.svg"
+                alt="PrimeMark Apparel"
+                width={200}
+                height={50}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="mt-3 text-sm text-zinc-400 max-w-xs">
               Premium bulk apparel manufacturing from Pakistan. Uniforms,

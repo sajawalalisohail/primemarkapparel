@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { href: "#products", label: "Products" },
@@ -28,13 +29,17 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-lg font-semibold text-white hover:text-amber-400 transition-colors"
-          >
-            PrimeMark Apparel
+          <Link href="/" className="flex items-center -ml-14">
+            <Image
+              src="/branding/PrimeMark.svg"
+              alt="PrimeMark Apparel"
+              width={320}
+              height={80}
+              priority
+              className="h-16 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
