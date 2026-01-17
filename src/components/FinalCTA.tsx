@@ -1,0 +1,52 @@
+"use client";
+
+import Section from "./Section";
+
+export default function FinalCTA() {
+  const scrollToRFQ = () => {
+    const rfqSection = document.querySelector("#rfq");
+    if (rfqSection) {
+      rfqSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <Section>
+      <div className="relative rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-800 p-8 md:p-12 lg:p-16 text-center overflow-hidden">
+        {/* Background accents */}
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-amber-400/5 rounded-full blur-3xl" />
+
+        <div className="relative z-10">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            Tell us what you need —{" "}
+            <span className="text-amber-400">we&apos;ll quote fast.</span>
+          </h2>
+          <p className="text-lg text-zinc-400 mb-8 max-w-xl mx-auto">
+            Share your requirements and get a detailed quote within 24–48 hours.
+            No obligation, no hidden fees.
+          </p>
+          <button
+            onClick={scrollToRFQ}
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-amber-500 text-zinc-950 rounded-lg hover:bg-amber-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-zinc-950"
+          >
+            Request a Quote
+            <svg
+              className="ml-2 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </Section>
+  );
+}
