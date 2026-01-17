@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://primemarkapparel.com"),
   title: "PrimeMark Apparel | Premium Bulk Apparel Manufacturing from Pakistan",
   description:
     "Premium bulk apparel manufacturing from Pakistan. We supply uniforms, scrubs, industrial workwear, hoodies, denim, and custom apparel at competitive prices with consistent quality.",
