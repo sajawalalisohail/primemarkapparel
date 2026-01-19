@@ -31,7 +31,7 @@ export default function Hero() {
           {/* Left Content */}
           <div className="space-y-8">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Premium bulk apparel manufacturing —{" "}
+              Premium bulk apparel manufacturing - {" "}
               <span className="text-amber-400">made in Pakistan</span>, supplied
               at scale.
             </h1>
