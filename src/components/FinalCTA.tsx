@@ -1,15 +1,7 @@
-"use client";
-
+import Link from "next/link";
 import Section from "./Section";
 
 export default function FinalCTA() {
-  const scrollToRFQ = () => {
-    const rfqSection = document.querySelector("#rfq");
-    if (rfqSection) {
-      rfqSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <Section>
       <div className="relative rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-800 p-8 md:p-12 lg:p-16 text-center overflow-hidden">
@@ -26,8 +18,8 @@ export default function FinalCTA() {
             Share your requirements and get a detailed quote within 24–48 hours.
             No obligation, no hidden fees.
           </p>
-          <button
-            onClick={scrollToRFQ}
+          <Link
+            href="/rfq"
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-amber-500 text-zinc-950 rounded-lg hover:bg-amber-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-zinc-950"
           >
             Request a Quote
@@ -44,7 +36,7 @@ export default function FinalCTA() {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </Section>

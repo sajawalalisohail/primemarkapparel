@@ -39,7 +39,11 @@ const customizationOptions = [
   "Private Label",
 ];
 
-export default function RFQForm() {
+interface RFQFormProps {
+  hideHeader?: boolean;
+}
+
+export default function RFQForm({ hideHeader = false }: RFQFormProps) {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     company: "",
@@ -162,9 +166,12 @@ Notes: ${formData.notes || "None"}`
             <h3 className="text-2xl font-bold text-white mb-4">
               Request Received!
             </h3>
-            <p className="text-zinc-400 mb-6">
+            <p className="text-zinc-400 mb-2">
               Thank you for your inquiry. Our team will review your requirements
               and get back to you within 24–48 hours.
+            </p>
+            <p className="text-sm text-zinc-500">
+              You will receive a confirmation email shortly with your request details.
             </p>
             <button
               onClick={() => {
@@ -193,15 +200,20 @@ Notes: ${formData.notes || "None"}`
   return (
     <Section id="rfq" className="bg-zinc-900">
       <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Request a Quote
-          </h2>
-          <p className="text-lg text-zinc-400">
-            Fill out the form below and we&apos;ll get back to you with a
-            detailed quote.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Request a Quote
+            </h2>
+            <p className="text-lg text-zinc-400 mb-3">
+              Fill out the form below and we&apos;ll get back to you with a
+              detailed quote.
+            </p>
+            <p className="text-sm text-zinc-500">
+              Response time: 24–48 hours during business days
+            </p>
+          </div>
+        )}
 
         <form
           onSubmit={handleSubmit}

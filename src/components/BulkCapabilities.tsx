@@ -1,6 +1,6 @@
 import Section from "./Section";
 
-const products = [
+const capabilities = [
   {
     title: "Uniforms",
     description:
@@ -42,7 +42,7 @@ const products = [
     ),
   },
   {
-    title: "Industrial Workwear",
+    title: "Workwear",
     description:
       "Tough, safety-compliant apparel for factories and construction.",
     icon: (
@@ -68,7 +68,7 @@ const products = [
     ),
   },
   {
-    title: "Hoodies",
+    title: "Hoodies / Streetwear",
     description: "Premium hoodies and sweatshirts for casual and branded wear.",
     icon: (
       <svg
@@ -87,7 +87,7 @@ const products = [
     ),
   },
   {
-    title: "Denim / Jeans",
+    title: "Denim",
     description: "Classic and modern denim styles for any market segment.",
     icon: (
       <svg
@@ -127,37 +127,27 @@ const products = [
   },
 ];
 
-interface ProductCategoriesProps {
-  hideHeader?: boolean;
-}
-
-export default function ProductCategories({ hideHeader = false }: ProductCategoriesProps) {
+export default function BulkCapabilities() {
   return (
-    <Section id="products">
-      {!hideHeader && (
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Product Categories
-          </h2>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            From corporate uniforms to custom streetwear, we manufacture it all at
-            scale.
-          </p>
-        </div>
-      )}
+    <Section className="bg-zinc-900">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Bulk Capabilities
+        </h2>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {products.map((product, index) => (
+        {capabilities.map((capability, index) => (
           <div
             key={index}
-            className="group p-6 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all duration-300"
+            className="group p-6 rounded-xl bg-zinc-950 border border-zinc-800 hover:border-amber-500/50 transition-all duration-300"
           >
             <div className="mb-4 p-3 inline-block rounded-lg bg-zinc-800 group-hover:bg-amber-500/10 transition-colors">
-              {product.icon}
+              {capability.icon}
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">
-              {product.title}
+              {capability.title}
             </h3>
-            <p className="text-zinc-400">{product.description}</p>
+            <p className="text-zinc-400">{capability.description}</p>
           </div>
         ))}
       </div>

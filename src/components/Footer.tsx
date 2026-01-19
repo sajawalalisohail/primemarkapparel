@@ -52,7 +52,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/1234567890"
+                  href="https://wa.me/13046854016"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-zinc-400 hover:text-amber-400 transition-colors"
@@ -77,44 +77,60 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#products"
+                <Link
+                  href="/products"
                   className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   Products
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#industries"
+                <Link
+                  href="/services"
+                  className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                >
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/industries"
                   className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   Industries
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#process"
+                <Link
+                  href="/process"
                   className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   Process
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#faq"
+                <Link
+                  href="/about"
+                  className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/faq"
                   className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   FAQ
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#rfq"
+                <Link
+                  href="/rfq"
                   className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   Request a Quote
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

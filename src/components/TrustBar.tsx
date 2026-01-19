@@ -2,8 +2,8 @@ import Section from "./Section";
 
 const trustItems = [
   {
-    title: "Flexible MOQ",
-    description: "Minimum orders tailored to your business needs",
+    title: "MOQ: 200-300 Units",
+    description: "Flexible minimum orders based on product type",
     icon: (
       <svg
         className="w-8 h-8 text-amber-400"

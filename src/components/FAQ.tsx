@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Section from "./Section";
 
 const faqs = [
@@ -33,6 +34,21 @@ const faqs = [
     question: "What are your payment terms?",
     answer:
       "Typical terms include 30% deposit to begin production and 70% balance before shipping. For established relationships, we can discuss flexible arrangements. We accept bank transfers (TT) and can provide pro forma invoices and commercial documentation.",
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer:
+      "We accept bank wire transfers (TT) for international payments. We provide pro forma invoices and all necessary commercial documentation for your accounting and customs clearance.",
+  },
+  {
+    question: "Do you provide quality guarantees?",
+    answer:
+      "Yes. All products undergo multiple quality control checkpoints. We guarantee that delivered goods match approved samples in terms of fabric, construction, and finish. Any defects are addressed promptly according to our quality assurance policy.",
+  },
+  {
+    question: "What currency do you quote in?",
+    answer:
+      "We typically quote in USD, but can provide quotes in other major currencies upon request. All pricing is confirmed in writing before production begins.",
   },
 ];
 
@@ -85,8 +101,12 @@ function FAQItem({
   );
 }
 
-export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+interface FAQProps {
+  hideHeader?: boolean;
+}
+
+export default function FAQ({ hideHeader = false }: FAQProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -95,14 +115,16 @@ export default function FAQ() {
   return (
     <Section id="faq" className="bg-zinc-900">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-lg text-zinc-400">
-            Everything you need to know about working with us.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-zinc-400">
+              Everything you need to know about working with us.
+            </p>
+          </div>
+        )}
         <div className="bg-zinc-950 rounded-xl border border-zinc-800 px-6">
           {faqs.map((faq, index) => (
             <FAQItem

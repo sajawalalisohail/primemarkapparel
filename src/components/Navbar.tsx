@@ -3,28 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "#products", label: "Products" },
-  { href: "#industries", label: "Industries" },
-  { href: "#process", label: "Process" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/", label: "Home" },
+  { href: "/products", label: "Products" },
+  { href: "/services", label: "Services" },
+  { href: "/process", label: "Process" },
+  { href: "/industries", label: "Industries" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/about", label: "About" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsOpen(false);
-  };
+  const pathname = usePathname();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
@@ -44,23 +37,28 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="text-sm text-zinc-300 hover:text-white transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#rfq"
-              onClick={(e) => scrollToSection(e, "#rfq")}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm transition-colors ${
+                    isActive
+                      ? "text-white font-medium"
+                      : "text-zinc-300 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <Link
+              href="/rfq"
               className="inline-flex items-center justify-center px-5 py-2 text-sm font-medium bg-amber-500 text-zinc-950 rounded-lg hover:bg-amber-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-zinc-950"
             >
               Request a Quote
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -101,23 +99,30 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-zinc-950 border-t border-zinc-800">
           <div className="px-4 py-4 space-y-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="block py-2 text-zinc-300 hover:text-white transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#rfq"
-              onClick={(e) => scrollToSection(e, "#rfq")}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block py-2 transition-colors ${
+                    isActive
+                      ? "text-white font-medium"
+                      : "text-zinc-300 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <Link
+              href="/rfq"
+              onClick={() => setIsOpen(false)}
               className="block w-full text-center px-5 py-3 text-sm font-medium bg-amber-500 text-zinc-950 rounded-lg hover:bg-amber-400 transition-colors"
             >
               Request a Quote
-            </a>
+            </Link>
           </div>
         </div>
       )}

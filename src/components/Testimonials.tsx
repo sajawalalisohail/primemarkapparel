@@ -52,18 +52,21 @@ export default function Testimonials() {
             <p className="text-zinc-300 mb-6 leading-relaxed">
               &ldquo;{testimonial.quote}&rdquo;
             </p>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center">
+            <div className="flex items-center gap-3 pt-4 border-t border-zinc-800">
+              <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0">
                 <span className="text-amber-400 font-medium">
                   {testimonial.name.charAt(0)}
                 </span>
               </div>
-              <div>
+              <div className="flex-1 min-w-0">
                 <p className="text-white font-medium text-sm">
                   {testimonial.name}
                 </p>
                 <p className="text-zinc-500 text-xs">
-                  {testimonial.title}, {testimonial.company}
+                  {testimonial.title}
+                </p>
+                <p className="text-zinc-600 text-xs mt-0.5">
+                  {testimonial.company}
                 </p>
               </div>
             </div>
