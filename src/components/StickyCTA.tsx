@@ -9,8 +9,16 @@ export default function StickyCTA() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsVisible(scrollY > 300);
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const distanceFromBottom = documentHeight - (scrollY + windowHeight);
+      
+      // Show button when scrolled past 300px AND not within 200px of bottom
+      setIsVisible(scrollY > 300 && distanceFromBottom > 200);
     };
+
+    // Check on mount
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);

@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-block mb-4 -m-6">
               <Image
-                src="/branding/PrimeMark.svg"
+                src="/logo/final pma full white yellow black 1600.svg"
                 alt="PrimeMark Apparel"
                 width={200}
                 height={50}
@@ -26,13 +26,13 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="text-right">
             <h4 className="text-sm font-semibold text-white mb-4">Contact</h4>
             <ul className="space-y-3">
               <li>
                 <a
                   href="mailto:sales@primemarkapparel.com"
-                  className="flex items-center gap-2 text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                  className="inline-flex items-center justify-end gap-2 text-sm text-zinc-400 hover:text-amber-400 transition-colors ml-auto"
                 >
                   <svg
                     className="w-4 h-4"
@@ -55,7 +55,7 @@ export default function Footer() {
                   href="https://wa.me/13046854016"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                  className="inline-flex items-center justify-end gap-2 text-sm text-zinc-400 hover:text-amber-400 transition-colors ml-auto"
                 >
                   <svg
                     className="w-4 h-4"
@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-right">
             <h4 className="text-sm font-semibold text-white mb-4">
               Quick Links
             </h4>
@@ -79,7 +79,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/products"
-                  className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                  className="inline-block text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   Products
                 </Link>
@@ -87,7 +87,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services"
-                  className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                  className="inline-block text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   Services
                 </Link>
@@ -95,7 +95,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/industries"
-                  className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                  className="inline-block text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   Industries
                 </Link>
@@ -103,7 +103,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/process"
-                  className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                  className="inline-block text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   Process
                 </Link>
@@ -111,7 +111,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/about"
-                  className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                  className="inline-block text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   About
                 </Link>
@@ -119,7 +119,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/faq"
-                  className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                  className="inline-block text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   FAQ
                 </Link>
@@ -127,7 +127,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/rfq"
-                  className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+                  className="inline-block text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                 >
                   Request a Quote
                 </Link>

@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     "B2B apparel",
   ],
   authors: [{ name: "PrimeMark Apparel" }],
- 
   openGraph: {
     title: "PrimeMark Apparel | Premium Bulk Apparel Manufacturing",
     description:
