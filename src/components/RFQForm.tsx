@@ -2,6 +2,7 @@
 
 import { useState, FormEvent, ChangeEvent } from "react";
 import Section from "./Section";
+import { supabase } from "@/lib/supabase";
 
 interface FormData {
   name: string;
@@ -111,14 +112,26 @@ export default function RFQForm({ hideHeader = false }: RFQFormProps) {
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const { error } = await supabase.from("rfq_submissions").insert({
+        name: formData.name,
+        company: formData.company,
+        email: formData.email,
+        product_type: formData.productType,
+        quantity: parseInt(formData.quantity) || 0,
+        customization: formData.customization,
+        details: `Phone: ${formData.phone}\nNotes: ${formData.notes}`,
+      });
 
-    // Log the payload
-    console.log("RFQ Form Submission:", formData);
+      if (error) throw error;
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
+      setIsSuccess(true);
+    } catch (error) {
+      console.error("Error submitting RFQ:", error);
+      alert("Failed to submit request. Please try the email option instead.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const generateMailtoLink = () => {

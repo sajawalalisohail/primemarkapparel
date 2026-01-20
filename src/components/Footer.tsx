@@ -138,9 +138,17 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-zinc-800">
-          <p className="text-center text-sm text-zinc-500">
-            © {currentYear} PrimeMark Apparel. All rights reserved.
-          </p>
+          <div className="flex justify-between items-center">
+            <p className="text-sm text-zinc-500">
+              © {currentYear} PrimeMark Apparel. All rights reserved.
+            </p>
+            <Link
+              href="/admin/login"
+              className="text-xs text-zinc-600 hover:text-zinc-500 transition-colors"
+            >
+              Admin
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
