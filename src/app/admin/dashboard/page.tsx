@@ -142,7 +142,7 @@ export default function AdminDashboard() {
   };
 
   const extractNotesFromDetails = (details: string) => {
-    const match = details.match(/Notes:\s*(.+)/s);
+    const match = details.match(/Notes:\s*([\s\S]+)/);
     return match ? match[1].trim() : null;
   };
 
