@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import CapabilitySlider from "@/components/CapabilitySlider";
 import TrustBar from "@/components/TrustBar";
 import ProductCategories from "@/components/ProductCategories";
 import Industries from "@/components/Industries";
@@ -22,6 +23,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <CapabilitySlider />
         <ProductCategories />
         <TrustBar />
         <Industries />

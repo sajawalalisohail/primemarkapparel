@@ -52,3 +52,17 @@ html {
   background: #dbeafe;
   color: #1e3a8a;
 }
+
+/* Infinite slide animation */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide {
+  animation: slide 40s linear infinite;
+}
