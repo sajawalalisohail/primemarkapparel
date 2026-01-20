@@ -58,6 +58,10 @@ export default function RFQForm({ hideHeader = false }: RFQFormProps) {
     quantity: "",
     customization: "None",
     notes: "",
+    budgetRange: "",
+    timeline: "",
+    hearAboutUs: "",
+    preferredContactMethod: "Email",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
