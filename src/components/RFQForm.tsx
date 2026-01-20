@@ -13,6 +13,10 @@ interface FormData {
   quantity: string;
   customization: string;
   notes: string;
+  budgetRange: string;
+  timeline: string;
+  hearAboutUs: string;
+  preferredContactMethod: string;
 }
 
 interface FormErrors {
@@ -120,7 +124,12 @@ export default function RFQForm({ hideHeader = false }: RFQFormProps) {
         product_type: formData.productType,
         quantity: parseInt(formData.quantity) || 0,
         customization: formData.customization,
-        details: `Phone: ${formData.phone}\nNotes: ${formData.notes}`,
+        details: `Phone: ${formData.phone || "Not provided"}
+Notes: ${formData.notes || "None"}
+Budget Range: ${formData.budgetRange || "Not specified"}
+Timeline: ${formData.timeline || "Not specified"}
+How did you hear about us: ${formData.hearAboutUs || "Not specified"}
+Preferred Contact Method: ${formData.preferredContactMethod || "Email"}`,
       });
 
       if (error) throw error;
@@ -144,26 +153,30 @@ Phone/WhatsApp: ${formData.phone || "Not provided"}
 Product Type: ${formData.productType || "Not selected"}
 Estimated Quantity: ${formData.quantity}
 Customization: ${formData.customization}
+Budget Range: ${formData.budgetRange || "Not specified"}
+Timeline: ${formData.timeline || "Not specified"}
+How did you hear about us: ${formData.hearAboutUs || "Not specified"}
+Preferred Contact Method: ${formData.preferredContactMethod || "Email"}
 Notes: ${formData.notes || "None"}`
     );
     return `mailto:sales@primemarkapparel.com?subject=${subject}&body=${body}`;
   };
 
   const inputClasses =
-    "w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all";
+    "w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all";
 
-  const labelClasses = "block text-sm font-medium text-zinc-300 mb-2";
+  const labelClasses = "block text-sm font-medium text-slate-700 mb-2";
 
-  const errorClasses = "mt-1 text-sm text-red-400";
+  const errorClasses = "mt-1 text-sm text-red-600";
 
   if (isSuccess) {
     return (
-      <Section id="rfq" className="bg-zinc-900">
+      <Section id="rfq" className="bg-slate-50">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="p-8 rounded-xl bg-zinc-950 border border-zinc-800">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-amber-500/20 flex items-center justify-center">
+          <div className="p-8 rounded-xl bg-white border border-slate-200 shadow-sm">
+            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-blue-100 flex items-center justify-center">
               <svg
-                className="w-8 h-8 text-amber-400"
+                className="w-8 h-8 text-blue-900"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -176,14 +189,14 @@ Notes: ${formData.notes || "None"}`
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">
               Request Received!
             </h3>
-            <p className="text-zinc-400 mb-2">
+            <p className="text-slate-600 mb-2">
               Thank you for your inquiry. Our team will review your requirements
               and get back to you within 24–48 hours.
             </p>
-            <p className="text-sm text-zinc-500">
+            <p className="text-sm text-slate-500">
               You will receive a confirmation email shortly with your request details.
             </p>
             <button
@@ -198,9 +211,13 @@ Notes: ${formData.notes || "None"}`
                   quantity: "",
                   customization: "None",
                   notes: "",
+                  budgetRange: "",
+                  timeline: "",
+                  hearAboutUs: "",
+                  preferredContactMethod: "Email",
                 });
               }}
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-zinc-800 text-white rounded-lg hover:bg-zinc-700 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400"
+              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               Submit Another Request
             </button>
@@ -211,18 +228,18 @@ Notes: ${formData.notes || "None"}`
   }
 
   return (
-    <Section id="rfq" className="bg-zinc-900">
+    <Section id="rfq" className="bg-slate-50">
       <div className="max-w-2xl mx-auto">
         {!hideHeader && (
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
               Request a Quote
             </h2>
-            <p className="text-lg text-zinc-400 mb-3">
+            <p className="text-lg text-slate-600 mb-3">
               Fill out the form below and we&apos;ll get back to you with a
               detailed quote.
             </p>
-            <p className="text-sm text-zinc-500">
+            <p className="text-sm text-slate-500">
               Response time: 24–48 hours during business days
             </p>
           </div>
@@ -230,13 +247,13 @@ Notes: ${formData.notes || "None"}`
 
         <form
           onSubmit={handleSubmit}
-          className="p-6 md:p-8 rounded-xl bg-zinc-950 border border-zinc-800"
+          className="p-6 md:p-8 rounded-xl bg-white border border-slate-200 shadow-sm"
         >
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             {/* Name */}
             <div>
               <label htmlFor="name" className={labelClasses}>
-                Name <span className="text-amber-400">*</span>
+                Name <span className="text-blue-900">*</span>
               </label>
               <input
                 type="text"
@@ -276,7 +293,7 @@ Notes: ${formData.notes || "None"}`
             {/* Email */}
             <div>
               <label htmlFor="email" className={labelClasses}>
-                Email <span className="text-amber-400">*</span>
+                Email <span className="text-blue-900">*</span>
               </label>
               <input
                 type="email"
@@ -337,7 +354,7 @@ Notes: ${formData.notes || "None"}`
             {/* Quantity */}
             <div>
               <label htmlFor="quantity" className={labelClasses}>
-                Estimated Quantity <span className="text-amber-400">*</span>
+                Estimated Quantity <span className="text-blue-900">*</span>
               </label>
               <input
                 type="text"
@@ -373,6 +390,82 @@ Notes: ${formData.notes || "None"}`
                   {option}
                 </option>
               ))}
+            </select>
+          </div>
+
+          {/* Budget Range */}
+          <div className="mb-6">
+            <label htmlFor="budgetRange" className={labelClasses}>
+              Budget Range
+            </label>
+            <select
+              id="budgetRange"
+              name="budgetRange"
+              value={formData.budgetRange}
+              onChange={handleChange}
+              className={inputClasses}
+            >
+              <option value="">Select budget range</option>
+              <option value="Under $5K">Under $5K</option>
+              <option value="$5K-$10K">$5K-$10K</option>
+              <option value="$10K-$25K">$10K-$25K</option>
+              <option value="$25K+">$25K+</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+          </div>
+
+          {/* Timeline */}
+          <div className="mb-6">
+            <label htmlFor="timeline" className={labelClasses}>
+              Timeline
+            </label>
+            <input
+              type="text"
+              id="timeline"
+              name="timeline"
+              value={formData.timeline}
+              onChange={handleChange}
+              className={inputClasses}
+              placeholder="e.g., Q2 2024, 3 months, etc."
+            />
+          </div>
+
+          {/* How did you hear about us */}
+          <div className="mb-6">
+            <label htmlFor="hearAboutUs" className={labelClasses}>
+              How did you hear about us?
+            </label>
+            <select
+              id="hearAboutUs"
+              name="hearAboutUs"
+              value={formData.hearAboutUs}
+              onChange={handleChange}
+              className={inputClasses}
+            >
+              <option value="">Select an option</option>
+              <option value="Google Search">Google Search</option>
+              <option value="Referral">Referral</option>
+              <option value="Trade Show">Trade Show</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          {/* Preferred Contact Method */}
+          <div className="mb-6">
+            <label htmlFor="preferredContactMethod" className={labelClasses}>
+              Preferred Contact Method
+            </label>
+            <select
+              id="preferredContactMethod"
+              name="preferredContactMethod"
+              value={formData.preferredContactMethod}
+              onChange={handleChange}
+              className={inputClasses}
+            >
+              <option value="Email">Email</option>
+              <option value="Phone">Phone</option>
+              <option value="WhatsApp">WhatsApp</option>
             </select>
           </div>
 
@@ -428,7 +521,7 @@ Notes: ${formData.notes || "None"}`
             </button>
             <a
               href={generateMailtoLink()}
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-zinc-800 text-white rounded-lg hover:bg-zinc-700 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400"
+              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <svg
                 className="w-5 h-5 mr-2"

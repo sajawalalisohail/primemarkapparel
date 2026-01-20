@@ -30,7 +30,7 @@ export default function StickyCTA() {
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 transition-opacity duration-300 opacity-100">
       <Link
         href="/rfq"
-        className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium bg-amber-500 text-zinc-950 rounded-lg hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/20 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-zinc-950"
+        className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
       >
         Request a Quote
         <svg

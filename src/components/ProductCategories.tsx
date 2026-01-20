@@ -7,7 +7,7 @@ const products = [
       "Professional corporate and service uniforms for teams of any size.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -27,7 +27,7 @@ const products = [
       "Comfortable, durable medical scrubs for healthcare professionals.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -47,7 +47,7 @@ const products = [
       "Tough, safety-compliant apparel for factories and construction.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -72,7 +72,7 @@ const products = [
     description: "Premium hoodies and sweatshirts for casual and branded wear.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -91,7 +91,7 @@ const products = [
     description: "Classic and modern denim styles for any market segment.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ const products = [
       "Bespoke designs manufactured to your exact specifications.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -136,10 +136,10 @@ export default function ProductCategories({ hideHeader = false }: ProductCategor
     <Section id="products">
       {!hideHeader && (
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
             Product Categories
           </h2>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             From corporate uniforms to custom streetwear, we manufacture it all at
             scale.
           </p>
@@ -149,15 +149,15 @@ export default function ProductCategories({ hideHeader = false }: ProductCategor
         {products.map((product, index) => (
           <div
             key={index}
-            className="group p-6 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all duration-300"
+            className="group p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-900/30 transition-all duration-300"
           >
-            <div className="mb-4 p-3 inline-block rounded-lg bg-zinc-800 group-hover:bg-amber-500/10 transition-colors">
+            <div className="mb-4 p-3 inline-block rounded-lg bg-slate-100 group-hover:bg-blue-50 transition-colors">
               {product.icon}
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
+            <h3 className="text-xl font-semibold text-slate-900 mb-2">
               {product.title}
             </h3>
-            <p className="text-zinc-400">{product.description}</p>
+            <p className="text-slate-600">{product.description}</p>
           </div>
         ))}
       </div>

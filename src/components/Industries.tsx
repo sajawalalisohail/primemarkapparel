@@ -60,13 +60,13 @@ interface IndustriesProps {
 export default function Industries({ hideHeader = false }: IndustriesProps) {
   return (
     <>
-      <Section id="industries" className="bg-zinc-900">
+      <Section id="industries" className="bg-slate-50">
         {!hideHeader && (
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
               Industries We Serve
             </h2>
-            <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Trusted by businesses across diverse sectors for reliable bulk apparel
               supply.
             </p>
@@ -76,11 +76,11 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="group rounded-2xl bg-zinc-950 border border-zinc-800 hover:border-amber-500/50 transition-all duration-300 overflow-hidden flex flex-col"
+              className="group rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-900/30 transition-all duration-300 overflow-hidden flex flex-col"
             >
               {/* Image */}
-              <div className="relative aspect-[4/3] bg-zinc-800 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-transparent to-zinc-950/60 z-10" />
+              <div className="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/20 z-10" />
                 <Image
                   src={industry.image}
                   alt={`${industry.title} industry - ${industry.description}`}
@@ -92,10 +92,10 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
 
               {/* Content */}
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
                   {industry.title}
                 </h3>
-                <p className="text-sm text-zinc-400">{industry.description}</p>
+                <p className="text-sm text-slate-600">{industry.description}</p>
               </div>
             </div>
           ))}
@@ -105,7 +105,7 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
       {/* Typical Orders Section */}
       <Section>
         <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
             Typical Orders
           </h2>
         </div>
@@ -113,12 +113,12 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
           {typicalOrders.map((order, index) => (
             <div
               key={index}
-              className="p-4 rounded-lg bg-zinc-900 border border-zinc-800"
+              className="p-4 rounded-lg bg-white border border-slate-200 shadow-sm"
             >
-              <h3 className="text-base font-semibold text-white mb-1">
+              <h3 className="text-base font-semibold text-slate-900 mb-1">
                 {order.title}
               </h3>
-              <p className="text-sm text-zinc-400">{order.description}</p>
+              <p className="text-sm text-slate-600">{order.description}</p>
             </div>
           ))}
         </div>

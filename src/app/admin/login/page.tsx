@@ -46,13 +46,13 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col">
+    <div className="min-h-screen bg-slate-100 flex flex-col">
       {/* Header */}
-      <div className="border-b border-zinc-800">
+      <div className="border-b border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link href="/" className="inline-block">
             <Image
-              src="/logo/final pma full white yellow black 1600.svg"
+              src="/branding/APPAREL.svg"
               alt="PrimeMark Apparel"
               width={180}
               height={45}
@@ -66,20 +66,20 @@ export default function AdminLogin() {
       <div className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="max-w-md w-full">
           <div className="text-center mb-10">
-            <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
+            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
               Admin Login
             </h1>
-            <p className="text-zinc-400">
+            <p className="text-slate-600">
               Access the RFQ management dashboard
             </p>
           </div>
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8 shadow-xl">
+          <div className="bg-white border border-slate-200 rounded-xl p-8 shadow-lg">
             {error && (
-              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <div className="flex items-start gap-3">
                   <svg
-                    className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0"
+                    className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -91,7 +91,7 @@ export default function AdminLogin() {
                       d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <p className="text-sm text-red-400">{error}</p>
+                  <p className="text-sm text-red-600">{error}</p>
                 </div>
               </div>
             )}
@@ -100,7 +100,7 @@ export default function AdminLogin() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-zinc-300 mb-2"
+                  className="block text-sm font-medium text-slate-700 mb-2"
                 >
                   Email Address
                 </label>
@@ -112,7 +112,7 @@ export default function AdminLogin() {
                     setEmail(e.target.value);
                     setError("");
                   }}
-                  className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="admin@primemarkapparel.com"
                   required
                   autoComplete="email"
@@ -122,7 +122,7 @@ export default function AdminLogin() {
               <div>
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium text-zinc-300 mb-2"
+                  className="block text-sm font-medium text-slate-700 mb-2"
                 >
                   Password
                 </label>
@@ -134,7 +134,7 @@ export default function AdminLogin() {
                     setPassword(e.target.value);
                     setError("");
                   }}
-                  className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="••••••••"
                   required
                   autoComplete="current-password"
@@ -144,7 +144,7 @@ export default function AdminLogin() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full px-6 py-3 bg-amber-500 text-zinc-950 font-semibold rounded-lg hover:bg-amber-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-zinc-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-6 py-3 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -179,7 +179,7 @@ export default function AdminLogin() {
           <div className="mt-6 text-center">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-amber-400 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 transition-colors"
             >
               <svg
                 className="w-4 h-4"

@@ -7,7 +7,7 @@ const capabilities = [
       "Professional corporate and service uniforms for teams of any size.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -27,7 +27,7 @@ const capabilities = [
       "Comfortable, durable medical scrubs for healthcare professionals.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -47,7 +47,7 @@ const capabilities = [
       "Tough, safety-compliant apparel for factories and construction.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -72,7 +72,7 @@ const capabilities = [
     description: "Premium hoodies and sweatshirts for casual and branded wear.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -91,7 +91,7 @@ const capabilities = [
     description: "Classic and modern denim styles for any market segment.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ const capabilities = [
       "Bespoke designs manufactured to your exact specifications.",
     icon: (
       <svg
-        className="w-10 h-10 text-amber-400"
+        className="w-10 h-10 text-blue-900"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -129,25 +129,25 @@ const capabilities = [
 
 export default function BulkCapabilities() {
   return (
-    <Section className="bg-zinc-900">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-          Bulk Capabilities
-        </h2>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {capabilities.map((capability, index) => (
-          <div
-            key={index}
-            className="group p-6 rounded-xl bg-zinc-950 border border-zinc-800 hover:border-amber-500/50 transition-all duration-300"
-          >
-            <div className="mb-4 p-3 inline-block rounded-lg bg-zinc-800 group-hover:bg-amber-500/10 transition-colors">
-              {capability.icon}
-            </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              {capability.title}
-            </h3>
-            <p className="text-zinc-400">{capability.description}</p>
+      <Section className="bg-slate-50">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            Bulk Capabilities
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {capabilities.map((capability, index) => (
+            <div
+              key={index}
+              className="group p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-900/30 transition-all duration-300"
+            >
+              <div className="mb-4 p-3 inline-block rounded-lg bg-slate-100 group-hover:bg-blue-50 transition-colors">
+                {capability.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                {capability.title}
+              </h3>
+              <p className="text-slate-600">{capability.description}</p>
           </div>
         ))}
       </div>

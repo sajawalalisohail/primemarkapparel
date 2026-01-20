@@ -25,14 +25,14 @@ const qualityPoints = [
 
 export default function Quality() {
   return (
-    <Section className="bg-zinc-900">
+    <Section className="bg-slate-50">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
             Quality & Manufacturing Excellence
           </h2>
-          <p className="text-lg text-zinc-400 mb-8">
+          <p className="text-lg text-slate-600 mb-8">
             Our commitment to quality is uncompromising. Every garment undergoes
             multiple quality control checkpoints from raw material inspection to
             final packaging.
@@ -40,9 +40,9 @@ export default function Quality() {
           <div className="space-y-6">
             {qualityPoints.map((point, index) => (
               <div key={index} className="flex gap-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center">
                   <svg
-                    className="w-4 h-4 text-amber-400"
+                    className="w-4 h-4 text-blue-900"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -56,8 +56,8 @@ export default function Quality() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium mb-1">{point.title}</h3>
-                  <p className="text-sm text-zinc-400">{point.description}</p>
+                  <h3 className="text-slate-900 font-medium mb-1">{point.title}</h3>
+                  <p className="text-sm text-slate-600">{point.description}</p>
                 </div>
               </div>
             ))}
@@ -66,13 +66,13 @@ export default function Quality() {
 
         {/* Right Visual */}
         <div className="relative">
-          <div className="aspect-square rounded-2xl bg-zinc-950 border border-zinc-800 p-8 flex items-center justify-center">
+          <div className="aspect-square rounded-2xl bg-white border border-slate-200 shadow-sm p-8 flex items-center justify-center">
             <div className="space-y-6 w-full max-w-sm">
               {/* QC Badge */}
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-zinc-900 border border-zinc-800">
-                <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center">
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                <div className="w-12 h-12 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-amber-400"
+                    className="w-6 h-6 text-blue-900"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -86,24 +86,24 @@ export default function Quality() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-medium">Quality Assured</p>
-                  <p className="text-sm text-zinc-500">Multi-stage QC checks</p>
+                  <p className="text-slate-900 font-medium">Quality Assured</p>
+                  <p className="text-sm text-slate-500">Multi-stage QC checks</p>
                 </div>
               </div>
               {/* Stats */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-zinc-900 border border-zinc-800 text-center">
-                  <p className="text-2xl font-bold text-amber-400">99%</p>
-                  <p className="text-xs text-zinc-500">Quality Pass Rate</p>
+                <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm text-center">
+                  <p className="text-2xl font-bold text-blue-900">99%</p>
+                  <p className="text-xs text-slate-500">Quality Pass Rate</p>
                 </div>
-                <div className="p-4 rounded-xl bg-zinc-900 border border-zinc-800 text-center">
-                  <p className="text-2xl font-bold text-amber-400">5+</p>
-                  <p className="text-xs text-zinc-500">QC Checkpoints</p>
+                <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm text-center">
+                  <p className="text-2xl font-bold text-blue-900">5+</p>
+                  <p className="text-xs text-slate-500">QC Checkpoints</p>
                 </div>
               </div>
               {/* Certifications note */}
-              <div className="p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
-                <p className="text-sm text-zinc-300 text-center">
+              <div className="p-4 rounded-xl bg-blue-50 border border-blue-200">
+                <p className="text-sm text-slate-700 text-center">
                   Reliable bulk fulfillment with consistent quality standards
                 </p>
               </div>

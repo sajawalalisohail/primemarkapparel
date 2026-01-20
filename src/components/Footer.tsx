@@ -5,21 +5,21 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-zinc-950 border-t border-zinc-800">
+    <footer className="bg-slate-900 border-t border-slate-800">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 items-start">
           {/* Brand */}
           <div>
             <Link href="/" className="inline-block mb-4 -m-6">
               <Image
-                src="/logo/final pma full white yellow black 1600.svg"
+                src="/branding/APPAREL F.svg"
                 alt="PrimeMark Apparel"
                 width={200}
                 height={50}
                 className="h-20 w-auto"
               />
             </Link>
-            <p className="mt-3 text-sm text-zinc-400 max-w-xs">
+            <p className="mt-3 text-sm text-slate-300 max-w-xs">
               Premium bulk apparel manufacturing from Pakistan. Uniforms,
               scrubs, workwear, and custom apparel at scale.
             </p>
@@ -32,7 +32,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:sales@primemarkapparel.com"
-                  className="inline-flex items-center justify-end gap-2 text-sm text-zinc-400 hover:text-amber-400 transition-colors ml-auto"
+                  className="inline-flex items-center justify-end gap-2 text-sm text-slate-300 hover:text-blue-400 transition-colors ml-auto"
                 >
                   <svg
                     className="w-4 h-4"
@@ -55,7 +55,7 @@ export default function Footer() {
                   href="https://wa.me/13046854016"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-end gap-2 text-sm text-zinc-400 hover:text-amber-400 transition-colors ml-auto"
+                  className="inline-flex items-center justify-end gap-2 text-sm text-slate-300 hover:text-blue-400 transition-colors ml-auto"
                 >
                   <svg
                     className="w-4 h-4"
@@ -137,14 +137,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-zinc-800">
+        <div className="mt-12 pt-8 border-t border-slate-800">
           <div className="flex justify-between items-center">
-            <p className="text-sm text-zinc-500">
+            <p className="text-sm text-slate-400">
               © {currentYear} PrimeMark Apparel. All rights reserved.
             </p>
             <Link
               href="/admin/login"
-              className="text-xs text-zinc-600 hover:text-zinc-500 transition-colors"
+              className="text-xs text-slate-500 hover:text-slate-400 transition-colors"
             >
               Admin
             </Link>

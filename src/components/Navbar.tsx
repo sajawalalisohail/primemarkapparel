@@ -28,13 +28,13 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center -ml-5">
             <Image
-              src="/logo/final pma full white yellow black 1600.svg"
+              src="/branding/APPAREL.svg"
               alt="PrimeMark Apparel"
               width={320}
               height={80}
@@ -70,8 +70,8 @@ export default function Navbar() {
                       href={link.href}
                       className={`inline-flex items-center gap-1 text-sm transition-colors ${
                         isActive
-                          ? "text-white font-medium"
-                          : "text-zinc-300 hover:text-white"
+                          ? "text-slate-900 font-medium"
+                          : "text-slate-600 hover:text-slate-900"
                       }`}
                     >
                       {link.label}
@@ -104,23 +104,23 @@ export default function Navbar() {
                       onMouseEnter={() => setIsProductsHovered(true)}
                       onMouseLeave={() => setIsProductsHovered(false)}
                     >
-                      <div className="bg-zinc-950 border border-zinc-800 rounded-lg shadow-xl overflow-hidden">
+                      <div className="bg-white border border-slate-200 rounded-lg shadow-lg overflow-hidden">
                         <div className="py-2">
                           {productCategories.map((category) => (
                             <Link
                               key={category.href}
                               href={category.href}
-                              className="block px-4 py-2 text-sm text-zinc-300 hover:text-white hover:bg-zinc-900 transition-colors focus:outline-none focus:bg-zinc-900 focus:text-white focus:ring-2 focus:ring-amber-400 focus:ring-inset"
+                              className="block px-4 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors focus:outline-none focus:bg-slate-50 focus:text-slate-900 focus:ring-2 focus:ring-blue-500 focus:ring-inset"
                               role="menuitem"
                               tabIndex={isProductsHovered ? 0 : -1}
                             >
                               {category.label}
                             </Link>
                           ))}
-                          <div className="border-t border-zinc-800 my-1" />
+                          <div className="border-t border-slate-200 my-1" />
                           <Link
                             href="/products"
-                            className="block px-4 py-2 text-sm font-medium text-amber-400 hover:text-amber-300 hover:bg-amber-500/10 transition-colors focus:outline-none focus:bg-amber-500/10 focus:text-amber-300 focus:ring-2 focus:ring-amber-400 focus:ring-inset"
+                            className="block px-4 py-2 text-sm font-medium text-blue-900 hover:text-blue-800 hover:bg-blue-50 transition-colors focus:outline-none focus:bg-blue-50 focus:text-blue-800 focus:ring-2 focus:ring-blue-500 focus:ring-inset"
                             role="menuitem"
                             tabIndex={isProductsHovered ? 0 : -1}
                           >
@@ -140,8 +140,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`text-sm transition-colors ${
                     isActive
-                      ? "text-white font-medium"
-                      : "text-zinc-300 hover:text-white"
+                      ? "text-slate-900 font-medium"
+                      : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
                   {link.label}
@@ -150,9 +150,15 @@ export default function Navbar() {
             })}
             <Link
               href="/rfq"
-              className="inline-flex items-center justify-center px-5 py-2 text-sm font-medium bg-amber-500 text-zinc-950 rounded-lg hover:bg-amber-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-zinc-950"
+              className="inline-flex items-center justify-center px-5 py-2 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
             >
               Request a Quote
+            </Link>
+            <Link
+              href="/admin/login"
+              className="text-sm text-slate-500 hover:text-slate-700 transition-colors"
+            >
+              Admin
             </Link>
           </div>
 
@@ -160,7 +166,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-zinc-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-amber-400 rounded-lg"
+            className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
@@ -192,7 +198,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-zinc-950 border-t border-zinc-800">
+        <div className="md:hidden bg-white border-t border-slate-200">
           <div className="px-4 py-4 space-y-3">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -203,8 +209,8 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={`block py-2 transition-colors ${
                     isActive
-                      ? "text-white font-medium"
-                      : "text-zinc-300 hover:text-white"
+                      ? "text-slate-900 font-medium"
+                      : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
                   {link.label}
@@ -214,9 +220,16 @@ export default function Navbar() {
             <Link
               href="/rfq"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-center px-5 py-3 text-sm font-medium bg-amber-500 text-zinc-950 rounded-lg hover:bg-amber-400 transition-colors"
+              className="block w-full text-center px-5 py-3 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
             >
               Request a Quote
+            </Link>
+            <Link
+              href="/admin/login"
+              onClick={() => setIsOpen(false)}
+              className="block py-2 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+            >
+              Admin
             </Link>
           </div>
         </div>

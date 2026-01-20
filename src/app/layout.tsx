@@ -67,7 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950 text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-slate-900`}
       >
         {children}
         <StickyCTA />

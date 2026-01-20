@@ -114,10 +114,10 @@ export default function AdminDashboard() {
 
   const getStatusBadge = (status: RFQStatus) => {
     const styles = {
-      new: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-      in_progress: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-      quoted: "bg-green-500/10 text-green-400 border-green-500/20",
-      closed: "bg-zinc-500/10 text-zinc-400 border-zinc-500/20",
+      new: "bg-amber-100 text-amber-800 border-amber-200",
+      in_progress: "bg-blue-100 text-blue-800 border-blue-200",
+      quoted: "bg-green-100 text-green-800 border-green-200",
+      closed: "bg-slate-100 text-slate-600 border-slate-200",
     };
 
     const labels = {
@@ -148,8 +148,8 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
-        <div className="flex items-center gap-3 text-zinc-400">
+        <div className="min-h-screen bg-slate-100 flex items-center justify-center">
+        <div className="flex items-center gap-3 text-slate-600">
           <svg
             className="animate-spin h-6 w-6"
             fill="none"
@@ -176,14 +176,14 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+      <div className="min-h-screen bg-slate-100">
       {/* Header */}
-      <div className="border-b border-zinc-800 sticky top-0 bg-zinc-950/95 backdrop-blur z-10">
+      <div className="border-b border-slate-200 sticky top-0 bg-white z-10 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="inline-block">
               <Image
-                src="/logo/final pma full white yellow black 1600.svg"
+                src="/branding/APPAREL.svg"
                 alt="PrimeMark Apparel"
                 width={160}
                 height={40}
@@ -191,12 +191,12 @@ export default function AdminDashboard() {
               />
             </Link>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-zinc-400 hidden sm:inline">
+              <span className="text-sm text-slate-600 hidden sm:inline">
                 {user?.email}
               </span>
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 bg-zinc-800 text-white text-sm rounded-lg hover:bg-zinc-700 transition-colors"
+                className="px-4 py-2 bg-slate-900 text-white text-sm rounded-lg hover:bg-slate-800 transition-colors"
               >
                 Log Out
               </button>
@@ -208,10 +208,10 @@ export default function AdminDashboard() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">
+          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
             RFQ Submissions
           </h1>
-          <p className="text-zinc-400">
+          <p className="text-slate-600">
             {rfqs.length === 0
               ? "No submissions yet"
               : `${rfqs.length} total ${rfqs.length === 1 ? "submission" : "submissions"}`}
@@ -219,11 +219,11 @@ export default function AdminDashboard() {
         </div>
 
         {rfqs.length === 0 ? (
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-12 text-center">
+          <div className="bg-white border border-slate-200 shadow-sm rounded-xl p-12 text-center">
             <div className="max-w-sm mx-auto">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-zinc-800 flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-100 flex items-center justify-center">
                 <svg
-                  className="w-8 h-8 text-zinc-600"
+                  className="w-8 h-8 text-slate-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -236,8 +236,8 @@ export default function AdminDashboard() {
                   />
                 </svg>
               </div>
-              <p className="text-lg text-zinc-400 mb-2">No RFQ submissions yet</p>
-              <p className="text-sm text-zinc-500">
+              <p className="text-lg text-slate-600 mb-2">No RFQ submissions yet</p>
+              <p className="text-sm text-slate-500">
                 Submissions from the website will appear here
               </p>
             </div>
@@ -251,28 +251,28 @@ export default function AdminDashboard() {
               return (
                 <div
                   key={rfq.id}
-                  className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 transition-colors"
+                  className="bg-white border border-slate-200 shadow-sm rounded-xl p-6 hover:shadow-md transition-all"
                 >
                   {/* Header */}
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
                     <div className="flex-1">
                       <div className="flex items-start gap-3 mb-2">
                         <div className="flex-1">
-                          <h3 className="text-xl font-semibold text-white mb-1">
+                          <h3 className="text-xl font-semibold text-slate-900 mb-1">
                             {rfq.name}
                           </h3>
-                          <p className="text-zinc-400">{rfq.company}</p>
+                          <p className="text-slate-600">{rfq.company}</p>
                         </div>
                         {getStatusBadge(rfq.status)}
                       </div>
-                      <p className="text-sm text-zinc-500">
+                      <p className="text-sm text-slate-500">
                         {formatDate(rfq.created_at)}
                       </p>
                     </div>
 
                     {/* Status Dropdown */}
                     <div className="sm:ml-4">
-                      <label className="block text-xs text-zinc-500 mb-1">
+                      <label className="block text-xs text-slate-600 mb-1">
                         Update Status
                       </label>
                       <select
@@ -284,7 +284,7 @@ export default function AdminDashboard() {
                           )
                         }
                         disabled={updatingStatus === rfq.id}
-                        className="px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all disabled:opacity-50"
+                        className="px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all disabled:opacity-50"
                       >
                         <option value="new">New</option>
                         <option value="in_progress">In Progress</option>
@@ -295,14 +295,14 @@ export default function AdminDashboard() {
                   </div>
 
                   {/* Contact Info */}
-                  <div className="grid sm:grid-cols-2 gap-4 mb-6 p-4 bg-zinc-950 border border-zinc-800 rounded-lg">
+                  <div className="grid sm:grid-cols-2 gap-4 mb-6 p-4 bg-slate-50 border border-slate-200 rounded-lg">
                     <div>
-                      <p className="text-xs font-medium text-zinc-500 mb-1">
+                      <p className="text-xs font-medium text-slate-600 mb-1">
                         Email
                       </p>
                       <a
                         href={`mailto:${rfq.email}`}
-                        className="text-white hover:text-amber-400 transition-colors inline-flex items-center gap-2"
+                        className="text-blue-900 hover:text-blue-800 transition-colors inline-flex items-center gap-2"
                       >
                         <svg
                           className="w-4 h-4 flex-shrink-0"
@@ -322,12 +322,12 @@ export default function AdminDashboard() {
                     </div>
                     {phone && phone !== "Not provided" && (
                       <div>
-                        <p className="text-xs font-medium text-zinc-500 mb-1">
+                        <p className="text-xs font-medium text-slate-600 mb-1">
                           Phone / WhatsApp
                         </p>
                         <a
                           href={`tel:${phone}`}
-                          className="text-white hover:text-amber-400 transition-colors inline-flex items-center gap-2"
+                          className="text-blue-900 hover:text-blue-800 transition-colors inline-flex items-center gap-2"
                         >
                           <svg
                             className="w-4 h-4 flex-shrink-0"
@@ -351,26 +351,26 @@ export default function AdminDashboard() {
                   {/* RFQ Details */}
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                     <div>
-                      <p className="text-xs font-medium text-zinc-500 mb-1">
+                      <p className="text-xs font-medium text-slate-600 mb-1">
                         Product Type
                       </p>
-                      <p className="text-white font-medium">
+                      <p className="text-slate-900 font-medium">
                         {rfq.product_type}
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs font-medium text-zinc-500 mb-1">
+                      <p className="text-xs font-medium text-slate-600 mb-1">
                         Quantity
                       </p>
-                      <p className="text-white font-medium">
+                      <p className="text-slate-900 font-medium">
                         {rfq.quantity.toLocaleString()} units
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs font-medium text-zinc-500 mb-1">
+                      <p className="text-xs font-medium text-slate-600 mb-1">
                         Customization
                       </p>
-                      <p className="text-white font-medium">
+                      <p className="text-slate-900 font-medium">
                         {rfq.customization}
                       </p>
                     </div>
@@ -378,11 +378,11 @@ export default function AdminDashboard() {
 
                   {/* Additional Notes */}
                   {notes && notes !== "None" && (
-                    <div className="pt-4 border-t border-zinc-800">
-                      <p className="text-xs font-medium text-zinc-500 mb-2">
+                    <div className="pt-4 border-t border-slate-200">
+                      <p className="text-xs font-medium text-slate-600 mb-2">
                         Additional Notes
                       </p>
-                      <p className="text-white whitespace-pre-wrap leading-relaxed">
+                      <p className="text-slate-900 whitespace-pre-wrap leading-relaxed">
                         {notes}
                       </p>
                     </div>

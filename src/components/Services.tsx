@@ -52,10 +52,10 @@ export default function Services({ hideHeader = false }: ServicesProps) {
       <Section>
         {!hideHeader && (
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
               Our Services
             </h2>
-            <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Find More About Our Services
             </p>
           </div>
@@ -64,11 +64,11 @@ export default function Services({ hideHeader = false }: ServicesProps) {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all duration-300 overflow-hidden flex flex-col"
+              className="group rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-900/30 transition-all duration-300 overflow-hidden flex flex-col"
             >
               {/* Image */}
-              <div className="relative aspect-video bg-zinc-800 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/30 via-transparent to-zinc-950/50 z-10" />
+              <div className="relative aspect-video bg-slate-100 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/20 z-10" />
                 <Image
                   src={service.image}
                   alt={`${service.title} service`}
@@ -80,10 +80,10 @@ export default function Services({ hideHeader = false }: ServicesProps) {
 
               {/* Content */}
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-slate-900 mb-3">
                   {service.title}
                 </h3>
-                <p className="text-sm text-zinc-400 mb-4 flex-1">
+                <p className="text-sm text-slate-600 mb-4 flex-1">
                   {service.description}
                 </p>
 
@@ -92,7 +92,7 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                   {service.badges.map((badge, badgeIndex) => (
                     <span
                       key={badgeIndex}
-                      className="inline-flex items-center px-2.5 py-1 rounded text-xs font-medium bg-zinc-800 text-zinc-300 border border-zinc-700"
+                      className="inline-flex items-center px-2.5 py-1 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200"
                     >
                       {badge}
                     </span>
@@ -102,7 +102,7 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                 {/* CTA Link */}
                 <Link
                   href="/rfq"
-                  className="inline-flex items-center text-sm text-amber-400 hover:text-amber-300 transition-colors"
+                  className="inline-flex items-center text-sm text-blue-900 hover:text-blue-800 transition-colors"
                 >
                   Request a Quote
                   <svg
@@ -126,9 +126,9 @@ export default function Services({ hideHeader = false }: ServicesProps) {
       </Section>
 
       {/* What's Included Section */}
-      <Section className="bg-zinc-900">
+      <Section className="bg-slate-50">
         <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
             What&apos;s Included
           </h2>
         </div>
@@ -136,12 +136,12 @@ export default function Services({ hideHeader = false }: ServicesProps) {
           {includedServices.map((item, index) => (
             <div
               key={index}
-              className="p-4 rounded-lg bg-zinc-950 border border-zinc-800"
+              className="p-4 rounded-lg bg-white border border-slate-200 shadow-sm"
             >
-              <h3 className="text-base font-semibold text-white mb-1">
+              <h3 className="text-base font-semibold text-slate-900 mb-1">
                 {item.title}
               </h3>
-              <p className="text-sm text-zinc-400">{item.description}</p>
+              <p className="text-sm text-slate-600">{item.description}</p>
             </div>
           ))}
         </div>

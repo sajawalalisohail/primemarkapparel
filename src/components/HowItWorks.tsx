@@ -36,10 +36,10 @@ export default function HowItWorks({ hideHeader = false }: HowItWorksProps) {
     <Section id="process">
       {!hideHeader && (
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
             How It Works
           </h2>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             A streamlined process from initial inquiry to final delivery.
           </p>
         </div>
@@ -49,22 +49,22 @@ export default function HowItWorks({ hideHeader = false }: HowItWorksProps) {
           <div key={index} className="relative">
             {/* Connector line */}
             {index < steps.length - 1 && (
-              <div className="hidden md:block absolute top-12 left-1/2 w-full h-px bg-gradient-to-r from-amber-500/50 to-zinc-800" />
+              <div className="hidden md:block absolute top-12 left-1/2 w-full h-px bg-gradient-to-r from-blue-500/30 to-slate-200" />
             )}
             <div className="relative z-10 flex flex-col items-center text-center">
-              <div className="w-24 h-24 rounded-full bg-zinc-900 border-2 border-amber-500 flex items-center justify-center mb-6">
-                <span className="text-3xl font-bold text-amber-400">
+              <div className="w-24 h-24 rounded-full bg-white border-2 border-blue-900 flex items-center justify-center mb-6 shadow-sm">
+                <span className="text-3xl font-bold text-blue-900">
                   {step.number}
                 </span>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">
                 {step.title}
               </h3>
-              <p className="text-sm text-amber-400 mb-3 font-medium">
+              <p className="text-sm text-blue-800 mb-3 font-medium">
                 {step.timeline}
               </p>
-              <p className="text-zinc-400 max-w-xs mb-3">{step.description}</p>
-              <p className="text-xs text-zinc-500 max-w-xs">{step.details}</p>
+              <p className="text-slate-600 max-w-xs mb-3">{step.description}</p>
+              <p className="text-xs text-slate-500 max-w-xs">{step.details}</p>
             </div>
           </div>
         ))}

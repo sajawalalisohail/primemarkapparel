@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
+  --background: #ffffff;
+  --foreground: #0f172a;
 }
 
 @theme inline {
@@ -29,26 +29,26 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #18181b;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3f3f46;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #52525b;
+  background: #94a3b8;
 }
 
 /* Focus visible outline */
 *:focus-visible {
-  outline: 2px solid #f59e0b;
+  outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
 
 /* Selection color */
 ::selection {
-  background: #f59e0b;
-  color: #09090b;
+  background: #dbeafe;
+  color: #1e3a8a;
 }

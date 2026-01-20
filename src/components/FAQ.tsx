@@ -50,6 +50,36 @@ const faqs = [
     answer:
       "We typically quote in USD, but can provide quotes in other major currencies upon request. All pricing is confirmed in writing before production begins.",
   },
+  {
+    question: "How do I know you're a real factory and not a middleman?",
+    answer:
+      "We work directly with established factories in Pakistan. We can provide factory photos, certifications, and arrange facility visits for qualified buyers.",
+  },
+  {
+    question: "What if I need changes after sample approval?",
+    answer:
+      "Minor modifications can be accommodated during production with prior notice. Major changes may require new samples and adjusted timelines. We discuss all changes before implementation.",
+  },
+  {
+    question: "Do you handle customs documentation and shipping?",
+    answer:
+      "Yes, we provide all necessary commercial documentation including invoices, packing lists, and certificates of origin. We can arrange FOB, CIF, or door-to-door shipping with proper customs clearance support.",
+  },
+  {
+    question: "Can I visit your factory?",
+    answer:
+      "Yes, we welcome qualified buyers to visit our manufacturing facilities. Please contact us to arrange a visit and we'll coordinate logistics.",
+  },
+  {
+    question: "What's your typical defect rate?",
+    answer:
+      "Our quality control process maintains a defect rate below 1%. All products undergo multiple QC checkpoints before shipping.",
+  },
+  {
+    question: "Do you work with small orders (under 500 units)?",
+    answer:
+      "Our standard MOQ is 200-300 units depending on product type. For orders below this, we evaluate on a case-by-case basis and may apply minimum order fees.",
+  },
 ];
 
 function FAQItem({
@@ -64,15 +94,15 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-zinc-800 last:border-b-0">
+    <div className="border-b border-slate-200 last:border-b-0">
       <button
         type="button"
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-5 text-left focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-zinc-950 rounded-lg"
+        className="w-full flex items-center justify-between py-5 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white rounded-lg"
         aria-expanded={isOpen}
       >
-        <span className="text-white font-medium pr-4">{question}</span>
-        <span className="flex-shrink-0 text-amber-400">
+        <span className="text-slate-900 font-medium pr-4">{question}</span>
+        <span className="flex-shrink-0 text-slate-400">
           <svg
             className={`w-5 h-5 transition-transform duration-200 ${
               isOpen ? "rotate-180" : ""
@@ -95,7 +125,7 @@ function FAQItem({
           isOpen ? "max-h-96 pb-5" : "max-h-0"
         }`}
       >
-        <p className="text-zinc-400 leading-relaxed">{answer}</p>
+        <p className="text-slate-600 leading-relaxed">{answer}</p>
       </div>
     </div>
   );
@@ -113,19 +143,19 @@ export default function FAQ({ hideHeader = false }: FAQProps) {
   };
 
   return (
-    <Section id="faq" className="bg-zinc-900">
+    <Section id="faq" className="bg-slate-50">
       <div className="max-w-3xl mx-auto">
         {!hideHeader && (
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-lg text-zinc-400">
+            <p className="text-lg text-slate-600">
               Everything you need to know about working with us.
             </p>
           </div>
         )}
-        <div className="bg-zinc-950 rounded-xl border border-zinc-800 px-6">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm px-6">
           {faqs.map((faq, index) => (
             <FAQItem
               key={index}

@@ -15,15 +15,15 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-zinc-950 disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variants = {
     primary:
-      "bg-amber-500 text-zinc-950 hover:bg-amber-400 active:bg-amber-600",
+      "bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950",
     secondary:
-      "bg-zinc-800 text-white hover:bg-zinc-700 active:bg-zinc-900 border border-zinc-700",
+      "bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 active:bg-slate-100",
     outline:
-      "bg-transparent text-amber-400 border border-amber-400 hover:bg-amber-400 hover:text-zinc-950",
+      "bg-transparent text-blue-900 border border-blue-900 hover:bg-blue-50 hover:text-blue-800",
   };
 
   const sizes = {
