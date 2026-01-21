@@ -148,7 +148,7 @@ Preferred Contact Method: ${formData.preferredContactMethod || "Email"}`,
   };
 
   const generateMailtoLink = () => {
-    const subject = encodeURIComponent("RFQ — PrimeMark Apparel");
+    const subject = encodeURIComponent("RFQ - PrimeMark Apparel");
     const body = encodeURIComponent(
       `Name: ${formData.name}
 Company: ${formData.company}
@@ -198,7 +198,7 @@ Notes: ${formData.notes || "None"}`
             </h3>
             <p className="text-slate-600 mb-2">
               Thank you for your inquiry. Our team will review your requirements
-              and get back to you within 24–48 hours.
+              and get back to you within 24-48 hours.
             </p>
             <p className="text-sm text-slate-500">
               You will receive a confirmation email shortly with your request details.
@@ -244,7 +244,7 @@ Notes: ${formData.notes || "None"}`
               detailed quote.
             </p>
             <p className="text-sm text-slate-500">
-              Response time: 24–48 hours during business days
+              Response time: 24-48 hours during business days
             </p>
           </div>
         )}

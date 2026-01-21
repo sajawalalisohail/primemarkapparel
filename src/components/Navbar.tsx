@@ -35,8 +35,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm w-full">
+      <div className="mx-auto max-w-[1920px] px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" onClick={handleHomeClick} className="flex items-center -ml-5">
@@ -83,7 +83,7 @@ export default function Navbar() {
                     >
                       {link.label}
                       <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${
+                        className={`w-4 h-4 transition-transform duration-300 ease-in-out ${
                           isProductsHovered ? "rotate-180" : ""
                         }`}
                         fill="none"
@@ -101,7 +101,7 @@ export default function Navbar() {
                     
                     {/* Dropdown Menu */}
                     <div
-                      className={`absolute top-full left-0 pt-2 w-56 transition-all duration-200 ${
+                      className={`absolute top-full left-0 pt-2 w-56 transition-[opacity,transform] duration-300 ease-in-out ${
                         isProductsHovered
                           ? "opacity-100 translate-y-0 pointer-events-auto"
                           : "opacity-0 -translate-y-2 pointer-events-none"
@@ -117,7 +117,7 @@ export default function Navbar() {
                             <Link
                               key={category.href}
                               href={category.href}
-                              className="block px-4 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 hover:translate-x-1 transition-all duration-300 ease-in-out focus:outline-none focus:bg-slate-50 focus:text-slate-900 focus:ring-2 focus:ring-blue-500 focus:ring-inset"
+                              className="block px-4 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-[color,background-color] duration-300 ease-in-out focus:outline-none focus:bg-slate-50 focus:text-slate-900 focus:ring-2 focus:ring-blue-500 focus:ring-inset"
                               role="menuitem"
                               tabIndex={isProductsHovered ? 0 : -1}
                             >
@@ -206,8 +206,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200">
-          <div className="px-4 py-4 space-y-3">
+        <div className="md:hidden bg-white border-t border-slate-200 w-full">
+          <div className="px-6 py-4 space-y-3">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (

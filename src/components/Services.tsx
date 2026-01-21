@@ -23,25 +23,6 @@ const services = [
   },
 ];
 
-const includedServices = [
-  {
-    title: "Private Label Options",
-    description: "Custom branding and labeling for your products.",
-  },
-  {
-    title: "Fabric Sourcing",
-    description: "Access to premium fabric suppliers and materials.",
-  },
-  {
-    title: "Packaging & Labeling",
-    description: "Complete packaging solutions with custom labeling.",
-  },
-  {
-    title: "Worldwide Shipping Support",
-    description: "International shipping and logistics coordination.",
-  },
-];
-
 interface ServicesProps {
   hideHeader?: boolean;
 }
@@ -120,28 +101,6 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                   </svg>
                 </Link>
               </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* What's Included Section */}
-      <Section>
-        <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
-            What&apos;s Included
-          </h2>
-        </div>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {includedServices.map((item, index) => (
-            <div
-              key={index}
-              className="p-4 rounded-lg bg-white border border-slate-200 shadow-sm"
-            >
-              <h3 className="text-base font-semibold text-slate-900 mb-1">
-                {item.title}
-              </h3>
-              <p className="text-sm text-slate-600">{item.description}</p>
             </div>
           ))}
         </div>

@@ -1,26 +1,54 @@
 import Section from "./Section";
+import Image from "next/image";
 
-const caseStudies = [
+const clients = [
   {
-    industry: "Healthcare",
-    orderSize: "50,000 units",
-    challenge: "Large-scale scrub order with tight deadline and multiple size requirements",
-    solution: "Coordinated production across multiple lines, implemented quality checkpoints, and maintained regular communication",
-    result: "Delivered on time with 99.2% quality pass rate. Client reordered 75K units.",
+    name: "Accuteq Pakistan",
+    location: "Lahore",
+    industry: "Integrated Pest Management & Consultancy",
+    workProvided: "Staff uniforms, branded apparel for technicians and office staff",
+    tone: "Professional, corporate",
+    logoPath: "/clients/accute.png",
   },
   {
-    industry: "Restaurant Chain",
-    orderSize: "25,000 units",
-    challenge: "Custom branded uniforms with specific fabric requirements and logo placement",
-    solution: "Created detailed tech packs, provided samples for approval, and executed bulk production with consistent branding",
-    result: "Perfect logo placement across all units. Client expanded to 50+ locations.",
+    name: "C-Shine Group",
+    location: "Lahore",
+    industry: "Facilities & Hygiene Services",
+    workProvided: "Uniform supply, consistent bulk apparel for operations teams",
+    tone: "Enterprise, trusted, scalable",
+    logoPath: "/clients/cshine.png",
   },
   {
-    industry: "Construction",
-    orderSize: "15,000 units",
-    challenge: "Safety-compliant workwear with high-visibility requirements and durability standards",
-    solution: "Sourced certified high-visibility fabric, reinforced stress points, and conducted multiple QC inspections",
-    result: "Met all safety standards. Zero defects reported. Ongoing partnership established.",
+    name: "Jugaarh",
+    location: "",
+    industry: "Cultural & Traditional Retail",
+    workProvided: "Custom apparel for retail staff, brand-aligned clothing",
+    tone: "Minimal, premium, cultural",
+    logoPath: "/clients/jugaarh.png",
+  },
+  {
+    name: "Creemees",
+    location: "Lahore",
+    industry: "Food & Beverage",
+    workProvided: "Staff uniforms, branded apparel for outlets",
+    tone: "Friendly, consumer-facing, clean",
+    logoPath: "/clients/creemees.png",
+  },
+  {
+    name: "Izmir Wok",
+    location: "Lahore",
+    industry: "Restaurant / Chinese Cuisine",
+    workProvided: "Kitchen & front-of-house uniforms",
+    tone: "Bold, restaurant-grade",
+    logoPath: "/clients/izmirwok.png",
+  },
+  {
+    name: "KLIX",
+    location: "Lahore",
+    industry: "Events, Tech & Branding",
+    workProvided: "Staff uniforms, event branding shirts",
+    tone: "Modern, innovative",
+    logoPath: "/clients/klix.png",
   },
 ];
 
@@ -29,53 +57,52 @@ export default function CaseStudies() {
     <Section className="bg-slate-50">
       <div className="text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-          Client Success Stories
+          Our Clients
         </h2>
         <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-          Real results from real partnerships. See how we've helped businesses scale their apparel programs.
+          Trusted by businesses across diverse industries for reliable bulk apparel solutions.
         </p>
       </div>
-      <div className="grid md:grid-cols-3 gap-6">
-        {caseStudies.map((study, index) => (
+      
+      {/* Client Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {clients.map((client, index) => (
           <div
             key={index}
-            className="p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all"
+            className="group p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-900/30 hover:-translate-y-1 transition-[shadow,border-color,transform] duration-300 ease-in-out"
           >
-            <div className="mb-4">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-900 border border-blue-200 mb-2">
-                {study.industry}
-              </span>
-              <p className="text-sm font-semibold text-slate-900 mb-4">
-                Order Size: {study.orderSize}
-              </p>
+            {/* Logo Area */}
+            <div className="mb-4 flex items-center justify-center h-20 bg-slate-50 rounded-lg border border-slate-200 group-hover:bg-blue-50 group-hover:border-blue-200 transition-colors duration-300 p-3">
+              <Image
+                src={client.logoPath}
+                alt={`${client.name} logo`}
+                width={120}
+                height={60}
+                className="max-h-14 w-auto object-contain"
+              />
             </div>
-            <div className="space-y-3">
-              <div>
-                <h4 className="text-xs font-semibold text-slate-500 uppercase mb-1">
-                  Challenge
-                </h4>
-                <p className="text-sm text-slate-700">{study.challenge}</p>
-              </div>
-              <div>
-                <h4 className="text-xs font-semibold text-slate-500 uppercase mb-1">
-                  Solution
-                </h4>
-                <p className="text-sm text-slate-700">{study.solution}</p>
-              </div>
-              <div>
-                <h4 className="text-xs font-semibold text-slate-500 uppercase mb-1">
-                  Result
-                </h4>
-                <p className="text-sm text-slate-700 font-medium">{study.result}</p>
-              </div>
+            
+            {/* Company Info */}
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-slate-900 mb-1">
+                {client.name}
+              </h3>
+              {client.location && (
+                <p className="text-xs text-slate-500 mb-3">{client.location}</p>
+              )}
+              
+              {/* Industry Badge */}
+              <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-900 border border-blue-200 mb-3">
+                {client.industry}
+              </span>
+              
+              {/* Work Provided */}
+              <p className="text-sm text-slate-600 mt-3 leading-relaxed">
+                {client.workProvided}
+              </p>
             </div>
           </div>
         ))}
-      </div>
-      <div className="mt-8 text-center">
-        <p className="text-sm text-slate-500">
-          Client logos available with permission. Contact us to learn more about our partnerships.
-        </p>
       </div>
     </Section>
   );

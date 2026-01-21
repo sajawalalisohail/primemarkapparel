@@ -21,7 +21,7 @@ const trustItems = [
     ),
   },
   {
-    title: "2–6 Week Lead Time",
+    title: "2-6 Week Lead Time",
     description: "Fast turnaround from sample approval to delivery",
     icon: (
       <svg

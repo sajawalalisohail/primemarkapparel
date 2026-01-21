@@ -22,7 +22,8 @@ export default function AnimatedSection({
   useEffect(() => {
     // Check for reduced motion preference
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
+    const initialPrefersReducedMotion = mediaQuery.matches;
+    setPrefersReducedMotion(initialPrefersReducedMotion);
 
     const handleChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);
@@ -30,7 +31,7 @@ export default function AnimatedSection({
 
     mediaQuery.addEventListener("change", handleChange);
 
-    // Intersection Observer
+    // Intersection Observer with improved settings for smoother scroll animations
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -40,19 +41,31 @@ export default function AnimatedSection({
         }
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.05, // Trigger when 5% of element is visible
+        rootMargin: "0px 0px 100px 0px", // Trigger 100px BEFORE element enters viewport
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      // Check if element is already visible on mount
+      const rect = currentRef.getBoundingClientRect();
+      const isAlreadyVisible = 
+        rect.top < window.innerHeight + 100 && 
+        rect.bottom > -100;
+      
+      if (isAlreadyVisible && !initialPrefersReducedMotion) {
+        // Small delay to ensure smooth animation even for visible elements
+        setTimeout(() => setIsVisible(true), 150);
+      } else {
+        observer.observe(currentRef);
+      }
     }
 
     return () => {
       mediaQuery.removeEventListener("change", handleChange);
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -62,13 +75,13 @@ export default function AnimatedSection({
     
     switch (direction) {
       case "up":
-        return "translateY(20px)";
+        return "translateY(30px)";
       case "down":
-        return "translateY(-20px)";
+        return "translateY(-30px)";
       case "left":
-        return "translateX(20px)";
+        return "translateX(30px)";
       case "right":
-        return "translateX(-20px)";
+        return "translateX(-30px)";
       default:
         return "translate(0, 0)";
     }
@@ -83,7 +96,8 @@ export default function AnimatedSection({
         transform: getTransform(),
         transition: prefersReducedMotion
           ? "none"
-          : `opacity 0.5s ease-out ${delay}ms, transform 0.5s ease-out ${delay}ms`,
+          : `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        willChange: prefersReducedMotion ? "auto" : "opacity, transform",
       }}
     >
       {children}

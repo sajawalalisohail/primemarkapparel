@@ -11,11 +11,11 @@ export default function FinalCTA() {
 
         <div className="relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Tell us what you need —{" "}
+            Tell us what you need,{" "}
             <span className="text-blue-400">we&apos;ll quote fast.</span>
           </h2>
           <p className="text-lg text-slate-300 mb-8 max-w-xl mx-auto">
-            Share your requirements and get a detailed quote within 24–48 hours.
+            Share your requirements and get a detailed quote within 24-48 hours.
             No obligation, no hidden fees.
           </p>
           <Link

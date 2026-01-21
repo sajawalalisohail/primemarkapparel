@@ -39,8 +39,8 @@ export default function Hero() {
       ),
     },
     {
-      label: "ISO Certified",
-      description: "Factories",
+      label: "99%+ Quality",
+      description: "Pass Rate",
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -99,16 +99,16 @@ export default function Hero() {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/15 hover:scale-105 transition-all duration-300"
+                  className="flex flex-col items-center justify-center p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/15 hover:scale-105 transition-all duration-300 h-[100px]"
                   style={{
                     opacity: isLoaded ? 1 : 0,
                     transform: isLoaded ? "translateY(0)" : "translateY(20px)",
                     transition: `opacity 0.5s ease-out ${0.4 + index * 0.1}s, transform 0.5s ease-out ${0.4 + index * 0.1}s`,
                   }}
                 >
-                  <div className="text-blue-400 mb-2">{stat.icon}</div>
-                  <div className="text-xl font-bold text-white">{stat.label}</div>
-                  <div className="text-xs text-slate-300">{stat.description}</div>
+                  <div className="text-blue-400 mb-2 flex-shrink-0">{stat.icon}</div>
+                  <div className="text-lg font-bold text-white text-center mb-0.5 leading-tight">{stat.label}</div>
+                  <div className="text-xs text-slate-300 text-center leading-tight">{stat.description}</div>
                 </div>
               ))}
             </div>

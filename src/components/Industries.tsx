@@ -34,25 +34,6 @@ const industries = [
   },
 ];
 
-const typicalOrders = [
-  {
-    title: "Uniform programs",
-    description: "Corporate and service uniforms for teams.",
-  },
-  {
-    title: "Workwear & safety basics",
-    description: "Safety-compliant apparel for industrial settings.",
-  },
-  {
-    title: "Branded retail runs",
-    description: "Private label and custom branded apparel.",
-  },
-  {
-    title: "School uniforms & spiritwear",
-    description: "Student uniforms and athletic apparel.",
-  },
-];
-
 interface IndustriesProps {
   hideHeader?: boolean;
 }
@@ -97,28 +78,6 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
                 </h3>
                 <p className="text-sm text-slate-600">{industry.description}</p>
               </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Typical Orders Section */}
-      <Section className="bg-slate-50">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
-            Typical Orders
-          </h2>
-        </div>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {typicalOrders.map((order, index) => (
-            <div
-              key={index}
-              className="p-4 rounded-lg bg-white border border-slate-200 shadow-sm"
-            >
-              <h3 className="text-base font-semibold text-slate-900 mb-1">
-                {order.title}
-              </h3>
-              <p className="text-sm text-slate-600">{order.description}</p>
             </div>
           ))}
         </div>

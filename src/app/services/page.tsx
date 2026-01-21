@@ -21,7 +21,7 @@ export default function ServicesPage() {
         <div className="px-4 sm:px-6 lg:px-8 py-12 bg-slate-50 border-t border-slate-200">
           <div className="mx-auto max-w-6xl text-center">
             <p className="text-lg text-slate-600 mb-6">
-              Tell us what you need — we&apos;ll respond with pricing, MOQ, and
+              Tell us what you need, we&apos;ll respond with pricing, MOQ, and
               timeline.
             </p>
             <Link

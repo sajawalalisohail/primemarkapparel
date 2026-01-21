@@ -8,17 +8,17 @@ const faqs = [
   {
     question: "What is your minimum order quantity (MOQ)?",
     answer:
-      "Our MOQ varies by product type. For standard items like t-shirts and uniforms, we typically start at 200 units per style/color. For more complex items like custom denim or embroidered workwear, the MOQ may be higher. Contact us for specific requirements—we're flexible for the right partnerships.",
+      "Our MOQ varies by product type. For standard items like t-shirts and uniforms, we typically start at 200 units per style/color. For more complex items like custom denim or embroidered workwear, the MOQ may be higher. Contact us for specific requirements. We're flexible for the right partnerships.",
   },
   {
     question: "How does sampling work?",
     answer:
-      "Once you share your requirements, we create physical samples for your approval. Sample production typically takes 7–14 days. You can request modifications before approving for bulk production. Sample costs depend on complexity but are often credited toward bulk orders.",
+      "Once you share your requirements, we create physical samples for your approval. Sample production typically takes 7-14 days. You can request modifications before approving for bulk production. Sample costs depend on complexity but are often credited toward bulk orders.",
   },
   {
     question: "What is the typical lead time for production?",
     answer:
-      "Standard production lead time is 2–6 weeks after sample approval, depending on order size and complexity. Rush orders may be accommodated with prior arrangement. We provide regular updates throughout the production process.",
+      "Standard production lead time is 2-6 weeks after sample approval, depending on order size and complexity. Rush orders may be accommodated with prior arrangement. We provide regular updates throughout the production process.",
   },
   {
     question: "Do you handle international shipping?",

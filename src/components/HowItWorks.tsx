@@ -6,7 +6,7 @@ const steps = [
     title: "Sample",
     description:
       "Share your requirements. We create samples with your specifications for approval before bulk production.",
-    timeline: "7–14 days",
+    timeline: "7-14 days",
     details: "Physical samples delivered for fit, fabric, and quality review. Modifications available before approval.",
   },
   {
@@ -14,7 +14,7 @@ const steps = [
     title: "Production",
     description:
       "Once approved, we begin manufacturing with rigorous quality control checks at every stage.",
-    timeline: "2–6 weeks",
+    timeline: "2-6 weeks",
     details: "Regular progress updates provided. Quality control at multiple checkpoints. Payment terms: 30% deposit, 70% before shipping.",
   },
   {
@@ -22,7 +22,7 @@ const steps = [
     title: "Delivery",
     description:
       "Your order is carefully packaged and shipped worldwide with tracking and documentation.",
-    timeline: "1–3 weeks",
+    timeline: "1-3 weeks",
     details: "FOB, CIF, or door-to-door shipping options. Complete documentation for customs. Tracking provided.",
   },
 ];

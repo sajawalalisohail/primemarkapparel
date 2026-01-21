@@ -101,7 +101,7 @@ export default function ContactPage() {
                 </div>
                 <div className="mt-6 pt-6 border-t border-zinc-800">
                   <p className="text-sm text-zinc-500">
-                    We typically respond to inquiries within 24–48 hours during
+                    We typically respond to inquiries within 24-48 hours during
                     business days.
                   </p>
                 </div>
