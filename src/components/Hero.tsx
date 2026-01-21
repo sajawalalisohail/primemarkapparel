@@ -6,10 +6,15 @@ import { useEffect, useState } from "react";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
   const stats = [
     {
       label: "15+ Years",
@@ -52,7 +57,13 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0">
+      <div 
+        className="absolute inset-0"
+        style={{
+          opacity: imageLoaded ? 1 : 0,
+          transition: "opacity 0.8s ease-in-out",
+        }}
+      >
         <Image
           src="/branding/home2.png"
           alt="PrimeMark Apparel - Manufacturing Facility"
@@ -60,6 +71,7 @@ export default function Hero() {
           className="object-cover"
           priority
           quality={90}
+          onLoadingComplete={handleImageLoad}
         />
         {/* Gradient overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-900/40" />

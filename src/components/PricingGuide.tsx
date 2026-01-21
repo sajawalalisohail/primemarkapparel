@@ -30,7 +30,7 @@ const pricingTiers = [
 
 export default function PricingGuide() {
   return (
-    <Section>
+    <Section className="bg-slate-50">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">

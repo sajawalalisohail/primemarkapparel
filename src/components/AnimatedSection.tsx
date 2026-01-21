@@ -96,7 +96,7 @@ export default function AnimatedSection({
         transform: getTransform(),
         transition: prefersReducedMotion
           ? "none"
-          : `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+          : `opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
         willChange: prefersReducedMotion ? "auto" : "opacity, transform",
       }}
     >

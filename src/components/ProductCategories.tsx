@@ -7,7 +7,7 @@ const products = [
       "Professional corporate and service uniforms for teams of any size.",
     moq: "200-300 units",
     leadTime: "4-6 weeks",
-    customization: "Full customization available",
+    customization: "Logo embroidery, screen printing, custom colors, size grading",
     icon: (
       <svg
         className="w-10 h-10 text-blue-900"
@@ -28,6 +28,9 @@ const products = [
     title: "Scrubs",
     description:
       "Comfortable, durable medical scrubs for healthcare professionals.",
+    moq: "250-350 units",
+    leadTime: "4-6 weeks",
+    customization: "Medical-grade fabrics, color options, logo placement, pocket styles",
     icon: (
       <svg
         className="w-10 h-10 text-blue-900"
@@ -48,9 +51,9 @@ const products = [
     title: "Industrial Workwear",
     description:
       "Tough, safety-compliant apparel for factories and construction.",
-    moq: "200-300 units",
-    leadTime: "4-6 weeks",
-    customization: "Full customization available",
+    moq: "300-400 units",
+    leadTime: "5-7 weeks",
+    customization: "High-visibility options, reinforced seams, safety certifications, custom sizing",
     icon: (
       <svg
         className="w-10 h-10 text-blue-900"
@@ -76,6 +79,9 @@ const products = [
   {
     title: "Hoodies",
     description: "Premium hoodies and sweatshirts for casual and branded wear.",
+    moq: "200-300 units",
+    leadTime: "3-5 weeks",
+    customization: "Fabric weight options, drawstring colors, zipper styles, embroidery or printing",
     icon: (
       <svg
         className="w-10 h-10 text-blue-900"
@@ -95,9 +101,9 @@ const products = [
   {
     title: "Denim / Jeans",
     description: "Classic and modern denim styles for any market segment.",
-    moq: "200-300 units",
-    leadTime: "4-6 weeks",
-    customization: "Full customization available",
+    moq: "300-400 units",
+    leadTime: "5-7 weeks",
+    customization: "Wash options, fit variations, hardware choices, distressing, custom labels",
     icon: (
       <svg
         className="w-10 h-10 text-blue-900"
@@ -118,6 +124,9 @@ const products = [
     title: "Custom Apparel",
     description:
       "Bespoke designs manufactured to your exact specifications.",
+    moq: "200-300 units",
+    leadTime: "4-8 weeks",
+    customization: "Complete design flexibility, fabric selection, pattern development, full branding",
     icon: (
       <svg
         className="w-10 h-10 text-blue-900"
@@ -142,7 +151,7 @@ interface ProductCategoriesProps {
 
 export default function ProductCategories({ hideHeader = false }: ProductCategoriesProps) {
   return (
-    <Section id="products">
+    <Section id="products" className="bg-slate-50">
       {!hideHeader && (
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">

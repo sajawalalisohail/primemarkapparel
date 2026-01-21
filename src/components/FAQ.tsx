@@ -143,7 +143,7 @@ export default function FAQ({ hideHeader = false }: FAQProps) {
   };
 
   return (
-    <Section id="faq">
+    <Section id="faq" className="bg-white">
       <div className="max-w-3xl mx-auto">
         {!hideHeader && (
           <div className="text-center mb-12">

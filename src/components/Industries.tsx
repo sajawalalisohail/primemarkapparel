@@ -53,7 +53,7 @@ interface IndustriesProps {
 export default function Industries({ hideHeader = false }: IndustriesProps) {
   return (
     <>
-      <Section id="industries">
+      <Section id="industries" className="bg-white">
         {!hideHeader && (
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">

@@ -25,7 +25,7 @@ const qualityPoints = [
 
 export default function Quality() {
   return (
-    <Section>
+    <Section className="bg-slate-50">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div>

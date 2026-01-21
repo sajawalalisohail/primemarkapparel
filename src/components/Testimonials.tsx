@@ -104,7 +104,7 @@ export default function Testimonials() {
   };
 
   return (
-    <Section className="bg-slate-50">
+    <Section className="bg-white">
       <div className="text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
           What Our Clients Say
