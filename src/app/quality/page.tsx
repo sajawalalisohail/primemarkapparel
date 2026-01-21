@@ -4,6 +4,11 @@ import PageHeader from "@/components/PageHeader";
 import PageCTA from "@/components/PageCTA";
 import Quality from "@/components/Quality";
 
+export const metadata = {
+  title: "Quality Standards | Manufacturing Excellence - PrimeMark Apparel",
+  description: "Our commitment to quality: multi-stage QC checks, premium fabrics, expert stitching, and customization excellence. 99%+ quality pass rate.",
+};
+
 export default function QualityPage() {
   return (
     <>

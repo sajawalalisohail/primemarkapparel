@@ -4,6 +4,11 @@ import PageHeader from "@/components/PageHeader";
 import PageCTA from "@/components/PageCTA";
 import Section from "@/components/Section";
 
+export const metadata = {
+  title: "About Us | PrimeMark Apparel - Bulk Apparel Manufacturer",
+  description: "Learn about PrimeMark Apparel, a premium bulk apparel manufacturer based in Pakistan serving businesses worldwide with uniforms, scrubs, workwear, and custom apparel.",
+};
+
 export default function AboutPage() {
   return (
     <>
@@ -36,7 +41,7 @@ export default function AboutPage() {
             {/* Key Facts */}
             <div className="grid sm:grid-cols-3 gap-4">
               <div className="p-4 rounded-lg bg-white border border-slate-200 shadow-sm text-center">
-                <p className="text-2xl font-bold text-blue-900 mb-1">200+</p>
+                <p className="text-2xl font-bold text-blue-900 mb-1">200-300</p>
                 <p className="text-sm text-slate-600">Units MOQ</p>
               </div>
               <div className="p-4 rounded-lg bg-white border border-slate-200 shadow-sm text-center">

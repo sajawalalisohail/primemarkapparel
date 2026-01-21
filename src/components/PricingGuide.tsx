@@ -4,19 +4,19 @@ import Link from "next/link";
 const pricingTiers = [
   {
     volume: "500 units",
-    priceRange: "$18–25 per unit",
+    priceRange: "$18-25 per unit",
     description: "Standard pricing for small orders",
     note: "Ideal for testing markets or initial runs",
   },
   {
     volume: "1,000 units",
-    priceRange: "$14–18 per unit",
+    priceRange: "$14-18 per unit",
     description: "Volume discounts available",
     note: "Better per-unit pricing",
   },
   {
     volume: "5,000 units",
-    priceRange: "$10–14 per unit",
+    priceRange: "$10-14 per unit",
     description: "Significant volume discounts",
     note: "Best value for established programs",
   },
@@ -72,7 +72,7 @@ export default function PricingGuide() {
             href="/rfq"
             className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
           >
-            Request Custom Quote
+            Request a Quote
             <svg
               className="ml-1 w-4 h-4"
               fill="none"

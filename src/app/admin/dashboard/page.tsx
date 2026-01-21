@@ -68,7 +68,9 @@ export default function AdminDashboard() {
 
       setRfqs(data || []);
     } catch (error) {
-      console.error("Error loading RFQs:", error);
+      if (process.env.NODE_ENV === "development") {
+        console.error("Error loading RFQs:", error);
+      }
     } finally {
       setLoading(false);
     }
@@ -90,7 +92,9 @@ export default function AdminDashboard() {
         )
       );
     } catch (error) {
-      console.error("Error updating status:", error);
+      if (process.env.NODE_ENV === "development") {
+        console.error("Error updating status:", error);
+      }
       alert("Failed to update status");
     } finally {
       setUpdatingStatus(null);

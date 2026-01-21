@@ -222,10 +222,16 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-6">
               <Link
-                href="/admin/login"
+                href="/privacy"
                 className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
               >
-                Admin
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
+              >
+                Terms of Service
               </Link>
             </div>
           </div>

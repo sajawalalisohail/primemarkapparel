@@ -7,6 +7,11 @@ import BulkCapabilities from "@/components/BulkCapabilities";
 import PricingGuide from "@/components/PricingGuide";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Products | Bulk Apparel Manufacturing - PrimeMark Apparel",
+  description: "Browse our product categories: uniforms, scrubs, industrial workwear, hoodies, denim, and custom apparel. All available for bulk manufacturing with competitive pricing.",
+};
+
 export default function ProductsPage() {
   return (
     <>

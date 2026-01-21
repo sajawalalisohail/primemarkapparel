@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 import Section from "@/components/Section";
 import { supabase } from "@/lib/supabase";
 
+// Note: Metadata cannot be exported from client components
+// Consider creating a separate metadata file or moving to server component wrapper
+
 interface SampleFormData {
   company: string;
   contactName: string;
@@ -68,7 +71,9 @@ Sample Requirements: ${formData.sampleRequirements || "None"}`,
 
       setIsSuccess(true);
     } catch (error) {
-      console.error("Error submitting sample request:", error);
+      if (process.env.NODE_ENV === "development") {
+        console.error("Error submitting sample request:", error);
+      }
       alert("Failed to submit request. Please try emailing us directly.");
     } finally {
       setIsSubmitting(false);

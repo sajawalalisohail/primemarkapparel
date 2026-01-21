@@ -4,6 +4,11 @@ import PageHeader from "@/components/PageHeader";
 import PageCTA from "@/components/PageCTA";
 import Section from "@/components/Section";
 
+export const metadata = {
+  title: "Contact Us | PrimeMark Apparel",
+  description: "Get in touch with PrimeMark Apparel. Contact our team to discuss your bulk apparel requirements, request quotes, or learn more about our manufacturing services.",
+};
+
 export default function ContactPage() {
   return (
     <>
@@ -18,10 +23,10 @@ export default function ContactPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-white mb-6">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-6">
                     Get in Touch
                   </h2>
-                  <p className="text-zinc-400 mb-8">
+                  <p className="text-slate-600 mb-8">
                     Have questions about our products, process, or pricing? Our
                     team is ready to assist you with detailed information and
                     personalized quotes.
@@ -31,11 +36,11 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <a
                     href="mailto:sales@primemarkapparel.com"
-                    className="flex items-start gap-4 p-4 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-colors group"
+                    className="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-900/30 hover:shadow-md transition-all group"
                   >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center group-hover:bg-amber-500/20 transition-colors">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
                       <svg
-                        className="w-6 h-6 text-amber-400"
+                        className="w-6 h-6 text-blue-900"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -49,8 +54,8 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-white font-medium mb-1">Email</h3>
-                      <p className="text-zinc-400 text-sm">
+                      <h3 className="text-slate-900 font-medium mb-1">Email</h3>
+                      <p className="text-slate-600 text-sm">
                         sales@primemarkapparel.com
                       </p>
                     </div>
@@ -60,11 +65,11 @@ export default function ContactPage() {
                     href="https://wa.me/13046854016"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-4 p-4 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-colors group"
+                    className="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-900/30 hover:shadow-md transition-all group"
                   >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center group-hover:bg-amber-500/20 transition-colors">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
                       <svg
-                        className="w-6 h-6 text-amber-400"
+                        className="w-6 h-6 text-blue-900"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -72,8 +77,8 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-white font-medium mb-1">WhatsApp</h3>
-                      <p className="text-zinc-400 text-sm">
+                      <h3 className="text-slate-900 font-medium mb-1">WhatsApp</h3>
+                      <p className="text-slate-600 text-sm">
                         Chat with us directly
                       </p>
                     </div>
@@ -81,11 +86,11 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="p-6 rounded-xl bg-zinc-900 border border-zinc-800">
-                <h3 className="text-xl font-semibold text-white mb-4">
+              <div className="p-6 rounded-xl bg-white border border-slate-200 shadow-sm">
+                <h3 className="text-xl font-semibold text-slate-900 mb-4">
                   Business Hours
                 </h3>
-                <div className="space-y-3 text-zinc-400">
+                <div className="space-y-3 text-slate-600">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
                     <span>9:00 AM - 6:00 PM PKT</span>
@@ -99,8 +104,8 @@ export default function ContactPage() {
                     <span>Closed</span>
                   </div>
                 </div>
-                <div className="mt-6 pt-6 border-t border-zinc-800">
-                  <p className="text-sm text-zinc-500">
+                <div className="mt-6 pt-6 border-t border-slate-200">
+                  <p className="text-sm text-slate-500">
                     We typically respond to inquiries within 24-48 hours during
                     business days.
                   </p>

@@ -4,6 +4,11 @@ import PageHeader from "@/components/PageHeader";
 import Services from "@/components/Services";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Manufacturing Services | Pre-Production to Delivery - PrimeMark Apparel",
+  description: "End-to-end manufacturing services: sampling, tech packs, screen printing, embroidery, stitching, quality control, packaging, and export shipping.",
+};
+
 export default function ServicesPage() {
   return (
     <>

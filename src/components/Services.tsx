@@ -134,7 +134,7 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                       href="/rfq"
                       className="inline-flex items-center justify-center text-sm font-medium text-blue-900 hover:text-blue-800 py-2 px-4 border border-blue-900/20 rounded-md hover:border-blue-900/40 hover:bg-blue-50/50 transition-colors"
                     >
-                      Request Quote for this
+                      Request a Quote
                       <svg
                         className="ml-1.5 w-4 h-4"
                         fill="none"

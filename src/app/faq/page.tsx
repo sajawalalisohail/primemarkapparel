@@ -4,6 +4,11 @@ import PageHeader from "@/components/PageHeader";
 import PageCTA from "@/components/PageCTA";
 import FAQ from "@/components/FAQ";
 
+export const metadata = {
+  title: "FAQ | Frequently Asked Questions - PrimeMark Apparel",
+  description: "Frequently asked questions about bulk apparel manufacturing, MOQ, lead times, customization, pricing, and working with PrimeMark Apparel.",
+};
+
 export default function FAQPage() {
   return (
     <>

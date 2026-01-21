@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent, ChangeEvent } from "react";
+import Link from "next/link";
 import Section from "./Section";
 import { supabase } from "@/lib/supabase";
 
@@ -67,6 +68,7 @@ export default function RFQForm({ hideHeader = false }: RFQFormProps) {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string>("");
 
   const validateEmail = (email: string): boolean => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -138,10 +140,22 @@ Preferred Contact Method: ${formData.preferredContactMethod || "Email"}`,
 
       if (error) throw error;
 
+      // Track conversion event (Google Analytics)
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "rfq_submission", {
+          event_category: "engagement",
+          event_label: formData.productType,
+          value: parseInt(formData.quantity) || 0,
+        });
+      }
+
       setIsSuccess(true);
+      setSubmitError("");
     } catch (error) {
-      console.error("Error submitting RFQ:", error);
-      alert("Failed to submit request. Please try the email option instead.");
+      if (process.env.NODE_ENV === "development") {
+        console.error("Error submitting RFQ:", error);
+      }
+      setSubmitError("Failed to submit request. Please try again or use the email option below.");
     } finally {
       setIsSubmitting(false);
     }
@@ -199,9 +213,6 @@ Notes: ${formData.notes || "None"}`
             <p className="text-slate-600 mb-2">
               Thank you for your inquiry. Our team will review your requirements
               and get back to you within 24-48 hours.
-            </p>
-            <p className="text-sm text-slate-500">
-              You will receive a confirmation email shortly with your request details.
             </p>
             <button
               onClick={() => {
@@ -487,6 +498,55 @@ Notes: ${formData.notes || "None"}`
               className={inputClasses}
               placeholder="Describe your requirements, specifications, timeline, etc."
             />
+          </div>
+
+          {/* Error Message */}
+          {submitError && (
+            <div className="mb-6 p-4 rounded-lg bg-red-50 border border-red-200">
+              <div className="flex items-start gap-3">
+                <svg
+                  className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-red-800 mb-1">
+                    Submission Error
+                  </p>
+                  <p className="text-sm text-red-700">{submitError}</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Privacy Consent */}
+          <div className="mb-6">
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                required
+                className="mt-1 w-4 h-4 text-blue-900 border-slate-300 rounded focus:ring-blue-500 focus:ring-2"
+              />
+              <span className="text-sm text-slate-600">
+                I agree to the{" "}
+                <Link
+                  href="/privacy"
+                  target="_blank"
+                  className="text-blue-900 hover:text-blue-800 underline"
+                >
+                  Privacy Policy
+                </Link>{" "}
+                and consent to being contacted regarding my inquiry.
+              </span>
+            </label>
           </div>
 
           {/* Submit buttons */}
