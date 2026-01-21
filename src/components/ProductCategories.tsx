@@ -5,6 +5,9 @@ const products = [
     title: "Uniforms",
     description:
       "Professional corporate and service uniforms for teams of any size.",
+    moq: "200-300 units",
+    leadTime: "4-6 weeks",
+    customization: "Full customization available",
     icon: (
       <svg
         className="w-10 h-10 text-blue-900"
@@ -45,6 +48,9 @@ const products = [
     title: "Industrial Workwear",
     description:
       "Tough, safety-compliant apparel for factories and construction.",
+    moq: "200-300 units",
+    leadTime: "4-6 weeks",
+    customization: "Full customization available",
     icon: (
       <svg
         className="w-10 h-10 text-blue-900"
@@ -89,6 +95,9 @@ const products = [
   {
     title: "Denim / Jeans",
     description: "Classic and modern denim styles for any market segment.",
+    moq: "200-300 units",
+    leadTime: "4-6 weeks",
+    customization: "Full customization available",
     icon: (
       <svg
         className="w-10 h-10 text-blue-900"
@@ -160,7 +169,23 @@ export default function ProductCategories({ hideHeader = false }: ProductCategor
             <h3 className="text-xl font-semibold text-slate-900 mb-2">
               {product.title}
             </h3>
-            <p className="text-slate-600">{product.description}</p>
+            <p className="text-slate-600 mb-4">{product.description}</p>
+            
+            {/* B2B Metadata */}
+            <div className="space-y-2 pt-4 border-t border-slate-100">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-slate-500">MOQ:</span>
+                <span className="text-slate-700 font-medium">{product.moq}</span>
+              </div>
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-slate-500">Lead Time:</span>
+                <span className="text-slate-700 font-medium">{product.leadTime}</span>
+              </div>
+              <div className="flex items-start gap-2 text-xs">
+                <span className="text-slate-500 flex-shrink-0">Customization:</span>
+                <span className="text-slate-700 font-medium">{product.customization}</span>
+              </div>
+            </div>
           </div>
         ))}
       </div>

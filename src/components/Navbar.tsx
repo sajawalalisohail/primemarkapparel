@@ -6,12 +6,10 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
-  { href: "/services", label: "Services" },
-  { href: "/process", label: "Process" },
   { href: "/industries", label: "Industries" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/products#capabilities", label: "Capabilities" },
+  { href: "/process", label: "Process" },
   { href: "/about", label: "About" },
 ];
 
@@ -51,7 +49,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10 lg:gap-12">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               
@@ -162,12 +160,6 @@ export default function Navbar() {
             >
               Request a Quote
             </Link>
-            <Link
-              href="/admin/login"
-              className="text-sm text-slate-500 hover:text-slate-700 transition-colors"
-            >
-              Admin
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -210,16 +202,31 @@ export default function Navbar() {
           <div className="px-6 py-4 space-y-3">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
+              
+              // Special handling for Products dropdown in mobile
+              if (link.href === "/products") {
+                return (
+                  <div key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`block py-2 transition-colors ${
+                        isActive
+                          ? "text-slate-900 font-medium"
+                          : "text-slate-600 hover:text-slate-900"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </div>
+                );
+              }
+              
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => {
-                    setIsOpen(false);
-                    if (link.href === "/") {
-                      handleHomeClick(e);
-                    }
-                  }}
+                  onClick={() => setIsOpen(false)}
                   className={`block py-2 transition-colors ${
                     isActive
                       ? "text-slate-900 font-medium"
@@ -236,13 +243,6 @@ export default function Navbar() {
               className="block w-full text-center px-5 py-3 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
             >
               Request a Quote
-            </Link>
-            <Link
-              href="/admin/login"
-              onClick={() => setIsOpen(false)}
-              className="block py-2 text-sm text-slate-500 hover:text-slate-700 transition-colors"
-            >
-              Admin
             </Link>
           </div>
         </div>

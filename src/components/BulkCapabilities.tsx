@@ -129,7 +129,7 @@ const capabilities = [
 
 export default function BulkCapabilities() {
   return (
-      <Section className="bg-slate-50">
+      <Section id="capabilities" className="bg-slate-50">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
             Bulk Capabilities

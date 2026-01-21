@@ -199,15 +199,15 @@ export default function Testimonials() {
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-slate-900 font-medium text-sm">
+                      <p className="text-slate-900 font-semibold text-sm">
                         {testimonial.name}
                       </p>
-                      <p className="text-slate-500 text-xs">
+                      <p className="text-slate-600 text-xs font-medium">
                         {testimonial.title}
                       </p>
-                      <p className="text-slate-500 text-xs mt-0.5">
+                      <p className="text-slate-700 text-xs font-medium mt-0.5">
                         {testimonial.company}
-                        {testimonial.location && `, ${testimonial.location}`}
+                        {testimonial.location && ` • ${testimonial.location}`}
                       </p>
                     </div>
                   </div>

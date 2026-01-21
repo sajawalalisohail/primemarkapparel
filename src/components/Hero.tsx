@@ -82,7 +82,7 @@ export default function Hero() {
               at scale.
             </h1>
             <p
-              className="text-lg sm:text-xl text-slate-200 max-w-xl leading-relaxed"
+              className="text-lg sm:text-xl text-slate-200 max-w-xl leading-relaxed mb-4"
               style={{
                 opacity: isLoaded ? 1 : 0,
                 transform: isLoaded ? "translateY(0)" : "translateY(20px)",
@@ -92,6 +92,16 @@ export default function Hero() {
               Uniforms, scrubs, industrial workwear, hoodies, denim, and custom
               apparel. Top-tier quality, competitive bulk pricing, and reliable
               delivery.
+            </p>
+            <p
+              className="text-base sm:text-lg text-blue-300 font-medium max-w-xl"
+              style={{
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? "translateY(0)" : "translateY(20px)",
+                transition: "opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s",
+              }}
+            >
+              Trusted by 200+ global brands and procurement teams for consistent quality and on-time delivery.
             </p>
             
             {/* Credibility Stats */}
@@ -131,7 +141,7 @@ export default function Hero() {
                 href="/samples"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-white/10 backdrop-blur-sm border-2 border-white/80 text-white rounded-lg hover:bg-white/20 hover:border-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900 font-semibold"
               >
-                Get Samples
+                Request Samples
               </Link>
             </div>
           </div>

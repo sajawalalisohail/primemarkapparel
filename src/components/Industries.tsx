@@ -5,31 +5,43 @@ const industries = [
   {
     title: "Hospitals & Clinics",
     description: "Medical-grade scrubs and lab coats",
+    moq: "200-300 units",
+    leadTime: "4-6 weeks",
     image: "/industries/hospitals.png",
   },
   {
     title: "Construction",
     description: "High-visibility and safety workwear",
+    moq: "200-300 units",
+    leadTime: "4-6 weeks",
     image: "/industries/construction.png",
   },
   {
     title: "Restaurants",
     description: "Chef coats, aprons, and service uniforms",
+    moq: "200-300 units",
+    leadTime: "4-6 weeks",
     image: "/industries/restaurants.png",
   },
   {
     title: "Retail Brands",
     description: "Private label and branded apparel lines",
+    moq: "200-300 units",
+    leadTime: "4-6 weeks",
     image: "/industries/retail.png",
   },
   {
     title: "Logistics",
     description: "Durable uniforms for warehouse and delivery",
+    moq: "200-300 units",
+    leadTime: "4-6 weeks",
     image: "/industries/logistics.png",
   },
   {
     title: "Schools",
     description: "Student uniforms and PE kits",
+    moq: "200-300 units",
+    leadTime: "4-6 weeks",
     image: "/industries/school.png",
   },
 ];
@@ -76,7 +88,19 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">
                   {industry.title}
                 </h3>
-                <p className="text-sm text-slate-600">{industry.description}</p>
+                <p className="text-sm text-slate-600 mb-4">{industry.description}</p>
+                
+                {/* B2B Metadata */}
+                <div className="space-y-2 pt-4 border-t border-slate-100 mt-auto">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-slate-500">MOQ:</span>
+                    <span className="text-slate-700 font-medium">{industry.moq}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-slate-500">Lead Time:</span>
+                    <span className="text-slate-700 font-medium">{industry.leadTime}</span>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

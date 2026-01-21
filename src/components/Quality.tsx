@@ -101,11 +101,25 @@ export default function Quality() {
                   <p className="text-xs text-slate-500">QC Checkpoints</p>
                 </div>
               </div>
-              {/* Certifications note */}
-              <div className="p-4 rounded-xl bg-blue-50 border border-blue-200">
-                <p className="text-sm text-slate-700 text-center">
-                  Reliable bulk fulfillment with consistent quality standards
-                </p>
+              {/* Enterprise Credibility Signals */}
+              <div className="space-y-3">
+                <div className="p-3 rounded-lg bg-white border border-slate-200">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-600">Response Time:</span>
+                    <span className="text-xs font-semibold text-slate-900">24-48 hours</span>
+                  </div>
+                </div>
+                <div className="p-3 rounded-lg bg-white border border-slate-200">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-600">Compliance:</span>
+                    <span className="text-xs font-semibold text-slate-900">Ethical Sourcing</span>
+                  </div>
+                </div>
+                <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">
+                  <p className="text-xs text-slate-700 text-center font-medium">
+                    Reliable bulk fulfillment with consistent quality standards
+                  </p>
+                </div>
               </div>
             </div>
           </div>
