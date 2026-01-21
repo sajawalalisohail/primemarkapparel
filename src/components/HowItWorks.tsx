@@ -33,7 +33,7 @@ interface HowItWorksProps {
 
 export default function HowItWorks({ hideHeader = false }: HowItWorksProps) {
   return (
-    <Section id="process">
+    <Section id="process" className="bg-slate-50">
       {!hideHeader && (
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">

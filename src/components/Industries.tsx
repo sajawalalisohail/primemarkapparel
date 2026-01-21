@@ -60,7 +60,7 @@ interface IndustriesProps {
 export default function Industries({ hideHeader = false }: IndustriesProps) {
   return (
     <>
-      <Section id="industries" className="bg-slate-50">
+      <Section id="industries">
         {!hideHeader && (
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
@@ -76,7 +76,7 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="group rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-900/30 transition-all duration-300 overflow-hidden flex flex-col"
+              className="group rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-900/30 hover:-translate-y-1 transition-all duration-300 ease-in-out overflow-hidden flex flex-col"
             >
               {/* Image */}
               <div className="relative aspect-[4/3] bg-slate-100 overflow-hidden">
@@ -103,7 +103,7 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
       </Section>
 
       {/* Typical Orders Section */}
-      <Section>
+      <Section className="bg-slate-50">
         <div className="text-center mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
             Typical Orders

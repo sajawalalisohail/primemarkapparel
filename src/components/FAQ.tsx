@@ -98,13 +98,13 @@ function FAQItem({
       <button
         type="button"
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-5 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white rounded-lg"
+        className="w-full flex items-center justify-between py-5 text-left hover:text-blue-900 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white rounded-lg"
         aria-expanded={isOpen}
       >
         <span className="text-slate-900 font-medium pr-4">{question}</span>
         <span className="flex-shrink-0 text-slate-400">
           <svg
-            className={`w-5 h-5 transition-transform duration-200 ${
+            className={`w-5 h-5 transition-transform duration-300 ease-in-out ${
               isOpen ? "rotate-180" : ""
             }`}
             fill="none"
@@ -121,8 +121,8 @@ function FAQItem({
         </span>
       </button>
       <div
-        className={`overflow-hidden transition-all duration-300 ${
-          isOpen ? "max-h-96 pb-5" : "max-h-0"
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-96 pb-5 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <p className="text-slate-600 leading-relaxed">{answer}</p>
@@ -143,7 +143,7 @@ export default function FAQ({ hideHeader = false }: FAQProps) {
   };
 
   return (
-    <Section id="faq" className="bg-slate-50">
+    <Section id="faq">
       <div className="max-w-3xl mx-auto">
         {!hideHeader && (
           <div className="text-center mb-12">

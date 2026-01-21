@@ -64,7 +64,7 @@ export default function Services({ hideHeader = false }: ServicesProps) {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-900/30 transition-all duration-300 overflow-hidden flex flex-col"
+              className="group rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-900/30 hover:-translate-y-1 transition-all duration-300 ease-in-out overflow-hidden flex flex-col"
             >
               {/* Image */}
               <div className="relative aspect-video bg-slate-100 overflow-hidden">
@@ -73,7 +73,7 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                   src={service.image}
                   alt={`${service.title} service`}
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                 />
               </div>
@@ -126,7 +126,7 @@ export default function Services({ hideHeader = false }: ServicesProps) {
       </Section>
 
       {/* What's Included Section */}
-      <Section className="bg-slate-50">
+      <Section>
         <div className="text-center mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
             What&apos;s Included

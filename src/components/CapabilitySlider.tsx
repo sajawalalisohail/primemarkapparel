@@ -154,7 +154,7 @@ export default function CapabilitySlider() {
             style={{
               animation: prefersReducedMotion
                 ? "none"
-                : "slide 40s linear infinite",
+                : "slide 25s linear infinite",
               willChange: prefersReducedMotion ? "auto" : "transform",
             }}
           >

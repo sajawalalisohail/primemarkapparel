@@ -167,7 +167,7 @@ Notes: ${formData.notes || "None"}`
   };
 
   const inputClasses =
-    "w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all";
+    "w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-slate-400 transition-all duration-300 ease-in-out";
 
   const labelClasses = "block text-sm font-medium text-slate-700 mb-2";
 
@@ -175,7 +175,7 @@ Notes: ${formData.notes || "None"}`
 
   if (isSuccess) {
     return (
-      <Section id="rfq" className="bg-slate-50">
+      <Section id="rfq">
         <div className="max-w-2xl mx-auto text-center">
           <div className="p-8 rounded-xl bg-white border border-slate-200 shadow-sm">
             <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-blue-100 flex items-center justify-center">
@@ -221,7 +221,7 @@ Notes: ${formData.notes || "None"}`
                   preferredContactMethod: "Email",
                 });
               }}
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               Submit Another Request
             </button>
@@ -232,7 +232,7 @@ Notes: ${formData.notes || "None"}`
   }
 
   return (
-    <Section id="rfq" className="bg-slate-50">
+    <Section id="rfq">
       <div className="max-w-2xl mx-auto">
         {!hideHeader && (
           <div className="text-center mb-10">
@@ -332,7 +332,7 @@ Notes: ${formData.notes || "None"}`
             {/* Product Type */}
             <div>
               <label htmlFor="productType" className={labelClasses}>
-                Product Type <span className="text-amber-400">*</span>
+                Product Type <span className="text-blue-900">*</span>
               </label>
               <select
                 id="productType"
@@ -494,7 +494,7 @@ Notes: ${formData.notes || "None"}`
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-amber-500 text-zinc-950 rounded-lg hover:bg-amber-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-zinc-950 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
             >
               {isSubmitting ? (
                 <>

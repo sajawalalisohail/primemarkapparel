@@ -124,9 +124,11 @@ export default function TrustBar() {
         {trustItems.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all"
+            className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-900/30 hover:-translate-y-1 transition-all duration-300 ease-in-out"
           >
-            <div className="mb-4">{item.icon}</div>
+            <div className="mb-4 transform transition-transform duration-300 group-hover:scale-110">
+              {item.icon}
+            </div>
             <h3 className="text-lg font-semibold text-slate-900 mb-2">
               {item.title}
             </h3>

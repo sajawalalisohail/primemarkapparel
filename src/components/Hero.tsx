@@ -1,7 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
   const stats = [
     {
       label: "15+ Years",
@@ -61,12 +69,26 @@ export default function Hero() {
         <div className="max-w-2xl">
           {/* Left Content on Dark Overlay */}
           <div className="space-y-8">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              style={{
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? "translateY(0)" : "translateY(20px)",
+                transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+              }}
+            >
               Premium bulk apparel manufacturing - {" "}
               <span className="text-blue-400">made in Pakistan</span>, supplied
               at scale.
             </h1>
-            <p className="text-lg sm:text-xl text-slate-200 max-w-xl leading-relaxed">
+            <p
+              className="text-lg sm:text-xl text-slate-200 max-w-xl leading-relaxed"
+              style={{
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? "translateY(0)" : "translateY(20px)",
+                transition: "opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s",
+              }}
+            >
               Uniforms, scrubs, industrial workwear, hoodies, denim, and custom
               apparel. Top-tier quality, competitive bulk pricing, and reliable
               delivery.
@@ -77,7 +99,12 @@ export default function Hero() {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg"
+                  className="flex flex-col items-center p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/15 hover:scale-105 transition-all duration-300"
+                  style={{
+                    opacity: isLoaded ? 1 : 0,
+                    transform: isLoaded ? "translateY(0)" : "translateY(20px)",
+                    transition: `opacity 0.5s ease-out ${0.4 + index * 0.1}s, transform 0.5s ease-out ${0.4 + index * 0.1}s`,
+                  }}
                 >
                   <div className="text-blue-400 mb-2">{stat.icon}</div>
                   <div className="text-xl font-bold text-white">{stat.label}</div>
@@ -86,16 +113,23 @@ export default function Hero() {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div
+              className="flex flex-col sm:flex-row gap-4"
+              style={{
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? "translateY(0)" : "translateY(20px)",
+                transition: "opacity 0.6s ease-out 0.8s, transform 0.6s ease-out 0.8s",
+              }}
+            >
               <Link
                 href="/rfq"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900 shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-white/10 backdrop-blur-sm border-2 border-white/80 text-white rounded-lg hover:bg-white/20 hover:border-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900 font-semibold"
               >
                 Request a Quote
               </Link>
               <Link
                 href="/samples"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-transparent text-white border-2 border-white/80 rounded-lg hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-white/10 backdrop-blur-sm border-2 border-white/80 text-white rounded-lg hover:bg-white/20 hover:border-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900 font-semibold"
               >
                 Get Samples
               </Link>

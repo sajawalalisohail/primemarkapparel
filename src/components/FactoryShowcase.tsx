@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function FactoryShowcase() {
   return (
-    <Section className="bg-slate-50">
+    <Section>
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div>

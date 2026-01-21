@@ -26,7 +26,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <Section>
+    <Section className="bg-slate-50">
       <div className="text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
           What Our Clients Say
@@ -39,7 +39,7 @@ export default function Testimonials() {
         {testimonials.map((testimonial, index) => (
           <div
             key={index}
-            className="p-6 rounded-xl bg-white border border-slate-200 shadow-sm"
+            className="p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out"
           >
             {/* Quote icon */}
             <svg

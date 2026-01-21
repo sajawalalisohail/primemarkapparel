@@ -149,9 +149,12 @@ export default function ProductCategories({ hideHeader = false }: ProductCategor
         {products.map((product, index) => (
           <div
             key={index}
-            className="group p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-900/30 transition-all duration-300"
+            className="group p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-900/30 hover:-translate-y-1 transition-all duration-300 ease-in-out"
+            style={{
+              animationDelay: `${index * 50}ms`,
+            }}
           >
-            <div className="mb-4 p-3 inline-block rounded-lg bg-slate-100 group-hover:bg-blue-50 transition-colors">
+            <div className="mb-4 p-3 inline-block rounded-lg bg-slate-100 group-hover:bg-blue-50 transition-colors duration-300">
               {product.icon}
             </div>
             <h3 className="text-xl font-semibold text-slate-900 mb-2">
