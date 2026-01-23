@@ -79,6 +79,8 @@ export default function CaseStudies() {
                 width={120}
                 height={60}
                 className="max-h-14 w-auto object-contain"
+                sizes="(max-width: 768px) 120px, 120px"
+                loading="lazy"
               />
             </div>
             

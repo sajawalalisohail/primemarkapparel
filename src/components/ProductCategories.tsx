@@ -1,4 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Section from "./Section";
+import { fadeInUp, staggerContainer, cardReveal, viewportSettings } from "@/lib/motion/variants";
 
 const products = [
   {
@@ -151,52 +155,67 @@ interface ProductCategoriesProps {
 
 export default function ProductCategories({ hideHeader = false }: ProductCategoriesProps) {
   return (
-    <Section id="products" className="bg-slate-50">
-      {!hideHeader && (
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            Product Categories
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            From corporate uniforms to custom streetwear, we manufacture it all at
-            scale.
-          </p>
-        </div>
-      )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {products.map((product, index) => (
-          <div
-            key={index}
-            className="group p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-blue-900/30 hover:-translate-y-1 transition-all duration-300 ease-in-out"
-            style={{
-              animationDelay: `${index * 50}ms`,
-            }}
+    <Section id="products" className="bg-slate-50" animate={false}>
+      <div>
+        {!hideHeader && (
+          <motion.div
+            className="text-center mb-12"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
           >
-            <div className="mb-4 p-3 inline-block rounded-lg bg-slate-100 group-hover:bg-blue-50 transition-colors duration-300">
-              {product.icon}
-            </div>
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">
-              {product.title}
-            </h3>
-            <p className="text-slate-600 mb-4">{product.description}</p>
-            
-            {/* B2B Metadata */}
-            <div className="space-y-2 pt-4 border-t border-slate-100">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-500">MOQ:</span>
-                <span className="text-slate-700 font-medium">{product.moq}</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+              Product Categories
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              From corporate uniforms to custom streetwear, we manufacture it all at
+              scale.
+            </p>
+          </motion.div>
+        )}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportSettings}
+        >
+          {products.map((product, index) => (
+            <motion.div
+              key={index}
+              variants={cardReveal}
+              className="group p-6 rounded-xl bg-white border border-slate-200 shadow-sm cursor-default transition-all duration-300 ease-out hover:shadow-lg hover:border-blue-400/30"
+              whileHover={{ y: -6, scale: 1.02 }}
+            >
+              <div className="mb-4 p-3 inline-block rounded-lg bg-slate-100 group-hover:bg-blue-50 transition-colors duration-300">
+                <div className="transition-transform duration-300 ease-out group-hover:scale-110">
+                  {product.icon}
+                </div>
               </div>
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-500">Lead Time:</span>
-                <span className="text-slate-700 font-medium">{product.leadTime}</span>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                {product.title}
+              </h3>
+              <p className="text-slate-600 mb-4">{product.description}</p>
+
+              {/* B2B Metadata */}
+              <div className="space-y-2 pt-4 border-t border-slate-100">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-500">MOQ:</span>
+                  <span className="text-slate-700 font-medium">{product.moq}</span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-500">Lead Time:</span>
+                  <span className="text-slate-700 font-medium">{product.leadTime}</span>
+                </div>
+                <div className="flex items-start gap-2 text-xs">
+                  <span className="text-slate-500 shrink-0">Customization:</span>
+                  <span className="text-slate-700 font-medium">{product.customization}</span>
+                </div>
               </div>
-              <div className="flex items-start gap-2 text-xs">
-                <span className="text-slate-500 flex-shrink-0">Customization:</span>
-                <span className="text-slate-700 font-medium">{product.customization}</span>
-              </div>
-            </div>
-          </div>
-        ))}
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </Section>
   );
