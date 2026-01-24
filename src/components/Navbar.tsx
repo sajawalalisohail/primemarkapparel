@@ -6,10 +6,10 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
   { href: "/industries", label: "Industries" },
-  { href: "/products#capabilities", label: "Capabilities" },
-  { href: "/process", label: "Process" },
+  { href: "/services", label: "Our Services" },
   { href: "/about", label: "About" },
 ];
 
@@ -210,7 +210,7 @@ export default function Navbar() {
             {/* CTA Button with micro-interaction */}
             <Link
               href="/rfq"
-              className="group inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold bg-blue-500 text-white rounded-lg transition-all duration-300 ease-out hover:bg-blue-400 hover:shadow-lg hover:shadow-blue-500/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+              className="group inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold bg-blue-700 text-white rounded-lg transition-all duration-300 ease-out hover:bg-blue-800 hover:shadow-lg hover:shadow-blue-700/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-slate-900"
               style={{
                 transform: "scale(1)",
                 transition: "transform 0.2s ease-out, background-color 0.3s ease-out, box-shadow 0.3s ease-out",
@@ -307,7 +307,7 @@ export default function Navbar() {
           <Link
             href="/rfq"
             onClick={() => setIsOpen(false)}
-            className="block w-full text-center px-5 py-3 text-sm font-semibold bg-blue-500 text-white rounded-lg hover:bg-blue-400 transition-all duration-200 ease-out mt-4"
+            className="block w-full text-center px-5 py-3 text-sm font-semibold bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-all duration-200 ease-out mt-4"
             style={{
               transitionDelay: isOpen ? `${navLinks.length * 50}ms` : "0ms",
               opacity: isOpen ? 1 : 0,

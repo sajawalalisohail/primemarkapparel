@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import PageCTA from "@/components/PageCTA";
 import Section from "@/components/Section";
+import Link from "next/link";
 
 export const metadata = {
   title: "About Us | PrimeMark Apparel - Bulk Apparel Manufacturer",

@@ -208,9 +208,18 @@ export default function ProductCategories({ hideHeader = false }: ProductCategor
                   <span className="text-slate-500">Lead Time:</span>
                   <span className="text-slate-700 font-medium">{product.leadTime}</span>
                 </div>
-                <div className="flex items-start gap-2 text-xs">
-                  <span className="text-slate-500 shrink-0">Customization:</span>
-                  <span className="text-slate-700 font-medium">{product.customization}</span>
+                <div className="text-xs">
+                  <span className="text-slate-500 block mb-2">Customization:</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {product.customization.split(", ").map((item, i) => (
+                      <span
+                        key={i}
+                        className="inline-block px-2 py-0.5 bg-blue-50 text-blue-800 rounded-md text-[10px] font-medium"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>

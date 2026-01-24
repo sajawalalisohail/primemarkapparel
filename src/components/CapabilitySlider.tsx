@@ -192,7 +192,7 @@ export default function CapabilitySlider() {
             style={{
               animation: prefersReducedMotion
                 ? "none"
-                : "slide 15s linear infinite",
+                : "slide 8s linear infinite",
               willChange: prefersReducedMotion ? "auto" : "transform",
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",

@@ -70,7 +70,7 @@ export default function PricingGuide() {
         <div className="text-center">
           <Link
             href="/rfq"
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
           >
             Request a Quote
             <svg

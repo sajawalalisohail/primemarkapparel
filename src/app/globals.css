@@ -64,7 +64,7 @@ html {
 }
 
 .animate-slide {
-  animation: slide 15s linear infinite;
+  animation: slide 8s linear infinite;
 }
 
 /* Animation utilities */

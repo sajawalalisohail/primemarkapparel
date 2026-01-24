@@ -51,7 +51,7 @@ export default function AvailableSamples() {
         <div className="flex flex-col items-start md:items-end gap-2">
           <Link
             href="/rfq"
-            className="inline-flex items-center justify-center px-6 py-2 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2 text-sm font-medium bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
           >
             Request a Quote
           </Link>
