@@ -61,10 +61,11 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-out ${
-        isScrolled
+        isScrolled || isOpen
           ? "bg-slate-900/90 backdrop-blur-lg border-b border-white/10 shadow-lg shadow-slate-900/20"
           : "bg-transparent"
       }`}
+      style={{ WebkitTapHighlightColor: "transparent" }}
     >
       <div className="mx-auto max-w-[1920px] px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         <div className="flex h-20 items-center justify-between">
@@ -157,7 +158,7 @@ export default function Navbar() {
                             <Link
                               key={category.href}
                               href={category.href}
-                              className="block px-4 py-2.5 text-sm text-white/80 hover:text-white hover:bg-white/5 transition-all duration-200 ease-out focus:outline-none focus:bg-white/5 focus:text-white focus:ring-2 focus:ring-blue-400 focus:ring-inset"
+                              className="block px-4 py-2.5 text-sm text-white/80 hover:text-white active:text-white hover:bg-white/5 active:bg-white/10 transition-all duration-200 ease-out focus:outline-none focus-visible:bg-white/5 focus-visible:text-white focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-inset"
                               role="menuitem"
                               tabIndex={isProductsHovered ? 0 : -1}
                               style={{
@@ -172,7 +173,7 @@ export default function Navbar() {
                           <div className="border-t border-white/10 my-1" />
                           <Link
                             href="/products"
-                            className="block px-4 py-2.5 text-sm font-medium text-blue-400 hover:text-blue-300 hover:bg-white/5 transition-colors duration-200 ease-out focus:outline-none focus:bg-white/5 focus:text-blue-300 focus:ring-2 focus:ring-blue-400 focus:ring-inset"
+                            className="block px-4 py-2.5 text-sm font-medium text-blue-400 hover:text-blue-300 active:text-blue-200 hover:bg-white/5 active:bg-white/10 transition-colors duration-200 ease-out focus:outline-none focus-visible:bg-white/5 focus-visible:text-blue-300 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-inset"
                             role="menuitem"
                             tabIndex={isProductsHovered ? 0 : -1}
                           >
@@ -210,7 +211,7 @@ export default function Navbar() {
             {/* CTA Button with micro-interaction */}
             <Link
               href="/rfq"
-              className="group inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold bg-blue-700 text-white rounded-lg transition-all duration-300 ease-out hover:bg-blue-800 hover:shadow-lg hover:shadow-blue-700/30 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+              className="group inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold bg-blue-700 text-white rounded-lg transition-all duration-300 ease-out hover:bg-blue-800 active:bg-blue-900 hover:shadow-lg hover:shadow-blue-700/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
               style={{
                 transform: "scale(1)",
                 transition: "transform 0.2s ease-out, background-color 0.3s ease-out, box-shadow 0.3s ease-out",
@@ -249,7 +250,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg transition-colors duration-200"
+            className="md:hidden p-2 text-white/70 hover:text-white active:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-lg transition-colors duration-200"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
@@ -276,7 +277,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-slate-800 border-t border-slate-700 w-full overflow-hidden transition-all duration-300 ease-out ${
+        className={`md:hidden w-full overflow-hidden transition-all duration-300 ease-out ${
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -289,10 +290,10 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`block py-3 px-2 rounded-lg transition-all duration-200 ease-out ${
+                className={`block py-3 px-2 rounded-lg transition-all duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white/20 ${
                   isActive
-                    ? "text-white font-medium bg-slate-700/50"
-                    : "text-slate-300 hover:text-white hover:bg-slate-700/30"
+                    ? "text-white font-medium bg-white/10"
+                    : "text-slate-300 hover:text-white active:text-white hover:bg-white/5 active:bg-white/10"
                 }`}
                 style={{
                   transitionDelay: isOpen ? `${index * 50}ms` : "0ms",
@@ -307,7 +308,7 @@ export default function Navbar() {
           <Link
             href="/rfq"
             onClick={() => setIsOpen(false)}
-            className="block w-full text-center px-5 py-3 text-sm font-semibold bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-all duration-200 ease-out mt-4"
+            className="block w-full text-center px-5 py-3 text-sm font-semibold bg-blue-700 text-white rounded-lg hover:bg-blue-800 active:bg-blue-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 transition-all duration-200 ease-out mt-4"
             style={{
               transitionDelay: isOpen ? `${navLinks.length * 50}ms` : "0ms",
               opacity: isOpen ? 1 : 0,
