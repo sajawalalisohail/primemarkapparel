@@ -2,14 +2,13 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import PageCTA from "@/components/PageCTA";
 
 // Dynamically import below-fold components to reduce initial bundle size
-const OurClients = dynamic(() => import("@/components/OurClients"));
-const ProductCategories = dynamic(() => import("@/components/ProductCategories"));
+const WhoWeAre = dynamic(() => import("@/components/WhoWeAre"));
+const WhatWeDo = dynamic(() => import("@/components/WhatWeDo"));
 const HowItWorks = dynamic(() => import("@/components/HowItWorks"));
-const Testimonials = dynamic(() => import("@/components/Testimonials"));
-const FAQ = dynamic(() => import("@/components/FAQ"));
+const ProductCategories = dynamic(() => import("@/components/ProductCategories"));
+const ClientsAndTestimonials = dynamic(() => import("@/components/ClientsAndTestimonials"));
 
 export default function Home() {
   return (
@@ -17,12 +16,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <OurClients />
-        <ProductCategories />
+        <WhoWeAre />
+        <WhatWeDo />
         <HowItWorks />
-        <Testimonials />
-        <FAQ />
-        <PageCTA />
+        <ProductCategories />
+        <ClientsAndTestimonials />
       </main>
       <Footer />
     </>

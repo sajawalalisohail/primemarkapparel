@@ -37,9 +37,9 @@ export default function Navbar() {
 
     mediaQuery.addEventListener("change", handleChange);
 
-    // Handle scroll for navbar background
+    // Show dark navbar only after scrolling past the hero (100vh minus navbar height)
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > window.innerHeight - 80);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -62,8 +62,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-out ${
         isScrolled
-          ? "bg-slate-900/10 border-b border-white/10"
-          : "bg-slate-900/5 border-b border-white/5"
+          ? "bg-slate-900/90 backdrop-blur-lg border-b border-white/10 shadow-lg shadow-slate-900/20"
+          : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-[1920px] px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">

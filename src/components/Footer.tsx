@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import WorkWithPrimeMark from "./WorkWithPrimeMark";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -35,7 +36,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-900 border-t border-slate-800">
+    <>
+    <WorkWithPrimeMark />
+    <footer className="bg-gradient-to-b from-slate-900 via-slate-900 to-blue-950 border-t border-slate-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
@@ -153,14 +156,6 @@ export default function Footer() {
                   Quality Standards
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out inline-block"
-                >
-                  FAQ
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -238,5 +233,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }

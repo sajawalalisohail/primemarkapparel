@@ -50,13 +50,13 @@ export default function AnimatedSection({
     if (currentRef) {
       // Check if element is already visible on mount
       const rect = currentRef.getBoundingClientRect();
-      const isAlreadyVisible = 
-        rect.top < window.innerHeight + 100 && 
+      const isAlreadyVisible =
+        rect.top < window.innerHeight + 100 &&
         rect.bottom > -100;
-      
+
       if (isAlreadyVisible && !initialPrefersReducedMotion) {
         // Small delay to ensure smooth animation even for visible elements
-        setTimeout(() => setIsVisible(true), 150);
+        setTimeout(() => setIsVisible(true), 50);
       } else {
         observer.observe(currentRef);
       }
@@ -72,16 +72,16 @@ export default function AnimatedSection({
 
   const getTransform = () => {
     if (prefersReducedMotion || isVisible) return "translate(0, 0)";
-    
+
     switch (direction) {
       case "up":
-        return "translateY(30px)";
+        return "translateY(16px)";
       case "down":
-        return "translateY(-30px)";
+        return "translateY(-16px)";
       case "left":
-        return "translateX(30px)";
+        return "translateX(16px)";
       case "right":
-        return "translateX(-30px)";
+        return "translateX(-16px)";
       default:
         return "translate(0, 0)";
     }
@@ -96,7 +96,7 @@ export default function AnimatedSection({
         transform: getTransform(),
         transition: prefersReducedMotion
           ? "none"
-          : `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+          : `opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
         willChange: prefersReducedMotion ? "auto" : "opacity, transform",
       }}
     >

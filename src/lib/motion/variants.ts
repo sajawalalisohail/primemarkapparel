@@ -16,13 +16,13 @@ export const easeOut = [0.16, 1, 0.3, 1] as const;
 export const fadeInUp: Variants = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: 14,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       ease: easeOut,
     },
   },
@@ -34,8 +34,8 @@ export const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
+      staggerChildren: 0.06,
+      delayChildren: 0.1,
     },
   },
 };
@@ -44,13 +44,13 @@ export const staggerContainer: Variants = {
 export const staggerItem: Variants = {
   hidden: {
     opacity: 0,
-    y: 20,
+    y: 12,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
       ease: easeOut,
     },
   },
@@ -60,7 +60,7 @@ export const staggerItem: Variants = {
 export const cardReveal: Variants = {
   hidden: {
     opacity: 0,
-    y: 30,
+    y: 16,
     scale: 0.98,
   },
   visible: {
@@ -68,7 +68,7 @@ export const cardReveal: Variants = {
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       ease: easeOut,
     },
   },
@@ -82,7 +82,7 @@ export const fadeIn: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
       ease: easeOut,
     },
   },
@@ -98,7 +98,7 @@ export const scaleIn: Variants = {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.4,
+      duration: 0.35,
       ease: easeOut,
     },
   },
@@ -110,8 +110,8 @@ export const heroStagger: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
     },
   },
 };
@@ -119,13 +119,13 @@ export const heroStagger: Variants = {
 export const heroItem: Variants = {
   hidden: {
     opacity: 0,
-    y: 20,
+    y: 12,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       ease: easeOut,
     },
   },
@@ -134,6 +134,6 @@ export const heroItem: Variants = {
 // Viewport intersection settings
 export const viewportSettings = {
   once: true,
-  margin: "0px 0px -100px 0px",
-  amount: 0.2,
+  margin: "0px 0px 50px 0px",
+  amount: 0.1,
 };

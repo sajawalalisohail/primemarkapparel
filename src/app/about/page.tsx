@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import PageCTA from "@/components/PageCTA";
 import Section from "@/components/Section";
 import Link from "next/link";
 
@@ -26,16 +25,15 @@ export default function AboutPage() {
                 Who We Are
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                PrimeMark Apparel is a bulk apparel manufacturer based in Pakistan,
-                specializing in uniforms, scrubs, industrial workwear, and custom
-                apparel. We serve businesses across diverse industries with
-                reliable, high-quality products manufactured at scale.
+                Primemark Apparel is a custom apparel manufacturer specializing in
+                bulk and private-label production for fashion brands, uniform
+                suppliers, and apparel printing companies.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Our network of manufacturing partners in Pakistan ensures consistent
-                quality, competitive pricing, and timely delivery for bulk orders.
-                We combine traditional craftsmanship with modern production
-                capabilities to meet the standards of B2B clients worldwide.
+                With over 20 years of hands-on manufacturing experience, our
+                operations are built on proven production systems, skilled labor,
+                and long-term industry knowledge. While our digital presence is
+                new, our manufacturing foundation is well established.
               </p>
             </div>
 
@@ -110,7 +108,6 @@ export default function AboutPage() {
             </div>
           </div>
         </Section>
-        <PageCTA />
       </main>
       <Footer />
     </>

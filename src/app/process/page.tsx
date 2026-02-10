@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import PageCTA from "@/components/PageCTA";
 import HowItWorks from "@/components/HowItWorks";
 
 export const metadata = {
@@ -20,7 +19,6 @@ export default function ProcessPage() {
         />
 
         <HowItWorks hideHeader />
-        <PageCTA />
       </main>
       <Footer />
     </>

@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import PageCTA from "@/components/PageCTA";
 import PageHeader from "@/components/PageHeader";
 import AvailableSamples from "@/components/AvailableSamples";
 import BulkCapabilities from "@/components/BulkCapabilities";
@@ -51,7 +50,6 @@ export default function ProductsPage() {
         <AvailableSamples />
         <BulkCapabilities />
         <PricingGuide />
-        <PageCTA />
       </main>
       <Footer />
     </>
