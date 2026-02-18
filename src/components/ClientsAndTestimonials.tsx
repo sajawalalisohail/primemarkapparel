@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import Section from "./Section";
 
 const clientLogos = [
@@ -100,30 +101,21 @@ const testimonials = [
   },
 ];
 
+// Premium easing curve
+const premiumEase = [0.25, 0.1, 0.25, 1] as const;
+
 export default function ClientsAndTestimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [itemsPerView, setItemsPerView] = useState(3);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const getItemsPerView = useCallback(() => {
     if (typeof window === "undefined") return 3;
     if (window.innerWidth >= 1024) return 3;
     if (window.innerWidth >= 768) return 2;
     return 1;
-  }, []);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   useEffect(() => {
@@ -142,7 +134,7 @@ export default function ClientsAndTestimonials() {
   }, [getItemsPerView]);
 
   useEffect(() => {
-    if (!isAutoPlaying || prefersReducedMotion) return;
+    if (!isAutoPlaying || shouldReduceMotion) return;
 
     const maxIndex = Math.max(0, testimonials.length - itemsPerView);
 
@@ -155,7 +147,7 @@ export default function ClientsAndTestimonials() {
         clearInterval(autoPlayRef.current);
       }
     };
-  }, [isAutoPlaying, itemsPerView, prefersReducedMotion]);
+  }, [isAutoPlaying, itemsPerView, shouldReduceMotion]);
 
   const maxIndex = Math.max(0, testimonials.length - itemsPerView);
 
@@ -175,55 +167,92 @@ export default function ClientsAndTestimonials() {
   };
 
   return (
-    <Section className="bg-white" animate={false}>
+    <Section className="bg-[#0F1623]" animate={false}>
       <div>
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+          {/* Eyebrow */}
+          <motion.div
+            className="font-eyebrow text-[#C9A84C] mb-4"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: premiumEase }}
+          >
+            Trusted by Brands Worldwide
+          </motion.div>
+
+          {/* Heading */}
+          <motion.h2
+            className="font-display text-3xl sm:text-4xl text-white mb-4"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: premiumEase }}
+          >
             Our Clients & Testimonials
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          </motion.h2>
+
+          {/* Subtitle */}
+          <motion.p
+            className="font-body text-lg text-slate-400 max-w-2xl mx-auto"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: premiumEase }}
+          >
             Trusted by businesses across multiple industries for quality and
             reliability.
-          </p>
+          </motion.p>
         </div>
 
         {/* Client Logos Running Bar */}
-        <div className="relative w-full bg-slate-50 border-y border-slate-200 overflow-hidden rounded-xl mb-12">
+        <motion.div
+          className="relative w-full bg-[#080C14] border-y border-white/10 overflow-hidden rounded-xl mb-12"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, delay: 0.3, ease: premiumEase }}
+        >
+          {/* Gradient fade on edges - darker */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#080C14] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#080C14] to-transparent z-10 pointer-events-none" />
+
           <div className="py-8 sm:py-10">
             <div className="relative w-full overflow-hidden">
-              <div
+              <motion.div
                 className="flex gap-8 sm:gap-12 lg:gap-16"
-                style={{
-                  animation: prefersReducedMotion
-                    ? "none"
-                    : "slideLogos 20s linear infinite",
-                  willChange: prefersReducedMotion ? "auto" : "transform",
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
+                animate={shouldReduceMotion ? {} : { x: [0, "-50%"] }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 20,
+                    ease: "linear",
+                  },
                 }}
               >
                 {/* First set of logos */}
                 {clientLogos.map((client, index) => (
                   <div
                     key={`first-${index}`}
-                    className="flex-shrink-0 w-40 sm:w-48 lg:w-56"
+                    className="flex-shrink-0 w-40 sm:w-48 lg:w-56 group"
                   >
-                    <div className="relative w-full flex flex-col items-center justify-center p-4 bg-white rounded-lg border border-slate-200 shadow-sm">
+                    <div className="relative w-full flex flex-col items-center justify-center p-4 bg-[#0F1623] rounded-lg border border-white/10 shadow-sm transition-all duration-300 hover:border-[#C9A84C]/30 hover:shadow-md">
                       <Image
                         src={client.logoPath}
                         alt={`${client.name} logo`}
                         width={120}
                         height={60}
-                        className="max-h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 mb-2"
+                        className="max-h-12 w-auto object-contain transition-all duration-300 mb-2"
                         sizes="(max-width: 768px) 120px, 160px"
                         loading="lazy"
                       />
                       <div className="text-center mt-2">
-                        <p className="text-xs font-medium text-slate-900 mb-0.5">
+                        <p className="text-xs font-medium text-white mb-0.5 group-hover:text-[#C9A84C] transition-colors duration-300">
                           {client.name}
                         </p>
-                        <p className="text-[10px] text-slate-500">
+                        <p className="text-[10px] text-slate-400">
                           {client.industry}
                         </p>
                       </div>
@@ -235,33 +264,33 @@ export default function ClientsAndTestimonials() {
                 {clientLogos.map((client, index) => (
                   <div
                     key={`second-${index}`}
-                    className="flex-shrink-0 w-40 sm:w-48 lg:w-56"
+                    className="flex-shrink-0 w-40 sm:w-48 lg:w-56 group"
                   >
-                    <div className="relative w-full flex flex-col items-center justify-center p-4 bg-white rounded-lg border border-slate-200 shadow-sm">
+                    <div className="relative w-full flex flex-col items-center justify-center p-4 bg-[#0F1623] rounded-lg border border-white/10 shadow-sm transition-all duration-300 hover:border-[#C9A84C]/30 hover:shadow-md">
                       <Image
                         src={client.logoPath}
                         alt={`${client.name} logo`}
                         width={120}
                         height={60}
-                        className="max-h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 mb-2"
+                        className="max-h-12 w-auto object-contain transition-all duration-300 mb-2"
                         sizes="(max-width: 768px) 120px, 160px"
                         loading="lazy"
                       />
                       <div className="text-center mt-2">
-                        <p className="text-xs font-medium text-slate-900 mb-0.5">
+                        <p className="text-xs font-medium text-white mb-0.5 group-hover:text-[#C9A84C] transition-colors duration-300">
                           {client.name}
                         </p>
-                        <p className="text-[10px] text-slate-500">
+                        <p className="text-[10px] text-slate-400">
                           {client.industry}
                         </p>
                       </div>
                     </div>
                   </div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Testimonials Carousel */}
         <div className="relative">
@@ -271,11 +300,11 @@ export default function ClientsAndTestimonials() {
               <button
                 onClick={goToPrevious}
                 disabled={currentIndex === 0}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 lg:-translate-x-8 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center group transition-all duration-300 ease-out hover:bg-slate-50 hover:border-blue-900/30 hover:shadow-lg hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-white disabled:hover:border-slate-200 disabled:hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 lg:-translate-x-8 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#080C14] border border-white/10 shadow-md flex items-center justify-center group transition-all duration-300 ease-out hover:bg-[#C9A84C]/10 hover:border-[#C9A84C]/30 hover:shadow-lg hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-[#080C14] disabled:hover:border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]"
                 aria-label="Previous testimonial"
               >
                 <svg
-                  className="w-5 h-5 lg:w-6 lg:h-6 text-slate-600 transition-all duration-300 group-hover:text-blue-900 group-hover:-translate-x-0.5"
+                  className="w-5 h-5 lg:w-6 lg:h-6 text-slate-400 transition-all duration-300 group-hover:text-[#C9A84C] group-hover:-translate-x-0.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -291,11 +320,11 @@ export default function ClientsAndTestimonials() {
               <button
                 onClick={goToNext}
                 disabled={currentIndex >= maxIndex}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 lg:translate-x-8 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center group transition-all duration-300 ease-out hover:bg-slate-50 hover:border-blue-900/30 hover:shadow-lg hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-white disabled:hover:border-slate-200 disabled:hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 lg:translate-x-8 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#080C14] border border-white/10 shadow-md flex items-center justify-center group transition-all duration-300 ease-out hover:bg-[#C9A84C]/10 hover:border-[#C9A84C]/30 hover:shadow-lg hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-[#080C14] disabled:hover:border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]"
                 aria-label="Next testimonial"
               >
                 <svg
-                  className="w-5 h-5 lg:w-6 lg:h-6 text-slate-600 transition-all duration-300 group-hover:text-blue-900 group-hover:translate-x-0.5"
+                  className="w-5 h-5 lg:w-6 lg:h-6 text-slate-400 transition-all duration-300 group-hover:text-[#C9A84C] group-hover:translate-x-0.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -317,9 +346,9 @@ export default function ClientsAndTestimonials() {
               className="flex"
               style={{
                 transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
-                transition: prefersReducedMotion
+                transition: shouldReduceMotion
                   ? "none"
-                  : "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+                  : "transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)",
               }}
             >
               {testimonials.map((testimonial, index) => (
@@ -328,20 +357,32 @@ export default function ClientsAndTestimonials() {
                   className="shrink-0 px-3"
                   style={{ width: `${100 / itemsPerView}%` }}
                 >
-                  <div className="group p-8 rounded-xl bg-white border border-slate-200 shadow-sm h-full flex flex-col transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 hover:border-blue-100">
+                  <div className="group relative p-8 rounded-xl bg-[#0F1623] border border-white/10 shadow-sm h-full flex flex-col transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 hover:border-[#C9A84C]/20">
+                    {/* Large decorative quotation mark */}
+                    <div
+                      className="absolute top-4 right-4 font-display-black text-8xl text-[#C9A84C]/[0.08] leading-none pointer-events-none select-none"
+                      aria-hidden="true"
+                    >
+                      &ldquo;
+                    </div>
+
                     {/* Quote icon */}
                     <svg
-                      className="w-8 h-8 text-blue-900/20 mb-5 shrink-0 transition-colors duration-300 group-hover:text-blue-900/30"
+                      className="w-8 h-8 text-[#C9A84C]/30 mb-5 shrink-0 transition-colors duration-300 group-hover:text-[#C9A84C]/50"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
-                    <p className="text-base sm:text-lg text-slate-700 mb-6 leading-relaxed flex-1">
+
+                    {/* Quote text */}
+                    <p className="font-body text-base sm:text-lg text-slate-300 mb-6 leading-relaxed flex-1 relative z-10">
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>
-                    <div className="flex items-center gap-3 pt-4 border-t border-slate-200">
-                      <div className="w-12 h-12 rounded-lg bg-white border border-slate-200 flex items-center justify-center shrink-0 p-2 transition-all duration-300 group-hover:border-blue-200 group-hover:shadow-sm">
+
+                    {/* Author info */}
+                    <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                      <div className="w-12 h-12 rounded-lg bg-white/95 border border-white/10 flex items-center justify-center shrink-0 p-2 transition-all duration-300 group-hover:border-[#C9A84C]/30 group-hover:shadow-sm">
                         <Image
                           src={testimonial.logoPath}
                           alt={`${testimonial.company} logo`}
@@ -353,16 +394,17 @@ export default function ClientsAndTestimonials() {
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-slate-900 font-semibold text-sm">
+                        {/* Name in gold */}
+                        <p className="text-[#C9A84C] font-semibold text-sm">
                           {testimonial.name}
                         </p>
-                        <p className="text-slate-600 text-xs font-medium">
+                        {/* Role in muted slate */}
+                        <p className="text-slate-400 text-xs font-medium">
                           {testimonial.title}
                         </p>
-                        <p className="text-slate-700 text-xs font-medium mt-0.5">
+                        <p className="text-slate-400 text-xs font-medium mt-0.5">
                           {testimonial.company}
-                          {testimonial.location &&
-                            ` \u2022 ${testimonial.location}`}
+                          {testimonial.location && ` • ${testimonial.location}`}
                         </p>
                       </div>
                     </div>
@@ -372,18 +414,17 @@ export default function ClientsAndTestimonials() {
             </div>
           </div>
 
-          {/* Dot Indicators */}
+          {/* Dot Indicators - Gold styling */}
           {testimonials.length > itemsPerView && (
             <div className="flex justify-center items-center gap-2 mt-8">
               {Array.from({ length: maxIndex + 1 }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                    currentIndex === index
-                      ? "bg-blue-900 w-8"
-                      : "bg-slate-300 w-2 hover:bg-slate-400 hover:scale-110"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080C14] ${currentIndex === index
+                    ? "bg-[#C9A84C] w-8"
+                    : "bg-[#C9A84C]/30 w-2 hover:bg-[#C9A84C]/50 hover:scale-110"
+                    }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
@@ -391,17 +432,6 @@ export default function ClientsAndTestimonials() {
           )}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes slideLogos {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
     </Section>
   );
 }

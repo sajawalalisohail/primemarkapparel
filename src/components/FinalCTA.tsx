@@ -4,19 +4,19 @@ import Section from "./Section";
 export default function FinalCTA() {
   return (
     <Section>
-      <div className="relative rounded-2xl bg-slate-200 border border-slate-200 p-8 md:p-12 lg:p-16 text-center overflow-hidden">
+      <div className="relative rounded-2xl bg-[#0F1623] border border-white/10 p-8 md:p-12 lg:p-16 text-center overflow-hidden">
         <div className="relative z-10">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Tell us what you need,{" "}
-            <span className="text-blue-900">we&apos;ll quote fast.</span>
+            <span className="text-[#C9A84C]">we&apos;ll quote fast.</span>
           </h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
+          <p className="text-lg text-slate-400 mb-8 max-w-xl mx-auto">
             Share your requirements and get a detailed quote within 24-48 hours.
             No obligation, no hidden fees.
           </p>
           <Link
             href="/rfq"
-            className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-50"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-[#C9A84C] text-[#080C14] rounded-lg hover:bg-[#D4B65D] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
           >
             Request a Quote
             <svg

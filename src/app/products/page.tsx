@@ -15,19 +15,19 @@ export default function ProductsPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="flex-1 bg-[#080C14]">
         <PageHeader
           title="Products"
           subtitle="From corporate uniforms to custom streetwear, we manufacture it all at scale."
         />
 
         {/* Product Hero Image */}
-        <div className="px-4 sm:px-6 lg:px-8 py-12 bg-white">
+        <div className="px-4 sm:px-6 lg:px-8 py-12 bg-[#080C14]">
           <div className="mx-auto max-w-6xl">
-            <div className="relative aspect-video rounded-xl border border-slate-200 overflow-hidden shadow-lg">
+            <div className="relative aspect-video rounded-xl border border-white/10 overflow-hidden shadow-2xl shadow-black/50">
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/20 z-10" />
-              
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#080C14]/80 z-10" />
+
               {/* Image */}
               <Image
                 src="/branding/prodimg1.png"
@@ -38,9 +38,9 @@ export default function ProductsPage() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
               />
             </div>
-            
+
             {/* Caption */}
-            <p className="mt-4 text-sm text-slate-500 text-center">
+            <p className="mt-4 text-sm text-slate-400 text-center">
               Representative samples and product categories available for bulk production.
             </p>
           </div>

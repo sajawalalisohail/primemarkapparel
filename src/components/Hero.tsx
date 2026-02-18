@@ -2,14 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 const stats = [
   {
     label: "20+ Years",
     description: "Experience",
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
@@ -18,16 +19,16 @@ const stats = [
     label: "10M+ Units",
     description: "Produced",
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
       </svg>
     ),
   },
   {
     label: "100+ Clients",
-    description: "Global",
+    description: "Worldwide",
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
@@ -36,7 +37,7 @@ const stats = [
     label: "99%+ Quality",
     description: "Pass Rate",
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
     ),
@@ -45,7 +46,7 @@ const stats = [
 
 const trustItems = [
   {
-    label: "Free Shipping",
+    label: "Competitive FOB/CIF Freight",
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
@@ -53,7 +54,7 @@ const trustItems = [
     ),
   },
   {
-    label: "No Pattern Charges",
+    label: "No Pattern Development Fee",
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
@@ -78,161 +79,276 @@ const trustItems = [
   },
 ];
 
+// Premium easing curve
+const premiumEase = [0.25, 0.1, 0.25, 1] as const;
+
 export default function Hero() {
-  const [parallaxOffset, setParallaxOffset] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-    const handleChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
+  // Scroll-driven animations
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
 
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          if (heroRef.current) {
-            const rate = window.scrollY * 0.12;
-            setParallaxOffset(Math.min(rate, 80));
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prefersReducedMotion]);
+  // Parallax: image moves at 30% scroll speed
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    shouldReduceMotion ? ["0%", "0%"] : ["0%", "30%"]
+  );
+
+  // Scroll indicator fade out
+  const scrollIndicatorOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.1],
+    [1, 0]
+  );
+
+  // Animation helper
+  const fadeInUp = (delay: number) => ({
+    initial: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      duration: shouldReduceMotion ? 0 : 0.6,
+      delay: shouldReduceMotion ? 0 : delay,
+      ease: premiumEase,
+    },
+  });
 
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex flex-col pt-20 overflow-hidden bg-slate-900"
+      className="relative min-h-screen flex flex-col pt-20 overflow-hidden"
+      style={{ backgroundColor: "#080C14" }}
     >
-      {/* Background Image — no opacity gating, dark fallback via bg-slate-900 */}
-      <div
+      {/* Background Image with Parallax */}
+      <motion.div
         className="absolute inset-0"
-        style={{
-          transform: prefersReducedMotion
-            ? "none"
-            : `translateY(${parallaxOffset}px) scale(1.02)`,
-          willChange: prefersReducedMotion ? "auto" : "transform",
-        }}
+        style={{ y: imageY }}
       >
         <Image
           src="/branding/home2.png"
           alt="PrimeMark Apparel - Manufacturing Facility"
           fill
-          className="object-cover"
+          className="object-cover scale-110"
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-900/40" />
-      </div>
 
-      {/* Main Content — always visible, no JS gating */}
-      <div className="relative z-10 flex-1 flex items-center">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16 w-full">
+        {/* Gradient overlay - dark on left, transparent on right */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(8, 12, 20, 0.9) 0%, rgba(8, 12, 20, 0.7) 40%, rgba(8, 12, 20, 0.3) 70%, transparent 100%)",
+          }}
+        />
+
+        {/* Noise texture overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "url('/textures/noise.svg')",
+            backgroundRepeat: "repeat",
+            opacity: 0.04,
+          }}
+        />
+      </motion.div>
+
+      {/* Main Content */}
+      <div className="relative z-10 flex-1 flex items-center justify-center">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 md:py-12 w-full">
           <div className="max-w-2xl">
             <div className="space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Premium bulk apparel manufacturing &ndash;{" "}
-                <span className="text-blue-400">Made in Pakistan</span>, supplied
-                at scale
+              {/* Eyebrow label - delay 0s */}
+              <motion.div
+                className="inline-flex items-center px-4 py-1.5 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-full"
+                {...fadeInUp(0)}
+              >
+                <span className="font-eyebrow text-[#C9A84C]">
+                  Bulk Apparel Manufacturer
+                </span>
+              </motion.div>
+
+              {/* H1 with staggered lines */}
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+                <motion.span className="block" {...fadeInUp(0.15)}>
+                  Premium bulk apparel
+                </motion.span>
+                <motion.span className="block" {...fadeInUp(0.3)}>
+                  manufacturing &ndash;
+                </motion.span>
+                <motion.span className="block text-[#C9A84C]" {...fadeInUp(0.45)}>
+                  Made in Pakistan
+                </motion.span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-slate-200 max-w-xl leading-relaxed">
-                Custom Apparel, uniforms, Industrial Workwear and Denim. Top Tier
+              {/* Sub-copy - delay 0.6s */}
+              <motion.p
+                className="font-body text-lg sm:text-xl text-[#F1F5F9] max-w-xl leading-relaxed"
+                {...fadeInUp(0.6)}
+              >
+                Custom Apparel, uniforms, Industrial Workwear and Denim. Top-tier
                 quality, competitive bulk pricing, and reliable delivery.
-              </p>
+              </motion.p>
 
-              <p className="text-base sm:text-lg text-blue-300 font-medium max-w-xl">
-                Trusted by 100+ global brands and procurement teams for consistent
-                quality and On-Time Delivery.
-              </p>
+              {/* Trust line - delay 0.7s */}
+              <motion.p
+                className="text-base sm:text-lg text-[#C9A84C] font-medium max-w-xl"
+                {...fadeInUp(0.7)}
+              >
+                Trusted by 100+ businesses worldwide for consistent quality and
+                on-time delivery.
+              </motion.p>
 
-              {/* Stats Grid */}
+              {/* Stats Grid - stagger starting at 0.8s */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
                 {stats.map((stat, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className="group flex flex-col items-center justify-center p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg h-[100px] cursor-default transition-all duration-300 ease-out hover:bg-white/15 hover:scale-[1.02]"
+                    className="group relative flex flex-col items-center justify-center p-5 bg-white/5 backdrop-blur-sm rounded-xl cursor-default overflow-hidden border border-white/10 transition-all duration-300"
+                    {...fadeInUp(0.8 + index * 0.1)}
+                    whileHover={
+                      shouldReduceMotion
+                        ? {}
+                        : {
+                          y: -4,
+                          boxShadow: "0 8px 30px rgba(201, 168, 76, 0.15)",
+                          borderColor: "rgba(201, 168, 76, 0.3)",
+                        }
+                    }
                   >
-                    <div className="text-blue-400 mb-2 shrink-0 transition-transform duration-300 ease-out group-hover:scale-110">
+                    {/* Gold left border */}
+                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#C9A84C]" />
+
+                    {/* Icon */}
+                    <div className="text-[#C9A84C] mb-3 shrink-0 transition-transform duration-300 ease-out group-hover:scale-110">
                       {stat.icon}
                     </div>
-                    <div className="text-lg font-bold text-white text-center mb-0.5 leading-tight">
+
+                    {/* Number - Montserrat Black */}
+                    <div className="font-stat text-xl sm:text-2xl text-white text-center mb-1 leading-tight">
                       {stat.label}
                     </div>
-                    <div className="text-xs text-slate-300 text-center leading-tight">
+
+                    {/* Description */}
+                    <div className="text-xs text-[#94A3B8] text-center leading-tight uppercase tracking-wider">
                       {stat.description}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/rfq"
-                  className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-white text-slate-900 rounded-lg transition-all duration-300 ease-out hover:bg-blue-50 hover:shadow-xl hover:shadow-white/20 hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900"
+              {/* CTA Buttons - delay 1.1s */}
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4"
+                {...fadeInUp(1.1)}
+              >
+                {/* Primary Button - Solid Gold */}
+                <motion.div
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
+                  whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
                 >
-                  <span>Request a Quote</span>
-                  <svg
-                    className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                  <Link
+                    href="/rfq"
+                    className="group inline-flex items-center justify-center px-8 py-4 font-button text-lg bg-[#C9A84C] text-[#080C14] rounded-lg transition-all duration-300 ease-out hover:bg-[#D4B65D] hover:shadow-xl hover:shadow-[#C9A84C]/30 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-                <Link
-                  href="/samples"
-                  className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-white/10 backdrop-blur-sm border-2 border-white/80 text-white rounded-lg transition-all duration-300 ease-out hover:bg-white/20 hover:border-white hover:shadow-lg hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900"
+                    <span>Request a Quote</span>
+                    <svg
+                      className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </Link>
+                </motion.div>
+
+                {/* Secondary Button - Transparent with Gold Border + Fill Animation */}
+                <motion.div
+                  className="relative overflow-hidden rounded-lg"
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
+                  whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
                 >
-                  <span>Request Samples</span>
-                  <svg
-                    className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                  {/* Background fill layer */}
+                  <motion.div
+                    className="absolute inset-0 bg-[#C9A84C]"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    style={{ originX: 0 }}
+                    transition={{ duration: 0.3, ease: premiumEase }}
+                  />
+                  <Link
+                    href="/samples"
+                    className="relative z-10 group inline-flex items-center justify-center px-8 py-4 font-button text-lg border-2 border-[#C9A84C] text-[#C9A84C] hover:text-[#080C14] rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                  </svg>
-                </Link>
-              </div>
+                    <span>Request Samples</span>
+                    <svg
+                      className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                      />
+                    </svg>
+                  </Link>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Trust / Value Bar — inside hero, invisible background */}
-      <div className="relative z-10">
-        <div>
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-              {trustItems.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-center gap-2.5 py-2"
-                >
-                  <div className="text-blue-400 shrink-0">{item.icon}</div>
-                  <span className="text-sm font-medium text-white/70">
-                    {item.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Infinite Marquee Ticker Bar */}
+      <div
+        className="relative z-10 border-t border-b overflow-hidden"
+        style={{
+          borderColor: "rgba(255, 255, 255, 0.07)",
+          backgroundColor: "rgba(15, 22, 35, 0.6)",
+        }}
+      >
+        <div className="py-4">
+          <motion.div
+            className="flex whitespace-nowrap"
+            animate={shouldReduceMotion ? {} : { x: [0, "-50%"] }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 20,
+                ease: "linear",
+              },
+            }}
+          >
+            {/* Duplicate items for seamless loop - 4x for safety on wide screens */}
+            {[...trustItems, ...trustItems, ...trustItems, ...trustItems].map((item, index) => (
+              <div key={index} className="flex items-center mx-6 sm:mx-8">
+                {/* Gold bullet separator */}
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mr-6 sm:mr-8" />
+                <div className="text-[#C9A84C] mr-3">{item.icon}</div>
+                <span className="text-sm font-medium text-white/80">
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
+
+
     </section>
   );
 }

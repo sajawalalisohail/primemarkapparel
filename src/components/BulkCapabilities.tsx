@@ -7,7 +7,7 @@ const capabilities = [
       "Professional corporate and service uniforms for teams of any size.",
     icon: (
       <svg
-        className="w-10 h-10 text-blue-900"
+        className="w-10 h-10 text-[#C9A84C]"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -27,7 +27,7 @@ const capabilities = [
       "Comfortable, durable medical scrubs for healthcare professionals.",
     icon: (
       <svg
-        className="w-10 h-10 text-blue-900"
+        className="w-10 h-10 text-[#C9A84C]"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -47,7 +47,7 @@ const capabilities = [
       "Tough, safety-compliant apparel for factories and construction.",
     icon: (
       <svg
-        className="w-10 h-10 text-blue-900"
+        className="w-10 h-10 text-[#C9A84C]"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -72,7 +72,7 @@ const capabilities = [
     description: "Premium hoodies and sweatshirts for casual and branded wear.",
     icon: (
       <svg
-        className="w-10 h-10 text-blue-900"
+        className="w-10 h-10 text-[#C9A84C]"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -91,7 +91,7 @@ const capabilities = [
     description: "Classic and modern denim styles for any market segment.",
     icon: (
       <svg
-        className="w-10 h-10 text-blue-900"
+        className="w-10 h-10 text-[#C9A84C]"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ const capabilities = [
       "Bespoke designs manufactured to your exact specifications.",
     icon: (
       <svg
-        className="w-10 h-10 text-blue-900"
+        className="w-10 h-10 text-[#C9A84C]"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -129,25 +129,32 @@ const capabilities = [
 
 export default function BulkCapabilities() {
   return (
-      <Section id="capabilities" className="bg-slate-50">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            Bulk Capabilities
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {capabilities.map((capability, index) => (
-            <div
-              key={index}
-              className="group p-6 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-900/30 transition-all duration-300"
-            >
-              <div className="mb-4 p-3 inline-block rounded-lg bg-slate-100 group-hover:bg-blue-50 transition-colors">
-                {capability.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                {capability.title}
-              </h3>
-              <p className="text-slate-600">{capability.description}</p>
+    <Section id="capabilities" className="bg-[#0F1623]">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Bulk Capabilities
+        </h2>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {capabilities.map((capability, index) => (
+          <div
+            key={index}
+            className="group p-6 rounded-xl bg-[#080C14] border border-white/10 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300"
+          >
+            <div className="mb-4 p-3 inline-block rounded-lg bg-[#C9A84C]/10 text-[#C9A84C] group-hover:bg-[#C9A84C]/20 transition-colors">
+              {/* Reusing existing icon but forcing color via CSS class parent or we can use cloneElement if needed, but icon has className text-blue-900. I need to update the capabilities array up top for icons or Replace them. */}
+              {/* Since I can't easily replace the `const capabilities` array without a massive block, I'll rely on CSS cascade or replace the array too? */}
+              {/* Re-rendering icons: The icons in the array have className="text-blue-900". This will conflict. */}
+              {/* I MUST update the `capabilities` array at the top of the file to fix icon colors. */}
+              {/* I will scope this replacement to the component first, and then do another replacement for the array if needed. */}
+              {/* Better: I will use a class to force color override: text-[#C9A84C] !important? No. */}
+              {/* I will replace the array separately. */}
+              {capability.icon}
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">
+              {capability.title}
+            </h3>
+            <p className="text-slate-400">{capability.description}</p>
           </div>
         ))}
       </div>

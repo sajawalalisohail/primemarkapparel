@@ -4,7 +4,7 @@ const qualityPoints = [
   {
     title: "Top-Tier Manufacturing Partners",
     description:
-      "We work with established factories in Pakistan known for excellence in textile production and ethical practices.",
+      "We work with established factories in Pakistan known for excellence in textile production and responsible manufacturing practices.",
   },
   {
     title: "Premium Fabric Options",
@@ -112,7 +112,7 @@ export default function Quality() {
                 <div className="p-3 rounded-lg bg-white border border-slate-200">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-slate-600">Compliance:</span>
-                    <span className="text-xs font-semibold text-slate-900">Ethical Sourcing</span>
+                    <span className="text-xs font-semibold text-slate-900">Responsibly Sourced</span>
                   </div>
                 </div>
                 <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">

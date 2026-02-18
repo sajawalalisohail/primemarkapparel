@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="flex-1">
         <PageHeader
           title="Contact Us"
           subtitle="Get in touch with our team to discuss your bulk apparel requirements."

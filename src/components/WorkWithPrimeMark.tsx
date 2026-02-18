@@ -1,3 +1,7 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+
 const points = [
   {
     title: "Established production systems",
@@ -82,34 +86,106 @@ const points = [
   },
 ];
 
-export default function WorkWithPrimeMark() {
+// Premium easing curve
+const premiumEase = [0.25, 0.1, 0.25, 1] as const;
+
+// Check icon that animates in
+function AnimatedCheck({ delay, shouldReduceMotion }: { delay: number; shouldReduceMotion: boolean | null }) {
   return (
-    <section className="bg-slate-50 border-t border-slate-200">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+    <motion.div
+      className="w-6 h-6 rounded-full bg-[#C9A84C] flex items-center justify-center shrink-0"
+      initial={shouldReduceMotion ? {} : { scale: 0 }}
+      whileInView={{ scale: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{
+        type: "spring",
+        stiffness: 400,
+        damping: 15,
+        delay: shouldReduceMotion ? 0 : delay,
+      }}
+    >
+      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+      </svg>
+    </motion.div>
+  );
+}
+
+export default function WorkWithPrimeMark() {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <section className="bg-[#080C14] border-t border-white/10 relative overflow-hidden">
+      {/* Background accent - blurred gold circle */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#C9A84C]/5 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
+        {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
+          {/* Eyebrow */}
+          <motion.div
+            className="font-eyebrow text-[#C9A84C] mb-4"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: premiumEase }}
+          >
+            Why Choose Us
+          </motion.div>
+
+          {/* Heading */}
+          <motion.h2
+            className="font-display text-3xl sm:text-4xl text-white mb-3"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: premiumEase }}
+          >
             Work With PrimeMark
-          </h2>
-          <p className="text-lg text-slate-600 max-w-xl mx-auto">
+          </motion.h2>
+
+          {/* Subtitle */}
+          <motion.p
+            className="font-body text-lg text-slate-400 max-w-xl mx-auto"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: premiumEase }}
+          >
             A manufacturing partner built for reliability at scale.
-          </p>
+          </motion.p>
         </div>
 
+        {/* Points grid */}
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
           {points.map((point, index) => (
-            <div key={index} className="flex gap-4">
-              <div className="text-blue-600/70 shrink-0 mt-0.5">
-                {point.icon}
-              </div>
+            <motion.div
+              key={index}
+              className="flex gap-4 group"
+              initial={shouldReduceMotion ? {} : { opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{
+                duration: 0.6,
+                delay: shouldReduceMotion ? 0 : 0.3 + index * 0.1,
+                ease: premiumEase,
+              }}
+            >
+              {/* Animated gold check icon */}
+              <AnimatedCheck delay={0.4 + index * 0.1} shouldReduceMotion={shouldReduceMotion} />
+
               <div>
-                <h3 className="text-base font-semibold text-slate-900 mb-1">
+                <h3 className="font-heading text-base text-white mb-1 group-hover:text-[#C9A84C] transition-colors duration-300">
                   {point.title}
                 </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="font-body text-sm text-slate-400 leading-relaxed">
                   {point.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

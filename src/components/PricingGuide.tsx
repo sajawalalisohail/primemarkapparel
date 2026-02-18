@@ -30,13 +30,13 @@ const pricingTiers = [
 
 export default function PricingGuide() {
   return (
-    <Section className="bg-slate-50">
+    <Section className="bg-[#080C14]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
             Pricing Guide
           </h2>
-          <p className="text-slate-600 mb-2">
+          <p className="text-slate-400 mb-2">
             Pricing varies by product type, quantity, fabric, and customization. Contact us
             for detailed quotes.
           </p>
@@ -44,33 +44,40 @@ export default function PricingGuide() {
             Prices shown are estimates. Final pricing depends on specifications.
           </p>
         </div>
+        <div className="bg-[#C9A84C]/5 border border-[#C9A84C]/20 rounded-lg p-4 mb-8">
+          <p className="text-sm text-[#C9A84C] text-center">
+            Indicative pricing for standard bulk orders. Actual price depends on product
+            type, fabric specification, and customization. Contact us for a product-specific
+            quote.
+          </p>
+        </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {pricingTiers.map((tier, index) => (
             <div
               key={index}
-              className="p-5 rounded-lg bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+              className="p-5 rounded-lg bg-[#0F1623] border border-white/10 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all"
             >
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
+              <h3 className="text-lg font-semibold text-white mb-2">
                 {tier.volume}
               </h3>
-              <p className="text-base font-bold text-blue-900 mb-2">
+              <p className="text-base font-bold text-[#C9A84C] mb-2">
                 {tier.priceRange}
               </p>
-              <p className="text-sm text-slate-600 mb-2">{tier.description}</p>
+              <p className="text-sm text-slate-400 mb-2">{tier.description}</p>
               <p className="text-xs text-slate-500">{tier.note}</p>
             </div>
           ))}
         </div>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
-          <p className="text-sm text-slate-700 text-center">
-            <strong>Note:</strong> Prices vary by fabric, customization, MOQ, and product complexity. 
+        <div className="bg-white/5 border border-white/10 rounded-lg p-4 mb-8">
+          <p className="text-sm text-slate-400 text-center">
+            <strong>Note:</strong> Prices vary by fabric, customization, MOQ, and product complexity.
             Contact us for exact quotes tailored to your requirements.
           </p>
         </div>
         <div className="text-center">
           <Link
             href="/rfq"
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-[#C9A84C] text-[#080C14] rounded-lg hover:bg-[#D4B65D] transition-colors"
           >
             Request a Quote
             <svg

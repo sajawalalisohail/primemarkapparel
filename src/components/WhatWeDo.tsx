@@ -1,10 +1,14 @@
+"use client";
+
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import Section from "./Section";
 
 const services = [
   {
     title: "Custom Apparel Manufacturing",
     description:
-      "From concept to finished product \u2014 we manufacture custom apparel to your exact specifications, fabrics, and branding.",
+      "From concept to finished product — we manufacture custom apparel to your exact specifications, fabrics, and branding.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -34,34 +38,128 @@ const services = [
   },
 ];
 
-export default function WhatWeDo() {
+// Premium easing curve
+const premiumEase = [0.25, 0.1, 0.25, 1] as const;
+
+// Service card component with hover effects
+interface ServiceCardProps {
+  service: (typeof services)[0];
+  index: number;
+  shouldReduceMotion: boolean | null;
+}
+
+function ServiceCard({ service, index, shouldReduceMotion }: ServiceCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <Section className="bg-slate-50">
+    <motion.div
+      className="group relative p-6 rounded-xl bg-[#0F1623] border border-white/10 shadow-sm overflow-hidden"
+      initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{
+        duration: 0.6,
+        delay: shouldReduceMotion ? 0 : index * 0.15,
+        ease: premiumEase,
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      whileHover={
+        shouldReduceMotion
+          ? {}
+          : {
+            y: -8,
+            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
+            borderColor: "rgba(201, 168, 76, 0.3)",
+          }
+      }
+    >
+      {/* Animated gold top border */}
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-1 bg-[#C9A84C]"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: isHovered ? 1 : 0 }}
+        style={{ originX: 0 }}
+        transition={{ duration: 0.3, ease: premiumEase }}
+      />
+
+      {/* Icon container */}
+      <div
+        className={`mb-4 p-3 inline-block rounded-lg transition-all duration-300 ${isHovered
+          ? "bg-[#C9A84C]/10 text-[#C9A84C]"
+          : "bg-white/5 text-slate-300"
+          }`}
+      >
+        {service.icon}
+      </div>
+
+      {/* Title */}
+      <h3
+        className={`font-heading text-xl text-white mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
+          }`}
+      >
+        {service.title}
+      </h3>
+
+      {/* Description */}
+      <p className="font-body text-slate-400 leading-relaxed">
+        {service.description}
+      </p>
+    </motion.div>
+  );
+}
+
+export default function WhatWeDo() {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <Section className="bg-[#080C14]">
       <div>
+        {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+          {/* Eyebrow */}
+          <motion.div
+            className="font-eyebrow text-[#C9A84C] mb-4"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: premiumEase }}
+          >
+            Services
+          </motion.div>
+
+          {/* Heading */}
+          <motion.h2
+            className="font-display text-3xl sm:text-4xl text-white mb-4"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: premiumEase }}
+          >
             What We Do
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          </motion.h2>
+
+          {/* Subtitle */}
+          <motion.p
+            className="font-body text-lg text-slate-400 max-w-2xl mx-auto"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: premiumEase }}
+          >
             End-to-end apparel solutions for brands, suppliers, and businesses.
-          </p>
+          </motion.p>
         </div>
+
+        {/* Service cards */}
         <div className="grid sm:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <div
+            <ServiceCard
               key={index}
-              className="group p-6 rounded-xl bg-white border border-slate-200 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:border-blue-400/30 hover:-translate-y-1"
-            >
-              <div className="mb-4 p-3 inline-block rounded-lg bg-slate-100 text-blue-900 group-hover:bg-blue-50 transition-colors duration-300">
-                {service.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                {service.title}
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                {service.description}
-              </p>
-            </div>
+              service={service}
+              index={index}
+              shouldReduceMotion={shouldReduceMotion}
+            />
           ))}
         </div>
       </div>

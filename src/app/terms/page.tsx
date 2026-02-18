@@ -12,7 +12,7 @@ export default function TermsPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="flex-1">
         <PageHeader
           title="Terms of Service"
           subtitle="Terms and conditions for our manufacturing services"

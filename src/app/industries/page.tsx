@@ -13,7 +13,7 @@ export default function IndustriesPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="flex-1 bg-[#080C14]">
         <PageHeader
           title="Industries"
           subtitle="Trusted by businesses across diverse sectors for reliable bulk apparel supply."
@@ -23,15 +23,15 @@ export default function IndustriesPage() {
         <Industries hideHeader />
 
         {/* Bottom CTA */}
-        <div className="px-4 sm:px-6 lg:px-8 py-12 bg-slate-50 border-t border-slate-200">
+        <div className="px-4 sm:px-6 lg:px-8 py-12 bg-[#0F1623] border-t border-white/10">
           <div className="mx-auto max-w-6xl text-center">
-            <p className="text-lg text-slate-600 mb-6">
+            <p className="text-lg text-slate-400 mb-6">
               Tell us what you need, we&apos;ll respond with pricing, MOQ, and
               timeline.
             </p>
             <Link
               href="/rfq"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-50"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-[#C9A84C] text-[#080C14] rounded-lg hover:bg-[#D4B65D] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
             >
               Request a Quote
               <svg

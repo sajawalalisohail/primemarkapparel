@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="flex-1">
         <PageHeader
           title="Privacy Policy"
           subtitle="How we collect, use, and protect your information"

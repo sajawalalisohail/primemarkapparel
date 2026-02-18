@@ -36,14 +36,14 @@ const samples = [
 
 export default function AvailableSamples() {
   return (
-    <Section>
+    <Section className="bg-[#080C14]">
       {/* Header Row */}
       <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
             Available Samples
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-slate-400">
             Available samples for review. Full bulk production available across core
             categories.
           </p>
@@ -51,7 +51,7 @@ export default function AvailableSamples() {
         <div className="flex flex-col items-start md:items-end gap-2">
           <Link
             href="/rfq"
-            className="inline-flex items-center justify-center px-6 py-2 text-sm font-medium bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2 text-sm font-medium bg-[#C9A84C] text-[#080C14] rounded-lg hover:bg-[#D4B65D] transition-colors"
           >
             Request a Quote
           </Link>
@@ -66,12 +66,12 @@ export default function AvailableSamples() {
         {samples.map((sample, index) => (
           <div
             key={index}
-            className="group rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-900/30 transition-all duration-300 overflow-hidden"
+            className="group rounded-xl bg-[#0F1623] border border-white/10 shadow-sm hover:shadow-md hover:border-[#C9A84C]/50 transition-all duration-300 overflow-hidden"
           >
             {/* Media Area */}
-            <div className="aspect-video bg-slate-100 border-b border-slate-200 flex items-center justify-center">
+            <div className="aspect-video bg-[#080C14] border-b border-white/10 flex items-center justify-center">
               <svg
-                className="w-10 h-10 text-slate-400 group-hover:text-blue-900 transition-colors"
+                className="w-10 h-10 text-slate-500 group-hover:text-[#C9A84C] transition-colors"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -88,18 +88,18 @@ export default function AvailableSamples() {
             {/* Content */}
             <div className="p-4 space-y-3">
               <div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-1">
+                <h3 className="text-lg font-semibold text-white mb-1">
                   {sample.title}
                 </h3>
-                <p className="text-sm text-slate-600">{sample.spec}</p>
+                <p className="text-sm text-slate-400">{sample.spec}</p>
               </div>
 
               {/* Badges */}
               <div className="flex flex-wrap gap-2">
-                <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
+                <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-white/5 text-slate-300 border border-white/10">
                   MOQ: {sample.moq}
                 </span>
-                <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
+                <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-white/5 text-slate-300 border border-white/10">
                   {sample.customization}
                 </span>
               </div>
@@ -107,7 +107,7 @@ export default function AvailableSamples() {
               {/* CTA Link */}
               <Link
                 href="/rfq"
-                className="inline-flex items-center text-sm text-blue-900 hover:text-blue-800 transition-colors"
+                className="inline-flex items-center text-sm text-[#C9A84C] hover:text-[#D4B65D] transition-colors"
               >
                 Request Quote
                 <svg

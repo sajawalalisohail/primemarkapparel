@@ -74,13 +74,13 @@ interface ServicesProps {
 export default function Services({ hideHeader = false }: ServicesProps) {
   return (
     <>
-      <Section className="bg-white">
+      <Section className="bg-[#080C14]">
         {!hideHeader && (
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Our Services
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
               End-to-end manufacturing services from pre-production to delivery.
             </p>
           </div>
@@ -92,14 +92,14 @@ export default function Services({ hideHeader = false }: ServicesProps) {
             <div key={phaseIndex}>
               {/* Phase Header */}
               <div className="flex items-center gap-4 mb-8">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#C9A84C] text-[#080C14] flex items-center justify-center font-bold text-lg">
                   {phase.phaseNumber}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900">
+                  <h3 className="text-2xl font-bold text-white">
                     {phase.phase}
                   </h3>
-                  <div className="h-px bg-slate-200 mt-2 max-w-md" />
+                  <div className="h-px bg-white/10 mt-2 max-w-md" />
                 </div>
               </div>
 
@@ -108,12 +108,12 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                 {phase.services.map((service, serviceIndex) => (
                   <div
                     key={serviceIndex}
-                    className="bg-white border border-slate-200 rounded-lg p-6 flex flex-col hover:border-slate-300 hover:shadow-md transition-all duration-200"
+                    className="bg-[#0F1623] border border-white/10 rounded-lg p-6 flex flex-col hover:border-[#C9A84C]/50 hover:shadow-md transition-all duration-200"
                   >
-                    <h4 className="text-lg font-semibold text-slate-900 mb-3">
+                    <h4 className="text-lg font-semibold text-white mb-3">
                       {service.title}
                     </h4>
-                    <p className="text-sm text-slate-600 mb-4 leading-relaxed flex-1">
+                    <p className="text-sm text-slate-400 mb-4 leading-relaxed flex-1">
                       {service.description}
                     </p>
 
@@ -122,7 +122,7 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                       {service.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="inline-flex items-center px-2.5 py-1 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200"
+                          className="inline-flex items-center px-2.5 py-1 rounded text-xs font-medium bg-white/5 text-slate-300 border border-white/10"
                         >
                           {tag}
                         </span>
@@ -132,7 +132,7 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                     {/* CTA */}
                     <Link
                       href="/rfq"
-                      className="inline-flex items-center justify-center text-sm font-medium text-blue-900 hover:text-blue-800 py-2 px-4 border border-blue-900/20 rounded-md hover:border-blue-900/40 hover:bg-blue-50/50 transition-colors"
+                      className="inline-flex items-center justify-center text-sm font-medium text-[#C9A84C] hover:text-[#D4B65D] py-2 px-4 border border-[#C9A84C]/20 rounded-md hover:border-[#C9A84C]/40 hover:bg-[#C9A84C]/10 transition-colors"
                     >
                       Request a Quote
                       <svg

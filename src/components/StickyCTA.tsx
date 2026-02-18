@@ -65,7 +65,7 @@ export default function StickyCTA() {
     >
       <Link
         href="/rfq"
-        className="group inline-flex items-center justify-center px-6 py-3 text-sm font-medium bg-blue-700 text-white rounded-full shadow-lg shadow-blue-700/25 transition-all duration-300 ease-out hover:bg-blue-800 hover:shadow-xl hover:shadow-blue-700/30 hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
+        className="group inline-flex items-center justify-center px-6 py-3 text-sm font-medium bg-[#C9A84C] text-[#080C14] rounded-full shadow-lg shadow-[#C9A84C]/25 transition-all duration-300 ease-out hover:bg-[#D4B65D] hover:shadow-xl hover:shadow-[#C9A84C]/30 hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
       >
         <span>Request a Quote</span>
         <svg

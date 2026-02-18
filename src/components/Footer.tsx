@@ -1,9 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import WorkWithPrimeMark from "./WorkWithPrimeMark";
+import { motion, useReducedMotion } from "framer-motion";
+import { usePathname } from "next/navigation";
+
+// Premium easing curve
+const premiumEase = [0.25, 0.1, 0.25, 1] as const;
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const shouldReduceMotion = useReducedMotion();
+  const pathname = usePathname();
 
   const socialLinks = [
     {
@@ -37,139 +45,305 @@ export default function Footer() {
 
   return (
     <>
-    <WorkWithPrimeMark />
-    <footer className="bg-gradient-to-b from-slate-900 via-slate-900 to-blue-950 border-t border-slate-800">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-6">
-              <Image
-                src="/logo/footerl.svg"
-                alt="PrimeMark Apparel"
-                width={200}
-                height={50}
-                className="h-16 w-auto"
-              />
+
+      {/* Pre-Footer CTA Band */}
+      <section className="relative bg-[#0F1623] py-16 sm:py-20 overflow-hidden z-10">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Gold gradient orb */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#C9A84C]/5 rounded-full blur-3xl" />
+          {/* Subtle grid pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.01]"
+            style={{
+              backgroundImage: `linear-gradient(#C9A84C 1px, transparent 1px), linear-gradient(90deg, #C9A84C 1px, transparent 1px)`,
+              backgroundSize: "60px 60px",
+            }}
+          />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          {/* Eyebrow */}
+          <motion.div
+            className="font-eyebrow text-[#C9A84C] mb-4"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: premiumEase }}
+          >
+            {pathname === "/" && "Get Started Today"}
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h2
+            className="font-display text-3xl sm:text-4xl lg:text-5xl text-white mb-4"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: premiumEase }}
+          >
+            Ready to manufacture at scale?
+          </motion.h2>
+
+          {/* Subtext */}
+          <motion.p
+            className="font-body text-lg text-slate-400 mb-8 max-w-xl mx-auto"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: premiumEase }}
+          >
+            Get a quote in 24 hours — no commitments.
+          </motion.p>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.3, ease: premiumEase }}
+          >
+            <Link
+              href="/rfq"
+              className="group relative inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] text-[#080C14] font-button text-sm rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,168,76,0.3)]"
+            >
+              <span className="relative z-10">Start Your Order</span>
+              <svg
+                className="relative z-10 w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+              {/* Hover shine effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
             </Link>
-            <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-              Premium bulk apparel manufacturing from Pakistan. Uniforms,
-              scrubs, workwear, and custom apparel at scale.
-            </p>
-            {/* Social Media */}
-            <div>
-              <h4 className="text-sm font-semibold text-white mb-4">
-                Follow Us
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Main Footer */}
+      <footer className="relative bg-[#080C14] overflow-hidden">
+        {/* Gold gradient top border */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/50 to-transparent" />
+
+        {/* Faint radial gradient from gold at top-center */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#C9A84C]/[0.01] rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+          {/* Main Footer Content */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            {/* Brand Column */}
+            <motion.div
+              className="lg:col-span-1"
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: premiumEase }}
+            >
+              <Link href="/" className="inline-block mb-6">
+                <Image
+                  src="/logo/newlogo.svg"
+                  alt="PrimeMark Apparel"
+                  width={200}
+                  height={50}
+                  className="h-16 w-auto"
+                />
+              </Link>
+              <p className="font-body text-sm text-slate-400 mb-6 leading-relaxed">
+                Premium bulk apparel manufacturing from Pakistan. Uniforms,
+                scrubs, workwear, and custom apparel at scale.
+              </p>
+              {/* Social Media */}
+              <div>
+                <h4 className="font-heading text-sm text-white mb-4">
+                  Follow Us
+                </h4>
+                <div className="flex flex-wrap gap-3">
+                  {socialLinks.map((social, index) => (
+                    <motion.a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full border border-white/10 bg-white/5 text-slate-400 flex items-center justify-center transition-all duration-300 hover:border-[#C9A84C] hover:bg-[#C9A84C]/10 hover:text-[#C9A84C] focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
+                      aria-label={social.name}
+                      whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={shouldReduceMotion ? {} : { opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.3,
+                        delay: shouldReduceMotion ? 0 : 0.4 + index * 0.1,
+                        ease: premiumEase,
+                      }}
+                    >
+                      {social.icon}
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Products & Services Column */}
+            <motion.div
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: 0.1, ease: premiumEase }}
+            >
+              <h4 className="font-heading text-sm text-white mb-5">
+                Products & Services
               </h4>
-              <div className="flex flex-wrap gap-2">
-                {socialLinks.map((social) => (
+              <ul className="space-y-3">
+                {[
+                  { href: "/products", label: "Products" },
+                  { href: "/services", label: "Services" },
+                  { href: "/industries", label: "Industries" },
+                  { href: "/samples", label: "Request Samples" },
+                  { href: "/rfq", label: "Request a Quote" },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="group inline-flex items-center gap-1 font-body text-sm text-slate-400 hover:text-[#C9A84C] transition-all duration-300"
+                    >
+                      <span className="w-0 h-px bg-[#C9A84C] transition-all duration-300 group-hover:w-2" />
+                      <span>{link.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Company Column */}
+            <motion.div
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: 0.2, ease: premiumEase }}
+            >
+              <h4 className="font-heading text-sm text-white mb-5">Company</h4>
+              <ul className="space-y-3">
+                {[
+                  { href: "/about", label: "About Us" },
+                  { href: "/process", label: "Our Process" },
+                  { href: "/quality", label: "Quality Standards" },
+                  { href: "/faq", label: "FAQ" },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="group inline-flex items-center gap-1 font-body text-sm text-slate-400 hover:text-[#C9A84C] transition-all duration-300"
+                    >
+                      <span className="w-0 h-px bg-[#C9A84C] transition-all duration-300 group-hover:w-2" />
+                      <span>{link.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Contact Column */}
+            <motion.div
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: 0.3, ease: premiumEase }}
+            >
+              <h4 className="font-heading text-sm text-white mb-5">Contact</h4>
+              <ul className="space-y-4">
+                <li>
                   <a
-                    key={social.name}
-                    href={social.href}
+                    href="mailto:sales@primemarkapparel.com"
+                    className="inline-flex items-start gap-3 font-body text-sm text-slate-400 hover:text-[#C9A84C] transition-all duration-300 group"
+                  >
+                    <svg
+                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-slate-500 group-hover:text-[#C9A84C] transition-colors"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                    <span className="break-all">sales@primemarkapparel.com</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wa.me/13046854016"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-full bg-slate-800 text-white flex items-center justify-center hover:bg-slate-700 hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900"
-                    aria-label={social.name}
+                    className="inline-flex items-start gap-3 font-body text-sm text-slate-400 hover:text-[#C9A84C] transition-all duration-300 group"
                   >
-                    {social.icon}
+                    <svg
+                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-slate-500 group-hover:text-[#C9A84C] transition-colors"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    <span>+1 (304) 685-4016</span>
                   </a>
-                ))}
-              </div>
-            </div>
-          </div>
+                </li>
+                <li>
+                  <a
+                    href="tel:+923238420000"
+                    className="inline-flex items-start gap-3 font-body text-sm text-slate-400 hover:text-[#C9A84C] transition-all duration-300 group"
+                  >
+                    <svg
+                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-slate-500 group-hover:text-[#C9A84C] transition-colors"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    <span>+92 323 8420000</span>
+                  </a>
+                </li>
+                <li>
+                  <div className="inline-flex items-start gap-3 font-body text-sm text-slate-400">
+                    <svg
+                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-slate-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                    <span>Lahore, Pakistan</span>
+                  </div>
+                </li>
+              </ul>
 
-          {/* Products & Services Column */}
-          <div>
-            <h4 className="text-sm font-semibold text-white mb-5">
-              Products & Services
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/products"
-                  className="text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out inline-block"
-                >
-                  Products
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  className="text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out inline-block"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/industries"
-                  className="text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out inline-block"
-                >
-                  Industries
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/samples"
-                  className="text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out inline-block"
-                >
-                  Request Samples
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/rfq"
-                  className="text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out inline-block"
-                >
-                  Request a Quote
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company Column */}
-          <div>
-            <h4 className="text-sm font-semibold text-white mb-5">Company</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/about"
-                  className="text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out inline-block"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/process"
-                  className="text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out inline-block"
-                >
-                  Our Process
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/quality"
-                  className="text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out inline-block"
-                >
-                  Quality Standards
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Column */}
-          <div>
-            <h4 className="text-sm font-semibold text-white mb-5">Contact</h4>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href="mailto:sales@primemarkapparel.com"
-                  className="inline-flex items-start gap-3 text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out group"
-                >
+              {/* Business Hours Card */}
+              <div className="mt-6 p-4 bg-white/[0.02] border border-white/5 rounded-lg">
+                <div className="flex items-center gap-2 mb-2">
                   <svg
-                    className="w-5 h-5 flex-shrink-0 mt-0.5 text-slate-400 group-hover:text-blue-400 transition-colors"
+                    className="w-4 h-4 text-[#C9A84C]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -178,61 +352,48 @@ export default function Footer() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={1.5}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <span className="break-all">sales@primemarkapparel.com</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/13046854016"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-start gap-3 text-sm text-slate-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 ease-in-out group"
-                >
-                  <svg
-                    className="w-5 h-5 flex-shrink-0 mt-0.5 text-slate-400 group-hover:text-blue-400 transition-colors"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  <span>+1 (304) 685-4016</span>
-                </a>
-              </li>
-            </ul>
-            <div className="mt-6 pt-6 border-t border-slate-800">
-              <p className="text-xs text-slate-400 mb-2">Location</p>
-              <p className="text-sm text-slate-300">Pakistan (PKT, UTC+5)</p>
-            </div>
+                  <span className="font-heading text-xs text-white">
+                    Business Hours
+                  </span>
+                </div>
+                <p className="font-body text-sm text-slate-400">
+                  Mon - Sat: 9:00 AM - 6:00 PM
+                </p>
+                <p className="font-body text-xs text-slate-500">PKT (UTC+5)</p>
+              </div>
+            </motion.div>
           </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-800">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-slate-400 text-center sm:text-left">
-              © {currentYear} PrimeMark Apparel. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              <Link
-                href="/privacy"
-                className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
-              >
-                Terms of Service
-              </Link>
+          {/* Bottom Bar */}
+          <div className="pt-8 border-t border-white/5">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <p className="font-body text-sm text-slate-500 text-center sm:text-left">
+                © {currentYear}{" "}
+                <span className="text-[#C9A84C]">PrimeMark Apparel</span>. All
+                rights reserved.
+              </p>
+              <div className="flex items-center gap-6">
+                <Link
+                  href="/privacy"
+                  className="font-body text-xs text-slate-500 hover:text-[#C9A84C] transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+                <Link
+                  href="/terms"
+                  className="font-body text-xs text-slate-500 hover:text-[#C9A84C] transition-colors"
+                >
+                  Terms of Service
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
     </>
   );
 }
+

@@ -9,18 +9,20 @@ const WhatWeDo = dynamic(() => import("@/components/WhatWeDo"));
 const HowItWorks = dynamic(() => import("@/components/HowItWorks"));
 const ProductCategories = dynamic(() => import("@/components/ProductCategories"));
 const ClientsAndTestimonials = dynamic(() => import("@/components/ClientsAndTestimonials"));
+const WorkWithPrimeMark = dynamic(() => import("@/components/WorkWithPrimeMark"));
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="flex-1">
         <Hero />
         <WhoWeAre />
         <WhatWeDo />
         <HowItWorks />
         <ProductCategories />
         <ClientsAndTestimonials />
+        <WorkWithPrimeMark />
       </main>
       <Footer />
     </>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -20,52 +21,100 @@ const productCategories = [
   { href: "/products/tshirts", label: "White T-Shirts" },
 ];
 
+// Premium easing curve
+const premiumEase = [0.25, 0.1, 0.25, 1] as const;
+
+// NavLink component with animated underline
+interface NavLinkProps {
+  href: string;
+  label: string;
+  isActive: boolean;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  children?: React.ReactNode;
+}
+
+function NavLink({ href, label, isActive, onClick, children }: NavLinkProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`relative font-nav text-sm transition-colors duration-300 ${isActive ? "text-[#C9A84C]" : "text-slate-300 hover:text-white"
+        }`}
+    >
+      <span className="relative">
+        {label}
+        {children}
+        {/* Animated underline */}
+        <motion.span
+          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#C9A84C]"
+          initial={false}
+          animate={{
+            scaleX: isActive || isHovered ? 1 : 0,
+          }}
+          style={{ originX: 0 }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : 0.3,
+            ease: premiumEase,
+          }}
+        />
+      </span>
+    </Link>
+  );
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductsHovered, setIsProductsHovered] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
 
+  // Scroll-driven animations
+  const { scrollY } = useScroll();
+
+  // Transform values for smooth background transition - start after hero section (~800px)
+  const bgOpacity = useTransform(scrollY, [700, 850], [0, 0.9]);
+  const backdropBlur = useTransform(scrollY, [700, 850], [0, 12]);
+  const borderOpacity = useTransform(scrollY, [700, 850], [0, 0.05]);
+  const shadowOpacity = useTransform(scrollY, [700, 850], [0, 0.2]);
+
+  // Close mobile menu on route change
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-
-    // Show dark navbar only after scrolling past the hero (100vh minus navbar height)
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > window.innerHeight - 80);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleChange);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    setIsOpen(false);
+  }, [pathname]);
 
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+      window.scrollTo({ top: 0, behavior: shouldReduceMotion ? "auto" : "smooth" });
     }
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-out ${
-        isScrolled || isOpen
-          ? "bg-slate-900/90 backdrop-blur-lg border-b border-white/10 shadow-lg shadow-slate-900/20"
-          : "bg-transparent"
-      }`}
-      style={{ WebkitTapHighlightColor: "transparent" }}
+    <motion.nav
+      className="fixed top-0 left-0 right-0 z-50 w-full"
+      style={{
+        backgroundColor: shouldReduceMotion
+          ? "rgba(8, 12, 20, 0.85)"
+          : useTransform(bgOpacity, (v) => `rgba(8, 12, 20, ${v})`),
+        backdropFilter: shouldReduceMotion
+          ? "blur(12px)"
+          : useTransform(backdropBlur, (v) => `blur(${v}px)`),
+        WebkitBackdropFilter: shouldReduceMotion
+          ? "blur(12px)"
+          : useTransform(backdropBlur, (v) => `blur(${v}px)`),
+        borderBottom: shouldReduceMotion
+          ? "1px solid rgba(255, 255, 255, 0.05)"
+          : useTransform(borderOpacity, (v) => `1px solid rgba(255, 255, 255, ${v})`),
+        boxShadow: shouldReduceMotion
+          ? "0 4px 30px rgba(0, 0, 0, 0.2)"
+          : useTransform(shadowOpacity, (v) => `0 4px 30px rgba(0, 0, 0, ${v})`),
+        WebkitTapHighlightColor: "transparent",
+      }}
     >
       <div className="mx-auto max-w-[1920px] px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         <div className="flex h-20 items-center justify-between">
@@ -76,7 +125,7 @@ export default function Navbar() {
             className="flex items-center -ml-5 group"
           >
             <Image
-              src="/logo/footerl.svg"
+              src="/logo/newlogo.svg"
               alt="PrimeMark Apparel"
               width={200}
               height={50}
@@ -109,27 +158,33 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className={`inline-flex items-center gap-1 text-sm font-medium transition-all duration-300 ease-out ${
-                        isActive
-                          ? "text-white font-semibold"
-                          : "text-white/70 hover:text-white"
-                      }`}
+                      className={`inline-flex items-center gap-1 font-nav text-sm transition-all duration-300 ${isActive || isProductsHovered
+                          ? "text-[#C9A84C]"
+                          : "text-slate-300 hover:text-white"
+                        }`}
                     >
                       <span className="relative">
                         {link.label}
-                        <span
-                          className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ease-out ${
-                            isActive || isProductsHovered ? "w-full" : "w-0"
-                          }`}
+                        <motion.span
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#C9A84C]"
+                          initial={false}
+                          animate={{
+                            scaleX: isActive || isProductsHovered ? 1 : 0,
+                          }}
+                          style={{ originX: 0 }}
+                          transition={{
+                            duration: shouldReduceMotion ? 0 : 0.3,
+                            ease: premiumEase,
+                          }}
                         />
                       </span>
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-300 ease-out ${
-                          isProductsHovered ? "rotate-180" : ""
-                        }`}
+                      <motion.svg
+                        className="w-4 h-4"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
+                        animate={{ rotate: isProductsHovered ? 180 : 0 }}
+                        transition={{ duration: 0.3, ease: premiumEase }}
                       >
                         <path
                           strokeLinecap="round"
@@ -137,43 +192,54 @@ export default function Navbar() {
                           strokeWidth={2}
                           d="M19 9l-7 7-7-7"
                         />
-                      </svg>
+                      </motion.svg>
                     </Link>
 
                     {/* Dropdown Menu */}
-                    <div
-                      className={`absolute top-full left-0 pt-2 w-56 transition-all duration-300 ease-out ${
-                        isProductsHovered
-                          ? "opacity-100 translate-y-0 pointer-events-auto"
-                          : "opacity-0 -translate-y-2 pointer-events-none"
-                      }`}
+                    <motion.div
+                      className="absolute top-full left-0 pt-2 w-56"
+                      initial={false}
+                      animate={{
+                        opacity: isProductsHovered ? 1 : 0,
+                        y: isProductsHovered ? 0 : -8,
+                        pointerEvents: isProductsHovered ? "auto" : "none",
+                      }}
+                      transition={{ duration: 0.2, ease: premiumEase }}
                       role="menu"
                       aria-label="Product categories"
                       onMouseEnter={() => setIsProductsHovered(true)}
                       onMouseLeave={() => setIsProductsHovered(false)}
                     >
-                      <div className="bg-slate-900/20 backdrop-blur-sm border border-white/10 rounded-lg shadow-xl shadow-slate-900/30 overflow-hidden">
+                      <div className="bg-[#0F1623]/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-xl shadow-black/30 overflow-hidden">
                         <div className="py-2">
                           {productCategories.map((category, index) => (
-                            <Link
+                            <motion.div
                               key={category.href}
-                              href={category.href}
-                              className="block px-4 py-2.5 text-sm text-white/80 hover:text-white active:text-white hover:bg-white/5 active:bg-white/10 transition-all duration-200 ease-out focus:outline-none focus-visible:bg-white/5 focus-visible:text-white focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-inset"
-                              role="menuitem"
-                              tabIndex={isProductsHovered ? 0 : -1}
-                              style={{
-                                transitionDelay: isProductsHovered
-                                  ? `${index * 30}ms`
-                                  : "0ms",
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{
+                                opacity: isProductsHovered ? 1 : 0,
+                                x: isProductsHovered ? 0 : -10,
+                              }}
+                              transition={{
+                                duration: 0.2,
+                                delay: isProductsHovered ? index * 0.05 : 0,
+                                ease: premiumEase,
                               }}
                             >
-                              {category.label}
-                            </Link>
+                              <Link
+                                href={category.href}
+                                className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors duration-200 focus:outline-none focus-visible:bg-white/5 focus-visible:text-white"
+                                role="menuitem"
+                                tabIndex={isProductsHovered ? 0 : -1}
+                              >
+                                {category.label}
+                              </Link>
+                            </motion.div>
                           ))}
                           <div className="border-t border-white/10 my-1" />
                           <Link
                             href="/products"
-                            className="block px-4 py-2.5 text-sm font-medium text-blue-400 hover:text-blue-300 active:text-blue-200 hover:bg-white/5 active:bg-white/10 transition-colors duration-200 ease-out focus:outline-none focus-visible:bg-white/5 focus-visible:text-blue-300 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-inset"
+                            className="block px-4 py-2.5 text-sm font-medium text-[#C9A84C] hover:text-[#D4B65D] hover:bg-white/5 transition-colors duration-200 focus:outline-none focus-visible:bg-white/5"
                             role="menuitem"
                             tabIndex={isProductsHovered ? 0 : -1}
                           >
@@ -181,94 +247,100 @@ export default function Navbar() {
                           </Link>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 );
               }
 
               // Regular links
               return (
-                <Link
+                <NavLink
                   key={link.href}
                   href={link.href}
+                  label={link.label}
+                  isActive={isActive}
                   onClick={link.href === "/" ? handleHomeClick : undefined}
-                  className={`text-sm font-medium transition-all duration-300 ease-out relative group ${
-                    isActive
-                      ? "text-white"
-                      : "text-slate-300 hover:text-white"
-                  }`}
-                >
-                  {link.label}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ease-out ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
-                </Link>
+                />
               );
             })}
 
-            {/* CTA Button with micro-interaction */}
-            <Link
-              href="/rfq"
-              className="group inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold bg-blue-700 text-white rounded-lg transition-all duration-300 ease-out hover:bg-blue-800 active:bg-blue-900 hover:shadow-lg hover:shadow-blue-700/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
-              style={{
-                transform: "scale(1)",
-                transition: "transform 0.2s ease-out, background-color 0.3s ease-out, box-shadow 0.3s ease-out",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(1.05)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-              }}
-              onMouseDown={(e) => {
-                e.currentTarget.style.transform = "scale(0.98)";
-              }}
-              onMouseUp={(e) => {
-                e.currentTarget.style.transform = "scale(1.05)";
-              }}
+            {/* CTA Button with gold styling */}
+            <motion.div
+              className="relative overflow-hidden rounded-lg"
+              whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
+              whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
             >
-              <span>Request a Quote</span>
-              <svg
-                className="w-4 h-4 ml-1.5 transition-transform duration-300 ease-out group-hover:translate-x-0.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              {/* Background fill layer */}
+              <motion.div
+                className="absolute inset-0 bg-[#C9A84C]"
+                initial={{ scaleX: 0 }}
+                whileHover={{ scaleX: 1 }}
+                style={{ originX: 0 }}
+                transition={{ duration: 0.3, ease: premiumEase }}
+              />
+              <Link
+                href="/rfq"
+                className="relative z-10 inline-flex items-center justify-center px-5 py-2.5 font-button text-sm border border-[#C9A84C] text-[#C9A84C] hover:text-[#080C14] rounded-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080C14]"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </Link>
+                <span>Request a Quote</span>
+                <svg
+                  className="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+              {/* Glow effect on hover */}
+              <motion.div
+                className="absolute inset-0 rounded-lg pointer-events-none"
+                initial={{ boxShadow: "0 0 0 0 rgba(201, 168, 76, 0)" }}
+                whileHover={{
+                  boxShadow: "0 0 20px rgba(201, 168, 76, 0.25)",
+                }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-white/70 hover:text-white active:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-lg transition-colors duration-200"
+            className="md:hidden p-2 text-white/70 hover:text-white active:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]/50 rounded-lg transition-colors duration-200"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
             <div className="w-6 h-6 relative">
-              <span
-                className={`absolute left-0 w-6 h-0.5 bg-current transition-all duration-300 ease-out ${
-                  isOpen ? "top-[11px] rotate-45" : "top-1"
-                }`}
+              <motion.span
+                className="absolute left-0 w-6 h-0.5 bg-current"
+                animate={{
+                  top: isOpen ? "11px" : "4px",
+                  rotate: isOpen ? 45 : 0,
+                }}
+                transition={{ duration: 0.3, ease: premiumEase }}
               />
-              <span
-                className={`absolute left-0 top-[11px] w-6 h-0.5 bg-current transition-all duration-300 ease-out ${
-                  isOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
-                }`}
+              <motion.span
+                className="absolute left-0 top-[11px] w-6 h-0.5 bg-current"
+                animate={{
+                  opacity: isOpen ? 0 : 1,
+                  scaleX: isOpen ? 0 : 1,
+                }}
+                transition={{ duration: 0.3, ease: premiumEase }}
               />
-              <span
-                className={`absolute left-0 w-6 h-0.5 bg-current transition-all duration-300 ease-out ${
-                  isOpen ? "top-[11px] -rotate-45" : "top-[19px]"
-                }`}
+              <motion.span
+                className="absolute left-0 w-6 h-0.5 bg-current"
+                animate={{
+                  top: isOpen ? "11px" : "19px",
+                  rotate: isOpen ? -45 : 0,
+                }}
+                transition={{ duration: 0.3, ease: premiumEase }}
               />
             </div>
           </button>
@@ -276,49 +348,68 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div
-        className={`md:hidden w-full overflow-hidden transition-all duration-300 ease-out ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
+      <motion.div
+        className="md:hidden w-full overflow-hidden bg-[#080C14]/95 backdrop-blur-xl"
+        initial={false}
+        animate={{
+          height: isOpen ? "auto" : 0,
+          opacity: isOpen ? 1 : 0,
+        }}
+        transition={{ duration: 0.3, ease: premiumEase }}
       >
         <div className="px-6 py-4 space-y-1">
           {navLinks.map((link, index) => {
             const isActive = pathname === link.href;
 
             return (
-              <Link
+              <motion.div
                 key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`block py-3 px-2 rounded-lg transition-all duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white/20 ${
-                  isActive
-                    ? "text-white font-medium bg-white/10"
-                    : "text-slate-300 hover:text-white active:text-white hover:bg-white/5 active:bg-white/10"
-                }`}
-                style={{
-                  transitionDelay: isOpen ? `${index * 50}ms` : "0ms",
+                initial={{ opacity: 0, x: -20 }}
+                animate={{
                   opacity: isOpen ? 1 : 0,
-                  transform: isOpen ? "translateX(0)" : "translateX(-10px)",
+                  x: isOpen ? 0 : -20,
+                }}
+                transition={{
+                  duration: 0.3,
+                  delay: isOpen ? index * 0.05 : 0,
+                  ease: premiumEase,
                 }}
               >
-                {link.label}
-              </Link>
+                <Link
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block py-3 px-2 rounded-lg font-nav transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]/30 ${isActive
+                      ? "text-[#C9A84C] font-medium bg-[#C9A84C]/10"
+                      : "text-slate-300 hover:text-white active:text-white hover:bg-white/5 active:bg-white/10"
+                    }`}
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             );
           })}
-          <Link
-            href="/rfq"
-            onClick={() => setIsOpen(false)}
-            className="block w-full text-center px-5 py-3 text-sm font-semibold bg-blue-700 text-white rounded-lg hover:bg-blue-800 active:bg-blue-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 transition-all duration-200 ease-out mt-4"
-            style={{
-              transitionDelay: isOpen ? `${navLinks.length * 50}ms` : "0ms",
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{
               opacity: isOpen ? 1 : 0,
-              transform: isOpen ? "translateY(0)" : "translateY(-10px)",
+              y: isOpen ? 0 : -10,
+            }}
+            transition={{
+              duration: 0.3,
+              delay: isOpen ? navLinks.length * 0.05 : 0,
+              ease: premiumEase,
             }}
           >
-            Request a Quote
-          </Link>
+            <Link
+              href="/rfq"
+              onClick={() => setIsOpen(false)}
+              className="block w-full text-center px-5 py-3 font-button text-sm bg-[#C9A84C] text-[#080C14] rounded-lg hover:bg-[#D4B65D] active:bg-[#B8973B] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] transition-all duration-200 mt-4"
+            >
+              Request a Quote
+            </Link>
+          </motion.div>
         </div>
-      </div>
-    </nav>
+      </motion.div>
+    </motion.nav>
   );
 }
