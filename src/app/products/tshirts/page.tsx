@@ -22,19 +22,19 @@ export default function TshirtsPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 bg-[#080C14]">
         <PageHeader
           title="White T-Shirts"
           subtitle="Foundational 100% cotton tees for printing, branding, and retail basics"
         />
 
-        <Section className="bg-white">
+        <Section className="bg-[#080C14]">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Product Image Placeholder */}
-            <div className="aspect-video bg-slate-100 rounded-2xl flex items-center justify-center border border-slate-200">
+            <div className="aspect-video bg-[#0F1623] rounded-2xl flex items-center justify-center border border-white/10">
               <div className="text-center">
                 <svg
-                  className="w-24 h-24 text-slate-300 mx-auto mb-4"
+                  className="w-24 h-24 text-slate-700 mx-auto mb-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -55,38 +55,38 @@ export default function TshirtsPage() {
 
             {/* Product Details */}
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
                 Bulk Cotton Manufacturing
               </h2>
-              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+              <p className="text-lg text-slate-400 mb-6 leading-relaxed">
                 Foundational 100% cotton tees for printing, branding, and retail
                 basics. Available in multiple weights and fits.
               </p>
 
               {/* Specs Grid */}
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                <div className="p-4 rounded-lg bg-slate-50 border border-slate-200">
-                  <p className="text-sm text-slate-500 mb-1">
+                <div className="p-4 rounded-lg bg-[#0F1623] border border-white/10">
+                  <p className="text-sm text-slate-400 mb-1">
                     Minimum Order Quantity
                   </p>
-                  <p className="text-xl font-bold text-blue-900">200 units</p>
+                  <p className="text-xl font-bold text-[#C9A84C]">200 units</p>
                 </div>
-                <div className="p-4 rounded-lg bg-slate-50 border border-slate-200">
-                  <p className="text-sm text-slate-500 mb-1">Lead Time</p>
-                  <p className="text-xl font-bold text-blue-900">2–4 weeks</p>
+                <div className="p-4 rounded-lg bg-[#0F1623] border border-white/10">
+                  <p className="text-sm text-slate-400 mb-1">Lead Time</p>
+                  <p className="text-xl font-bold text-[#C9A84C]">2–4 weeks</p>
                 </div>
               </div>
 
               {/* Customization Options */}
               <div className="mb-8">
-                <h3 className="text-lg font-semibold text-slate-900 mb-4">
+                <h3 className="text-lg font-semibold text-white mb-4">
                   Customization Options
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {customizationOptions.map((option, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1.5 text-sm bg-blue-50 text-blue-900 rounded-full border border-blue-200"
+                      className="px-3 py-1.5 text-sm bg-[#C9A84C]/10 text-[#C9A84C] rounded-full border border-[#C9A84C]/20"
                     >
                       {option}
                     </span>
@@ -97,7 +97,7 @@ export default function TshirtsPage() {
               {/* CTA */}
               <Link
                 href="/rfq"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-[#C9A84C] text-[#080C14] rounded-lg hover:bg-[#D4B65D] transition-colors"
               >
                 Request a Quote
                 <svg
@@ -119,16 +119,16 @@ export default function TshirtsPage() {
         </Section>
 
         {/* Additional Info Section */}
-        <Section className="bg-slate-50">
+        <Section className="bg-[#0F1623]">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
               Why Choose PrimeMark for T-Shirts?
             </h2>
             <div className="grid sm:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
-                    className="w-6 h-6 text-blue-900"
+                    className="w-6 h-6 text-[#C9A84C]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -141,17 +141,17 @@ export default function TshirtsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-slate-900 mb-2">
+                <h3 className="font-semibold text-white mb-2">
                   100% Cotton
                 </h3>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-slate-400">
                   Premium ring-spun cotton for comfort and print quality
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
-                    className="w-6 h-6 text-blue-900"
+                    className="w-6 h-6 text-[#C9A84C]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -164,17 +164,17 @@ export default function TshirtsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-slate-900 mb-2">
+                <h3 className="font-semibold text-white mb-2">
                   Print Ready
                 </h3>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-slate-400">
                   Optimized for screen printing and DTG applications
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
-                    className="w-6 h-6 text-blue-900"
+                    className="w-6 h-6 text-[#C9A84C]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -187,10 +187,10 @@ export default function TshirtsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-slate-900 mb-2">
+                <h3 className="font-semibold text-white mb-2">
                   Fast Turnaround
                 </h3>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-slate-400">
                   2–4 weeks from sample approval to delivery
                 </p>
               </div>

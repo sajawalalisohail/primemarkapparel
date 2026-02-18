@@ -67,16 +67,15 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border border-slate-200 rounded-lg overflow-hidden">
+    <div className="border border-white/10 rounded-lg overflow-hidden">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-5 text-left bg-white hover:bg-slate-50 transition-colors"
+        className="w-full flex items-center justify-between p-5 text-left bg-[#0F1623] hover:bg-[#080C14] transition-colors"
       >
-        <span className="font-medium text-slate-900 pr-4">{question}</span>
+        <span className="font-medium text-white pr-4">{question}</span>
         <svg
-          className={`w-5 h-5 text-slate-500 flex-shrink-0 transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
-          }`}
+          className={`w-5 h-5 text-slate-400 flex-shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
+            }`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -90,12 +89,11 @@ function FAQItem({
         </svg>
       </button>
       <div
-        className={`overflow-hidden transition-all duration-200 ${
-          isOpen ? "max-h-96" : "max-h-0"
-        }`}
+        className={`overflow-hidden transition-all duration-200 ${isOpen ? "max-h-96" : "max-h-0"
+          }`}
       >
-        <div className="p-5 pt-0 bg-white">
-          <p className="text-slate-600 leading-relaxed">{answer}</p>
+        <div className="p-5 pt-0 bg-[#0F1623]">
+          <p className="text-slate-400 leading-relaxed">{answer}</p>
         </div>
       </div>
     </div>

@@ -12,20 +12,20 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 bg-[#080C14]">
         <PageHeader
           title="Contact Us"
           subtitle="Get in touch with our team to discuss your bulk apparel requirements."
         />
-        <Section>
+        <Section className="bg-[#080C14]">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                  <h2 className="text-2xl font-bold text-white mb-6">
                     Get in Touch
                   </h2>
-                  <p className="text-slate-600 mb-8">
+                  <p className="text-slate-400 mb-8">
                     Have questions about our products, process, or pricing? Our
                     team is ready to assist you with detailed information and
                     personalized quotes.
@@ -35,11 +35,11 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <a
                     href="mailto:sales@primemarkapparel.com"
-                    className="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-900/30 hover:shadow-md transition-all group"
+                    className="flex items-start gap-4 p-4 rounded-xl bg-[#0F1623] border border-white/10 hover:border-[#C9A84C]/30 hover:shadow-md transition-all group"
                   >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center group-hover:bg-[#C9A84C]/20 transition-colors">
                       <svg
-                        className="w-6 h-6 text-blue-900"
+                        className="w-6 h-6 text-[#C9A84C]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -53,8 +53,8 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-slate-900 font-medium mb-1">Email</h3>
-                      <p className="text-slate-600 text-sm">
+                      <h3 className="text-white font-medium mb-1">Email</h3>
+                      <p className="text-slate-400 text-sm">
                         sales@primemarkapparel.com
                       </p>
                     </div>
@@ -64,11 +64,11 @@ export default function ContactPage() {
                     href="https://wa.me/13046854016"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-900/30 hover:shadow-md transition-all group"
+                    className="flex items-start gap-4 p-4 rounded-xl bg-[#0F1623] border border-white/10 hover:border-[#C9A84C]/30 hover:shadow-md transition-all group"
                   >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center group-hover:bg-[#C9A84C]/20 transition-colors">
                       <svg
-                        className="w-6 h-6 text-blue-900"
+                        className="w-6 h-6 text-[#C9A84C]"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -76,8 +76,8 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-slate-900 font-medium mb-1">WhatsApp</h3>
-                      <p className="text-slate-600 text-sm">
+                      <h3 className="text-white font-medium mb-1">WhatsApp</h3>
+                      <p className="text-slate-400 text-sm">
                         Chat with us directly
                       </p>
                     </div>
@@ -85,11 +85,11 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="p-6 rounded-xl bg-white border border-slate-200 shadow-sm">
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">
+              <div className="p-6 rounded-xl bg-[#0F1623] border border-white/10 shadow-sm">
+                <h3 className="text-xl font-semibold text-white mb-4">
                   Business Hours
                 </h3>
-                <div className="space-y-3 text-slate-600">
+                <div className="space-y-3 text-slate-400">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
                     <span>9:00 AM - 6:00 PM PKT</span>
@@ -103,7 +103,7 @@ export default function ContactPage() {
                     <span>Closed</span>
                   </div>
                 </div>
-                <div className="mt-6 pt-6 border-t border-slate-200">
+                <div className="mt-6 pt-6 border-t border-white/5">
                   <p className="text-sm text-slate-500">
                     We typically respond to inquiries within 24-48 hours during
                     business days.

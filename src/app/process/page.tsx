@@ -82,13 +82,13 @@ export default function ProcessPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 bg-[#080C14]">
         <PageHeader
           title="Our Process"
           subtitle="A streamlined process from initial inquiry to final delivery with clear timelines and communication at every step."
         />
 
-        <Section className="bg-white">
+        <Section className="bg-[#080C14]">
           <div className="max-w-4xl mx-auto space-y-12">
             {processSteps.map((step, index) => {
               const colors = colorClasses[step.color];
@@ -99,7 +99,7 @@ export default function ProcessPage() {
                 >
                   {/* Connector Line */}
                   {index < processSteps.length - 1 && (
-                    <div className="hidden md:block absolute left-6 top-20 w-0.5 h-[calc(100%+48px)] bg-slate-200" />
+                    <div className="hidden md:block absolute left-6 top-20 w-0.5 h-[calc(100%+48px)] bg-white/5" />
                   )}
 
                   <div className="flex gap-6">
@@ -120,26 +120,26 @@ export default function ProcessPage() {
                         >
                           {step.number}
                         </span>
-                        <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+                        <h2 className="text-xl sm:text-2xl font-bold text-white">
                           {step.title}
                         </h2>
                       </div>
 
-                      <p className="text-slate-600 leading-relaxed mb-6">
+                      <p className="text-slate-400 leading-relaxed mb-6">
                         {step.description}
                       </p>
 
                       <div
                         className={`p-5 rounded-xl ${colors.bg} ${colors.border} border`}
                       >
-                        <h4 className="font-semibold text-slate-900 mb-3">
+                        <h4 className="font-semibold text-white mb-3">
                           {step.listTitle}
                         </h4>
                         <ul className="space-y-2">
                           {step.listItems.map((item, itemIndex) => (
                             <li
                               key={itemIndex}
-                              className="flex items-start gap-2 text-slate-700"
+                              className="flex items-start gap-2 text-slate-400"
                             >
                               <svg
                                 className={`w-5 h-5 flex-shrink-0 mt-0.5 ${colors.text}`}
@@ -167,37 +167,7 @@ export default function ProcessPage() {
           </div>
         </Section>
 
-        {/* CTA Section */}
-        <Section className="bg-slate-50">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
-              Ready to Start?
-            </h2>
-            <p className="text-lg text-slate-600 mb-8">
-              Tell us what you need and we&apos;ll respond within 24 business
-              hours.
-            </p>
-            <Link
-              href="/rfq"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
-            >
-              Request a Quote
-              <svg
-                className="w-5 h-5 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
-          </div>
-        </Section>
+
       </main>
       <Footer />
     </>

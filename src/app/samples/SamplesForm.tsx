@@ -74,16 +74,16 @@ Sample Requirements: ${formData.sampleRequirements || "None"}`,
   };
 
   const inputClasses =
-    "w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all";
+    "w-full px-4 py-3 bg-[#080C14] border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:border-transparent transition-all";
 
-  const labelClasses = "block text-sm font-medium text-slate-700 mb-2";
+  const labelClasses = "block text-sm font-medium text-slate-300 mb-2";
 
   if (isSuccess) {
     return (
-      <div className="bg-white border border-slate-200 shadow-sm rounded-xl p-8 text-center">
-        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-blue-100 flex items-center justify-center">
+      <div className="bg-[#080C14] border border-white/10 shadow-sm rounded-xl p-8 text-center text-white">
+        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#C9A84C]/10 flex items-center justify-center">
           <svg
-            className="w-8 h-8 text-blue-900"
+            className="w-8 h-8 text-[#C9A84C]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -96,10 +96,10 @@ Sample Requirements: ${formData.sampleRequirements || "None"}`,
             />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold text-slate-900 mb-4">
+        <h3 className="text-2xl font-bold text-white mb-4">
           Sample Request Received!
         </h3>
-        <p className="text-slate-600 mb-2">
+        <p className="text-slate-400 mb-2">
           Thank you for your sample request. Our team will review your
           requirements and get back to you within 24-48 hours.
         </p>
@@ -120,7 +120,7 @@ Sample Requirements: ${formData.sampleRequirements || "None"}`,
               sampleRequirements: "",
             });
           }}
-          className="mt-6 inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
+          className="mt-6 inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-[#C9A84C] text-[#080C14] rounded-lg hover:bg-[#D4B65D] transition-colors"
         >
           Submit Another Request
         </button>
@@ -131,12 +131,12 @@ Sample Requirements: ${formData.sampleRequirements || "None"}`,
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white border border-slate-200 shadow-sm rounded-xl p-6 md:p-8"
+      className="bg-[#080C14] border border-white/10 shadow-sm rounded-xl p-6 md:p-8"
     >
       <div className="grid md:grid-cols-2 gap-6 mb-6">
         <div>
           <label htmlFor="company" className={labelClasses}>
-            Company <span className="text-blue-900">*</span>
+            Company <span className="text-[#C9A84C]">*</span>
           </label>
           <input
             type="text"
@@ -151,7 +151,7 @@ Sample Requirements: ${formData.sampleRequirements || "None"}`,
         </div>
         <div>
           <label htmlFor="contactName" className={labelClasses}>
-            Contact Name <span className="text-blue-900">*</span>
+            Contact Name <span className="text-[#C9A84C]">*</span>
           </label>
           <input
             type="text"
@@ -166,7 +166,7 @@ Sample Requirements: ${formData.sampleRequirements || "None"}`,
         </div>
         <div>
           <label htmlFor="email" className={labelClasses}>
-            Email <span className="text-blue-900">*</span>
+            Email <span className="text-[#C9A84C]">*</span>
           </label>
           <input
             type="email"
@@ -195,7 +195,7 @@ Sample Requirements: ${formData.sampleRequirements || "None"}`,
         </div>
         <div>
           <label htmlFor="productType" className={labelClasses}>
-            Product Type <span className="text-blue-900">*</span>
+            Product Type <span className="text-[#C9A84C]">*</span>
           </label>
           <select
             id="productType"
@@ -215,7 +215,7 @@ Sample Requirements: ${formData.sampleRequirements || "None"}`,
         </div>
         <div>
           <label htmlFor="quantityPlanning" className={labelClasses}>
-            Quantity Planning <span className="text-blue-900">*</span>
+            Quantity Planning <span className="text-[#C9A84C]">*</span>
           </label>
           <input
             type="text"
@@ -248,7 +248,7 @@ Sample Requirements: ${formData.sampleRequirements || "None"}`,
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-[#C9A84C] text-[#080C14] rounded-lg hover:bg-[#D4B65D] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14] disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? (
           <>

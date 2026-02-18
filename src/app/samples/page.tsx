@@ -13,9 +13,12 @@ export default function SamplesPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
-        <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-slate-900 border-b border-slate-800">
+      <main className="flex-1 bg-[#080C14]">
+        <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-[#080C14] border-b border-white/5">
           <div className="mx-auto max-w-6xl text-center">
+            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#C9A84C]/10 flex items-center justify-center">
+              {/* Icon or image can go here */}
+            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
               Request Samples
             </h1>
@@ -26,15 +29,15 @@ export default function SamplesPage() {
           </div>
         </div>
 
-        <Section className="bg-slate-50">
+        <Section className="bg-[#0F1623]">
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white border border-slate-200 shadow-sm rounded-xl p-6 md:p-8 mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <div className="bg-[#080C14] border border-white/10 shadow-sm rounded-xl p-8 text-center">
+              <h2 className="text-2xl font-bold text-white mb-4">
                 Sample Information
               </h2>
-              <div className="space-y-4 text-slate-600">
+              <div className="space-y-4 text-slate-400">
                 <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">
+                  <h3 className="font-semibold text-white mb-1">
                     Free Samples for Qualified Buyers
                   </h3>
                   <p className="text-sm">
@@ -44,7 +47,7 @@ export default function SamplesPage() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">
+                  <h3 className="font-semibold text-white mb-1">
                     Delivery Time: 7-14 Days
                   </h3>
                   <p className="text-sm">
@@ -53,7 +56,7 @@ export default function SamplesPage() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">
+                  <h3 className="font-semibold text-white mb-1">
                     What&apos;s Included
                   </h3>
                   <ul className="text-sm list-disc list-inside space-y-1">

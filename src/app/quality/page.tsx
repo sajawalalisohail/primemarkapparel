@@ -47,7 +47,7 @@ export default function QualityPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 bg-[#080C14]">
         <PageHeader
           title="Quality Standards"
           subtitle="Our commitment to quality is uncompromising. Every garment undergoes multiple quality control checkpoints."
@@ -56,13 +56,13 @@ export default function QualityPage() {
         <Quality />
 
         {/* QC Process Section */}
-        <Section className="bg-white">
+        <Section className="bg-[#080C14]">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
                 Our Quality Control Process
               </h2>
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              <p className="text-lg text-slate-400 max-w-2xl mx-auto">
                 Every order goes through five defined checkpoints. Here&apos;s
                 what happens at each stage.
               </p>
@@ -72,19 +72,19 @@ export default function QualityPage() {
               {qcSteps.map((step, index) => (
                 <div
                   key={index}
-                  className={`p-6 rounded-xl bg-white border border-slate-200 shadow-sm ${index === 4 ? "md:col-span-2 lg:col-span-1" : ""
+                  className={`p-6 rounded-xl bg-[#0F1623] border border-white/10 shadow-sm ${index === 4 ? "md:col-span-2 lg:col-span-1" : ""
                     }`}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-2xl font-bold text-blue-900">
+                    <span className="text-2xl font-bold text-[#C9A84C]">
                       {step.number}
                     </span>
-                    <div className="h-px flex-1 bg-slate-200" />
+                    <div className="h-px flex-1 bg-white/5" />
                   </div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-3">
+                  <h3 className="text-lg font-semibold text-white mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
+                  <p className="text-slate-400 text-sm leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -94,13 +94,13 @@ export default function QualityPage() {
         </Section>
 
         {/* Third-Party Inspection Callout */}
-        <Section className="bg-slate-50">
+        <Section className="bg-[#0F1623]">
           <div className="max-w-3xl mx-auto">
-            <div className="p-8 rounded-2xl bg-blue-50 border border-blue-200">
+            <div className="p-8 rounded-2xl bg-[#C9A84C]/5 border border-[#C9A84C]/20">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex-shrink-0 flex items-center justify-center">
+                <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-lg flex-shrink-0 flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-blue-900"
+                    className="w-6 h-6 text-[#C9A84C]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -114,10 +114,10 @@ export default function QualityPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  <h3 className="text-lg font-semibold text-white mb-2">
                     Third-Party Inspection
                   </h3>
-                  <p className="text-slate-700 leading-relaxed">
+                  <p className="text-slate-400 leading-relaxed">
                     We accommodate third-party inspection by agencies including
                     SGS, Bureau Veritas, and Intertek. Third-party inspection
                     costs are at buyer&apos;s expense and must be arranged at
@@ -131,48 +131,48 @@ export default function QualityPage() {
         </Section>
 
         {/* Partner Factory Standards */}
-        <Section className="bg-white">
+        <Section className="bg-[#080C14]">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                <h2 className="text-2xl font-bold text-white mb-4">
                   Partner Factory Standards
                 </h2>
-                <p className="text-slate-600 mb-6 leading-relaxed">
+                <p className="text-slate-400 mb-6 leading-relaxed">
                   We work with partner factories that maintain responsible
                   manufacturing practices. Our factory selection process
                   evaluates production capacity, quality systems, worker
                   conditions, and compliance track record.
                 </p>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-400 leading-relaxed">
                   Many of our partner facilities are working toward WRAP and
                   BSCI certification. We can provide factory audit documentation
                   upon request for qualified buyers.
                 </p>
               </div>
-              <div className="p-6 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="p-6 rounded-xl bg-[#0F1623] border border-white/10">
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200">
-                    <span className="text-sm text-slate-600">
+                  <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                    <span className="text-sm text-slate-400">
                       Factory Standards:
                     </span>
-                    <span className="text-sm font-semibold text-slate-900">
+                    <span className="text-sm font-semibold text-white">
                       Responsible Manufacturing
                     </span>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200">
-                    <span className="text-sm text-slate-600">
+                  <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                    <span className="text-sm text-slate-400">
                       Certification Path:
                     </span>
-                    <span className="text-sm font-semibold text-slate-900">
+                    <span className="text-sm font-semibold text-white">
                       WRAP & BSCI
                     </span>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200">
-                    <span className="text-sm text-slate-600">
+                  <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                    <span className="text-sm text-slate-400">
                       Quality Pass Rate:
                     </span>
-                    <span className="text-sm font-semibold text-blue-900">
+                    <span className="text-sm font-semibold text-[#C9A84C]">
                       99%+
                     </span>
                   </div>

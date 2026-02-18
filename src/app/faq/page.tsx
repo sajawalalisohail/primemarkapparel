@@ -15,29 +15,29 @@ export default function FAQPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 bg-[#080C14]">
         <PageHeader
           title="Frequently Asked Questions"
           subtitle="Everything you need to know before placing your first order."
         />
 
-        <Section className="bg-white">
+        <Section className="bg-[#080C14]">
           <div className="max-w-3xl mx-auto">
             <FAQAccordion />
           </div>
         </Section>
 
         {/* CTA Section */}
-        <Section className="bg-slate-50">
+        <Section className="bg-[#0F1623]">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-white mb-4">
               Still have questions?
             </h2>
-            <p className="text-slate-600 mb-8">
+            <p className="text-slate-400 mb-8">
               Email us at{" "}
               <a
                 href="mailto:sales@primemarkapparel.com"
-                className="text-blue-700 hover:text-blue-800 underline"
+                className="text-[#C9A84C] hover:text-[#D4B65D] underline"
               >
                 sales@primemarkapparel.com
               </a>{" "}
@@ -46,7 +46,7 @@ export default function FAQPage() {
             </p>
             <Link
               href="/rfq"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-[#C9A84C] text-[#080C14] rounded-lg hover:bg-[#D4B65D] transition-colors"
             >
               Request a Quote
               <svg
