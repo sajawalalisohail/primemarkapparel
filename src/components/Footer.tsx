@@ -130,8 +130,8 @@ export default function Footer() {
 
       {/* Main Footer */}
       <footer className="relative bg-[var(--color-bg)] overflow-hidden">
-        {/* Light mode accent gradient - Gold Tint */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#C9A84C]/10 via-transparent to-transparent opacity-100 pointer-events-none" />
+        {/* Light mode accent gradient - Gold Tint - Increased Visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#C9A84C]/20 via-[#C9A84C]/5 to-transparent opacity-100 pointer-events-none" />
         {/* Gold gradient top border */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/50 to-transparent" />
 
@@ -297,10 +297,10 @@ export default function Footer() {
                     href="https://wa.me/13046854016"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-start gap-3 font-body text-sm text-slate-400 hover:text-[#C9A84C] transition-all duration-300 group"
+                    className="inline-flex items-start gap-3 font-body text-sm text-[var(--color-text-secondary)] hover:text-[#C9A84C] transition-all duration-300 group"
                   >
                     <svg
-                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-slate-500 group-hover:text-[#C9A84C] transition-colors"
+                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-[var(--color-text-muted)] group-hover:text-[#C9A84C] transition-colors"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >

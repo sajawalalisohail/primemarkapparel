@@ -30,17 +30,17 @@ const pricingTiers = [
 
 export default function PricingGuide() {
   return (
-    <Section className="bg-[#080C14]">
+    <Section className="bg-[var(--color-bg)]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)] mb-2">
             Pricing Guide
           </h2>
-          <p className="text-slate-400 mb-2">
+          <p className="text-[var(--color-text-secondary)] mb-2">
             Pricing varies by product type, quantity, fabric, and customization. Contact us
             for detailed quotes.
           </p>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-[var(--color-text-muted)]">
             Prices shown are estimates. Final pricing depends on specifications.
           </p>
         </div>
@@ -55,21 +55,21 @@ export default function PricingGuide() {
           {pricingTiers.map((tier, index) => (
             <div
               key={index}
-              className="p-5 rounded-lg bg-[#0F1623] border border-white/10 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all"
+              className="p-5 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all"
             >
-              <h3 className="text-lg font-semibold text-white mb-2">
+              <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
                 {tier.volume}
               </h3>
               <p className="text-base font-bold text-[#C9A84C] mb-2">
                 {tier.priceRange}
               </p>
-              <p className="text-sm text-slate-400 mb-2">{tier.description}</p>
-              <p className="text-xs text-slate-500">{tier.note}</p>
+              <p className="text-sm text-[var(--color-text-secondary)] mb-2">{tier.description}</p>
+              <p className="text-xs text-[var(--color-text-muted)]">{tier.note}</p>
             </div>
           ))}
         </div>
-        <div className="bg-white/5 border border-white/10 rounded-lg p-4 mb-8">
-          <p className="text-sm text-slate-400 text-center">
+        <div className="bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-lg p-4 mb-8">
+          <p className="text-sm text-[var(--color-text-secondary)] text-center">
             <strong>Note:</strong> Prices vary by fabric, customization, MOQ, and product complexity.
             Contact us for exact quotes tailored to your requirements.
           </p>

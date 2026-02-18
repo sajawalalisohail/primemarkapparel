@@ -71,7 +71,7 @@ function IndustryCard({ industry, index, shouldReduceMotion }: IndustryCardProps
 
   return (
     <motion.div
-      className="group relative rounded-2xl bg-[#0F1623] border border-white/10 shadow-sm overflow-hidden flex flex-col"
+      className="group relative rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm overflow-hidden flex flex-col"
       initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -101,8 +101,8 @@ function IndustryCard({ industry, index, shouldReduceMotion }: IndustryCardProps
       />
 
       {/* Image */}
-      <div className="relative aspect-[4/3] bg-[#080C14] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#080C14]/80 z-10" />
+      <div className="relative aspect-[4/3] bg-[var(--color-surface-elevated)] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--color-surface)]/80 z-10" />
         <Image
           src={industry.image}
           alt={`${industry.title} industry - ${industry.description}`}
@@ -117,14 +117,14 @@ function IndustryCard({ industry, index, shouldReduceMotion }: IndustryCardProps
       <div className="p-6 flex-1 flex flex-col">
         {/* Title */}
         <h3
-          className={`font-heading text-lg text-white mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
+          className={`font-heading text-lg text-[var(--color-text-primary)] mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
             }`}
         >
           {industry.title}
         </h3>
 
         {/* Description */}
-        <p className="font-body text-sm text-slate-400 mb-3">{industry.description}</p>
+        <p className="font-body text-sm text-[var(--color-text-secondary)] mb-3">{industry.description}</p>
 
         {/* Key Specs - Gold styling */}
         <div className="flex flex-wrap gap-1.5 mb-4">
@@ -139,16 +139,16 @@ function IndustryCard({ industry, index, shouldReduceMotion }: IndustryCardProps
         </div>
 
         {/* B2B Metadata */}
-        <div className="space-y-2 pt-4 border-t border-white/10 mt-auto">
+        <div className="space-y-2 pt-4 border-t border-[var(--color-border)] mt-auto">
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-500">MOQ:</span>
-            <span className="px-2 py-0.5 bg-white/5 text-slate-300 font-medium rounded">
+            <span className="text-[var(--color-text-muted)]">MOQ:</span>
+            <span className="px-2 py-0.5 bg-[var(--color-surface-elevated)] text-[var(--color-text-secondary)] font-medium rounded">
               {industry.moq}
             </span>
           </div>
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-500">Lead Time:</span>
-            <span className="px-2 py-0.5 bg-white/5 text-slate-300 font-medium rounded">
+            <span className="text-[var(--color-text-muted)]">Lead Time:</span>
+            <span className="px-2 py-0.5 bg-[var(--color-surface-elevated)] text-[var(--color-text-secondary)] font-medium rounded">
               {industry.leadTime}
             </span>
           </div>
@@ -166,7 +166,7 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <Section id="industries" className="bg-[#080C14]">
+    <Section id="industries" className="bg-[var(--color-bg)]">
       {!hideHeader && (
         <div className="text-center mb-12">
           {/* Eyebrow */}
@@ -182,7 +182,7 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
 
           {/* Heading */}
           <motion.h2
-            className="font-display text-3xl sm:text-4xl text-white mb-4"
+            className="font-display text-3xl sm:text-4xl text-[var(--color-text-primary)] mb-4"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -193,7 +193,7 @@ export default function Industries({ hideHeader = false }: IndustriesProps) {
 
           {/* Subtitle */}
           <motion.p
-            className="font-body text-lg text-slate-400 max-w-2xl mx-auto"
+            className="font-body text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}

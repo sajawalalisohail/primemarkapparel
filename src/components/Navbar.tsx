@@ -30,11 +30,14 @@ interface NavLinkProps {
   href: string;
   label: string;
   isActive: boolean;
+  className?: string; // Default state class
+  activeClassName?: string; // Active state class
+  underlineColor?: string; // Color class for the underline
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   children?: React.ReactNode;
 }
 
-function NavLink({ href, label, isActive, onClick, children }: NavLinkProps) {
+function NavLink({ href, label, isActive, className, activeClassName, underlineColor, onClick, children }: NavLinkProps) {
   const [isHovered, setIsHovered] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
@@ -44,7 +47,9 @@ function NavLink({ href, label, isActive, onClick, children }: NavLinkProps) {
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative font-nav text-sm transition-colors duration-300 ${isActive ? "text-[#C9A84C]" : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+      className={`relative font-nav text-sm transition-colors duration-300 ${isActive
+        ? activeClassName || "text-[var(--color-text-primary)] font-semibold"
+        : className || "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
         }`}
     >
       <span className="relative">
@@ -52,7 +57,7 @@ function NavLink({ href, label, isActive, onClick, children }: NavLinkProps) {
         {children}
         {/* Animated underline */}
         <motion.span
-          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#C9A84C]"
+          className={`absolute -bottom-1 left-0 right-0 h-0.5 ${underlineColor || "bg-[var(--color-text-primary)]"}`}
           initial={false}
           animate={{
             scaleX: isActive || isHovered ? 1 : 0,
@@ -76,6 +81,17 @@ export default function Navbar() {
 
   // Scroll-driven animations
   const { scrollY } = useScroll();
+
+  // Scroll state for color change
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Transform values for smooth background transition - start after hero section (~800px)
   const bgOpacity = useTransform(scrollY, [700, 850], [0, 0.9]);
@@ -152,6 +168,11 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-10 lg:gap-12">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
+              const isHeroVisible = !isScrolled && pathname === "/";
+
+              const linkColorClass = isHeroVisible ? "text-white/90 hover:text-white" : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]";
+              const activeColorClass = isHeroVisible ? "text-white font-semibold" : "text-[var(--color-text-primary)] font-semibold";
+              const underlineClass = isHeroVisible ? "bg-white" : "bg-[var(--color-text-primary)]";
 
               // Special handling for Products dropdown
               if (link.href === "/products") {
@@ -173,14 +194,14 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       className={`inline-flex items-center gap-1 font-nav text-sm transition-all duration-300 ${isActive || isProductsHovered
-                        ? "text-[#C9A84C]"
-                        : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                        ? activeColorClass
+                        : linkColorClass
                         }`}
                     >
                       <span className="relative">
                         {link.label}
                         <motion.span
-                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#C9A84C]"
+                          className={`absolute -bottom-1 left-0 right-0 h-0.5 ${underlineClass}`}
                           initial={false}
                           animate={{
                             scaleX: isActive || isProductsHovered ? 1 : 0,
@@ -224,7 +245,7 @@ export default function Navbar() {
                       onMouseEnter={() => setIsProductsHovered(true)}
                       onMouseLeave={() => setIsProductsHovered(false)}
                     >
-                      <div className="bg-[#0F1623]/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-xl shadow-black/30 overflow-hidden">
+                      <div className="bg-[var(--color-surface)]/95 backdrop-blur-xl border border-[var(--color-border)] rounded-xl shadow-xl shadow-black/10 dark:shadow-black/30 overflow-hidden">
                         <div className="py-2">
                           {productCategories.map((category, index) => (
                             <motion.div
@@ -242,7 +263,7 @@ export default function Navbar() {
                             >
                               <Link
                                 href={category.href}
-                                className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors duration-200 focus:outline-none focus-visible:bg-white/5 focus-visible:text-white"
+                                className="block px-4 py-2.5 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-elevated)] transition-colors duration-200 focus:outline-none focus-visible:bg-[var(--color-surface-elevated)] focus-visible:text-[var(--color-text-primary)]"
                                 role="menuitem"
                                 tabIndex={isProductsHovered ? 0 : -1}
                               >
@@ -253,7 +274,7 @@ export default function Navbar() {
                           <div className="border-t border-white/10 my-1" />
                           <Link
                             href="/products"
-                            className="block px-4 py-2.5 text-sm font-medium text-[#C9A84C] hover:text-[#D4B65D] hover:bg-white/5 transition-colors duration-200 focus:outline-none focus-visible:bg-white/5"
+                            className="block px-4 py-2.5 text-sm font-medium text-[var(--color-text-primary)] hover:text-[#C9A84C] hover:bg-white/5 transition-colors duration-200 focus:outline-none focus-visible:bg-white/5"
                             role="menuitem"
                             tabIndex={isProductsHovered ? 0 : -1}
                           >
@@ -273,6 +294,9 @@ export default function Navbar() {
                   href={link.href}
                   label={link.label}
                   isActive={isActive}
+                  className={linkColorClass}
+                  activeClassName={activeColorClass}
+                  underlineColor={underlineClass}
                   onClick={link.href === "/" ? handleHomeClick : undefined}
                 />
               );

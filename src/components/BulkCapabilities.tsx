@@ -129,9 +129,9 @@ const capabilities = [
 
 export default function BulkCapabilities() {
   return (
-    <Section id="capabilities" className="bg-[#0F1623]">
+    <Section id="capabilities" className="bg-[var(--color-bg)]">
       <div className="text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
           Bulk Capabilities
         </h2>
       </div>
@@ -139,22 +139,15 @@ export default function BulkCapabilities() {
         {capabilities.map((capability, index) => (
           <div
             key={index}
-            className="group p-6 rounded-xl bg-[#080C14] border border-white/10 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300"
+            className="group p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300"
           >
             <div className="mb-4 p-3 inline-block rounded-lg bg-[#C9A84C]/10 text-[#C9A84C] group-hover:bg-[#C9A84C]/20 transition-colors">
-              {/* Reusing existing icon but forcing color via CSS class parent or we can use cloneElement if needed, but icon has className text-blue-900. I need to update the capabilities array up top for icons or Replace them. */}
-              {/* Since I can't easily replace the `const capabilities` array without a massive block, I'll rely on CSS cascade or replace the array too? */}
-              {/* Re-rendering icons: The icons in the array have className="text-blue-900". This will conflict. */}
-              {/* I MUST update the `capabilities` array at the top of the file to fix icon colors. */}
-              {/* I will scope this replacement to the component first, and then do another replacement for the array if needed. */}
-              {/* Better: I will use a class to force color override: text-[#C9A84C] !important? No. */}
-              {/* I will replace the array separately. */}
               {capability.icon}
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
+            <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-2">
               {capability.title}
             </h3>
-            <p className="text-slate-400">{capability.description}</p>
+            <p className="text-[var(--color-text-secondary)]">{capability.description}</p>
           </div>
         ))}
       </div>

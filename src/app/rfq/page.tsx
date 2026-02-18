@@ -12,7 +12,7 @@ export default function RFQPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 bg-[#080C14]">
+      <main className="flex-1 bg-[var(--color-bg)]">
         <PageHeader
           title="Request a Quote"
           subtitle="Fill out the form below and we'll get back to you with a detailed quote."

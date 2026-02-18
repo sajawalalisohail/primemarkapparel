@@ -165,12 +165,14 @@
   /* Font family */
   --font-montserrat: 'Montserrat', system-ui, -apple-system, sans-serif;
 
-  /* Light Theme (Default) - Premium Off-White */
-  --color-bg: #FCFCFD;
-  --color-bg-rgb: 252, 252, 253;
-  --color-surface: #FFFFFF;
-  --color-surface-rgb: 255, 255, 255;
-  --color-surface-elevated: #F8FAFC;
+  /* Light Theme (Default) - High Contrast Banding */
+  --color-bg: #FFFFFF;
+  --color-bg-rgb: 255, 255, 255;
+  --color-surface: #FAFAFA;
+  /* Neutral 50 - Subtle/Warm-neutral for banding */
+  --color-surface-rgb: 250, 250, 250;
+  --color-surface-elevated: #F3F4F6;
+  /* Gray 100 */
   --color-border: rgba(15, 23, 42, 0.08);
   --color-border-rgb: 15, 23, 42;
   --color-border-subtle: rgba(15, 23, 42, 0.04);
@@ -194,7 +196,8 @@
   --color-bg-rgb: 8, 12, 20;
   --color-surface: #0F1623;
   --color-surface-rgb: 15, 22, 35;
-  --color-surface-elevated: #151D2E;
+  --color-surface-elevated: #0F1623;
+  /* Matching Final CTA */
   --color-border: rgba(255, 255, 255, 0.07);
   --color-border-rgb: 255, 255, 255;
   --color-border-subtle: rgba(255, 255, 255, 0.03);

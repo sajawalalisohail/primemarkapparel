@@ -36,14 +36,14 @@ const samples = [
 
 export default function AvailableSamples() {
   return (
-    <Section className="bg-[#080C14]">
+    <Section className="bg-[var(--color-surface)]">
       {/* Header Row */}
       <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-2">
             Available Samples
           </h2>
-          <p className="text-lg text-slate-400">
+          <p className="text-lg text-[var(--color-text-secondary)]">
             Available samples for review. Full bulk production available across core
             categories.
           </p>
@@ -55,7 +55,7 @@ export default function AvailableSamples() {
           >
             Request a Quote
           </Link>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-[var(--color-text-muted)]">
             Typical MOQ: 200-300 units / Lead time: 2-4 weeks
           </p>
         </div>
@@ -66,12 +66,12 @@ export default function AvailableSamples() {
         {samples.map((sample, index) => (
           <div
             key={index}
-            className="group rounded-xl bg-[#0F1623] border border-white/10 shadow-sm hover:shadow-md hover:border-[#C9A84C]/50 transition-all duration-300 overflow-hidden"
+            className="group rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-sm hover:shadow-md hover:border-[#C9A84C]/50 transition-all duration-300 overflow-hidden"
           >
             {/* Media Area */}
-            <div className="aspect-video bg-[#080C14] border-b border-white/10 flex items-center justify-center">
+            <div className="aspect-video bg-[var(--color-surface-elevated)] border-b border-[var(--color-border)] flex items-center justify-center">
               <svg
-                className="w-10 h-10 text-slate-500 group-hover:text-[#C9A84C] transition-colors"
+                className="w-10 h-10 text-[var(--color-text-muted)] group-hover:text-[#C9A84C] transition-colors"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -88,18 +88,18 @@ export default function AvailableSamples() {
             {/* Content */}
             <div className="p-4 space-y-3">
               <div>
-                <h3 className="text-lg font-semibold text-white mb-1">
+                <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-1">
                   {sample.title}
                 </h3>
-                <p className="text-sm text-slate-400">{sample.spec}</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">{sample.spec}</p>
               </div>
 
               {/* Badges */}
               <div className="flex flex-wrap gap-2">
-                <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-white/5 text-slate-300 border border-white/10">
+                <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-[var(--color-surface-elevated)] text-[var(--color-text-secondary)] border border-[var(--color-border)]">
                   MOQ: {sample.moq}
                 </span>
-                <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-white/5 text-slate-300 border border-white/10">
+                <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-[var(--color-surface-elevated)] text-[var(--color-text-secondary)] border border-[var(--color-border)]">
                   {sample.customization}
                 </span>
               </div>

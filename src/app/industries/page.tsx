@@ -13,7 +13,7 @@ export default function IndustriesPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 bg-[#080C14]">
+      <main className="flex-1 bg-[var(--color-bg)]">
         <PageHeader
           title="Industries"
           subtitle="Trusted by businesses across diverse sectors for reliable bulk apparel supply."

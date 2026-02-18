@@ -74,13 +74,13 @@ interface ServicesProps {
 export default function Services({ hideHeader = false }: ServicesProps) {
   return (
     <>
-      <Section className="bg-[#080C14]">
+      <Section className="bg-[var(--color-bg)]">
         {!hideHeader && (
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
               Our Services
             </h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
               End-to-end manufacturing services from pre-production to delivery.
             </p>
           </div>
@@ -96,10 +96,10 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                   {phase.phaseNumber}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">
+                  <h3 className="text-2xl font-bold text-[var(--color-text-primary)]">
                     {phase.phase}
                   </h3>
-                  <div className="h-px bg-white/10 mt-2 max-w-md" />
+                  <div className="h-px bg-[var(--color-border)] mt-2 max-w-md" />
                 </div>
               </div>
 
@@ -108,12 +108,12 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                 {phase.services.map((service, serviceIndex) => (
                   <div
                     key={serviceIndex}
-                    className="bg-[#0F1623] border border-white/10 rounded-lg p-6 flex flex-col hover:border-[#C9A84C]/50 hover:shadow-md transition-all duration-200"
+                    className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-6 flex flex-col hover:border-[#C9A84C]/50 hover:shadow-md transition-all duration-200"
                   >
-                    <h4 className="text-lg font-semibold text-white mb-3">
+                    <h4 className="text-lg font-semibold text-[var(--color-text-primary)] mb-3">
                       {service.title}
                     </h4>
-                    <p className="text-sm text-slate-400 mb-4 leading-relaxed flex-1">
+                    <p className="text-sm text-[var(--color-text-secondary)] mb-4 leading-relaxed flex-1">
                       {service.description}
                     </p>
 
@@ -122,7 +122,7 @@ export default function Services({ hideHeader = false }: ServicesProps) {
                       {service.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="inline-flex items-center px-2.5 py-1 rounded text-xs font-medium bg-white/5 text-slate-300 border border-white/10"
+                          className="inline-flex items-center px-2.5 py-1 rounded text-xs font-medium bg-[var(--color-surface-elevated)] text-[var(--color-text-secondary)] border border-[var(--color-border)]"
                         >
                           {tag}
                         </span>

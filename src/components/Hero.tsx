@@ -142,7 +142,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(var(--color-bg-rgb), 0.1) 0%, rgba(var(--color-bg-rgb), 0.05) 30%, transparent 100%)",
+              "linear-gradient(to right, rgba(15, 22, 35, 0.9) 0%, rgba(15, 22, 35, 0.8) 40%, rgba(15, 22, 35, 0.4) 100%)",
           }}
         />
 
@@ -173,7 +173,7 @@ export default function Hero() {
               </motion.div>
 
               {/* H1 with staggered lines */}
-              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl text-[var(--color-text-primary)] leading-tight">
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
                 <motion.span className="block" {...fadeInUp(0.15)}>
                   Premium bulk apparel
                 </motion.span>
@@ -187,7 +187,7 @@ export default function Hero() {
 
               {/* Sub-copy - delay 0.6s */}
               <motion.p
-                className="font-body text-lg sm:text-xl text-[var(--color-text-secondary)] max-w-xl leading-relaxed"
+                className="font-body text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed"
                 {...fadeInUp(0.6)}
               >
                 Custom Apparel, uniforms, Industrial Workwear and Denim. Top-tier
@@ -208,7 +208,7 @@ export default function Hero() {
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
-                    className="group relative flex flex-col items-center justify-center p-5 bg-[var(--color-surface)]/50 backdrop-blur-sm rounded-xl cursor-default overflow-hidden border border-[var(--color-border)] transition-all duration-300"
+                    className="group relative flex flex-col items-center justify-center p-5 bg-[var(--color-surface)]/10 backdrop-blur-sm rounded-xl cursor-default overflow-hidden border border-white/10 transition-all duration-300"
                     {...fadeInUp(0.8 + index * 0.1)}
                     whileHover={
                       shouldReduceMotion
@@ -229,12 +229,12 @@ export default function Hero() {
                     </div>
 
                     {/* Number - Montserrat Black */}
-                    <div className="font-stat text-xl sm:text-2xl text-[var(--color-text-primary)] text-center mb-1 leading-tight">
+                    <div className="font-stat text-xl sm:text-2xl text-white text-center mb-1 leading-tight">
                       {stat.label}
                     </div>
 
                     {/* Description */}
-                    <div className="text-xs text-[var(--color-text-muted)] text-center leading-tight uppercase tracking-wider">
+                    <div className="text-xs text-slate-400 text-center leading-tight uppercase tracking-wider">
                       {stat.description}
                     </div>
                   </motion.div>
@@ -336,9 +336,9 @@ export default function Hero() {
             {/* Duplicate items for seamless loop - 4x for safety on wide screens */}
             {[...trustItems, ...trustItems, ...trustItems, ...trustItems].map((item, index) => (
               <div key={index} className="flex items-center mx-6 sm:mx-8">
-                {/* Gold bullet separator */}
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mr-6 sm:mr-8" />
-                <div className="text-[#C9A84C] mr-3">{item.icon}</div>
+                {/* Bullet separator - Dark/Muted in light mode, Gold in dark mode */}
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-text-secondary)] dark:bg-[#C9A84C] mr-6 sm:mr-8" />
+                <div className="text-[var(--color-text-primary)] dark:text-[#C9A84C] mr-3">{item.icon}</div>
                 <span className="text-sm font-medium text-[var(--color-text-secondary)]">
                   {item.label}
                 </span>

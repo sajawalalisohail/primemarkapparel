@@ -13,7 +13,7 @@ export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 bg-[#080C14]">
+      <main className="flex-1 bg-[var(--color-bg)]">
         <PageHeader
           title="Services"
           subtitle="End-to-end manufacturing services from sampling to bulk production"

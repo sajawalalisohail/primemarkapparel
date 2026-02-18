@@ -76,17 +76,17 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 bg-[#080C14]">
+      <main className="flex-1 bg-[var(--color-bg)]">
         <PageHeader
           title="About PrimeMark Apparel"
           subtitle="A sourcing and manufacturing partner built for mid-market buyers."
         />
 
         {/* Section 1: Hero/Intro */}
-        <Section className="bg-[#080C14]">
+        <Section className="bg-[var(--color-bg)]">
           <div className="max-w-4xl mx-auto">
             <div className="prose max-w-none">
-              <p className="text-lg text-slate-400 leading-relaxed mb-6">
+              <p className="text-lg text-[var(--color-text-secondary)] leading-relaxed mb-6">
                 PrimeMark Apparel connects procurement teams, brand buyers, and
                 uniform suppliers with vetted, established manufacturing
                 facilities in Pakistan — one of the world&apos;s leading textile
@@ -110,24 +110,24 @@ export default function AboutPage() {
         </Section>
 
         {/* Section 2: How We Work */}
-        <Section className="bg-[#0F1623]">
+        <Section className="bg-[var(--color-surface)]">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-10 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)] mb-10 text-center">
               How We Work
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               {howWeWork.map((item, index) => (
                 <div
                   key={index}
-                  className="p-6 rounded-xl bg-[#080C14] border border-white/10 shadow-sm hover:border-[#C9A84C]/50 transition-colors duration-300"
+                  className="p-6 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-sm hover:border-[#C9A84C]/50 transition-colors duration-300"
                 >
                   <div className="w-14 h-14 bg-[#C9A84C]/10 rounded-lg flex items-center justify-center text-[#C9A84C] mb-4">
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">
+                  <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-slate-400 leading-relaxed">
+                  <p className="text-[var(--color-text-secondary)] leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -137,7 +137,7 @@ export default function AboutPage() {
         </Section>
 
         {/* Section 3: Why Pakistan Manufacturing */}
-        <Section className="bg-[#080C14]">
+        <Section className="bg-[var(--color-bg)]">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
               Why Pakistan Manufacturing
@@ -155,46 +155,46 @@ export default function AboutPage() {
         </Section>
 
         {/* Section 4: Stats */}
-        <Section className="bg-[#0F1623]">
+        <Section className="bg-[var(--color-surface)]">
           <div className="max-w-4xl mx-auto">
             <div className="grid sm:grid-cols-3 gap-6">
-              <div className="p-6 rounded-xl bg-[#080C14] border border-white/10 shadow-sm text-center">
+              <div className="p-6 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-sm text-center">
                 <p className="text-3xl font-bold text-[#C9A84C] mb-2">20+</p>
-                <p className="text-slate-400">Years of Team Experience</p>
+                <p className="text-[var(--color-text-secondary)]">Years of Team Experience</p>
               </div>
-              <div className="p-6 rounded-xl bg-[#080C14] border border-white/10 shadow-sm text-center">
+              <div className="p-6 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-sm text-center">
                 <p className="text-3xl font-bold text-[#C9A84C] mb-2">
                   500–10,000+
                 </p>
-                <p className="text-slate-400">Units Per Order</p>
+                <p className="text-[var(--color-text-secondary)]">Units Per Order</p>
               </div>
-              <div className="p-6 rounded-xl bg-[#080C14] border border-white/10 shadow-sm text-center">
+              <div className="p-6 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-sm text-center">
                 <p className="text-3xl font-bold text-[#C9A84C] mb-2">
                   4–8 Weeks
                 </p>
-                <p className="text-slate-400">Typical Lead Time</p>
+                <p className="text-[var(--color-text-secondary)]">Typical Lead Time</p>
               </div>
             </div>
           </div>
         </Section>
 
         {/* Section 5: Team Placeholder */}
-        <Section className="bg-[#080C14]">
+        <Section className="bg-[var(--color-bg)]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)] mb-4 text-center">
               Our Team
             </h2>
-            <p className="text-lg text-slate-400 text-center mb-10">
+            <p className="text-lg text-[var(--color-text-secondary)] text-center mb-10">
               Our founding team has deep roots in apparel manufacturing, export
               logistics, and B2B supply chain operations.
             </p>
 
             <div className="flex justify-center">
               {/* TODO: Replace with real photo and bio */}
-              <div className="w-64 p-6 rounded-xl bg-[#0F1623] border border-white/10 shadow-sm text-center">
-                <div className="w-24 h-24 bg-white/5 rounded-full mx-auto mb-4 flex items-center justify-center">
+              <div className="w-64 p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm text-center">
+                <div className="w-24 h-24 bg-[var(--color-surface-elevated)] rounded-full mx-auto mb-4 flex items-center justify-center">
                   <svg
-                    className="w-12 h-12 text-slate-500"
+                    className="w-12 h-12 text-[var(--color-text-muted)]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -207,10 +207,10 @@ export default function AboutPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-1">
+                <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-1">
                   [Founder Name]
                 </h3>
-                <p className="text-sm text-slate-400">
+                <p className="text-sm text-[var(--color-text-secondary)]">
                   Founder & Managing Director
                 </p>
               </div>
