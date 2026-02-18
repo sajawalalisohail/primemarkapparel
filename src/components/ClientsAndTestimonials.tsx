@@ -167,7 +167,7 @@ export default function ClientsAndTestimonials() {
   };
 
   return (
-    <Section className="bg-[#0F1623]" animate={false}>
+    <Section className="bg-[var(--color-surface-elevated)]" animate={false}>
       <div>
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -184,7 +184,7 @@ export default function ClientsAndTestimonials() {
 
           {/* Heading */}
           <motion.h2
-            className="font-display text-3xl sm:text-4xl text-white mb-4"
+            className="font-display text-3xl sm:text-4xl text-[var(--color-text-primary)] mb-4"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -195,7 +195,7 @@ export default function ClientsAndTestimonials() {
 
           {/* Subtitle */}
           <motion.p
-            className="font-body text-lg text-slate-400 max-w-2xl mx-auto"
+            className="font-body text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -208,15 +208,15 @@ export default function ClientsAndTestimonials() {
 
         {/* Client Logos Running Bar */}
         <motion.div
-          className="relative w-full bg-[#080C14] border-y border-white/10 overflow-hidden rounded-xl mb-12"
+          className="relative w-full bg-[var(--color-bg)] border-y border-[var(--color-border)] overflow-hidden rounded-xl mb-12"
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.3, ease: premiumEase }}
         >
           {/* Gradient fade on edges - darker */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#080C14] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#080C14] to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
 
           <div className="py-8 sm:py-10">
             <div className="relative w-full overflow-hidden">
@@ -238,7 +238,7 @@ export default function ClientsAndTestimonials() {
                     key={`first-${index}`}
                     className="flex-shrink-0 w-40 sm:w-48 lg:w-56 group"
                   >
-                    <div className="relative w-full flex flex-col items-center justify-center p-4 bg-[#0F1623] rounded-lg border border-white/10 shadow-sm transition-all duration-300 hover:border-[#C9A84C]/30 hover:shadow-md">
+                    <div className="relative w-full flex flex-col items-center justify-center p-4 bg-[var(--color-surface)] rounded-lg border border-[var(--color-border)] shadow-sm transition-all duration-300 hover:border-[#C9A84C]/30 hover:shadow-md">
                       <Image
                         src={client.logoPath}
                         alt={`${client.name} logo`}
@@ -249,10 +249,10 @@ export default function ClientsAndTestimonials() {
                         loading="lazy"
                       />
                       <div className="text-center mt-2">
-                        <p className="text-xs font-medium text-white mb-0.5 group-hover:text-[#C9A84C] transition-colors duration-300">
+                        <p className="text-xs font-medium text-[var(--color-text-primary)] mb-0.5 group-hover:text-[#C9A84C] transition-colors duration-300">
                           {client.name}
                         </p>
-                        <p className="text-[10px] text-slate-400">
+                        <p className="text-[10px] text-[var(--color-text-muted)]">
                           {client.industry}
                         </p>
                       </div>
@@ -277,7 +277,7 @@ export default function ClientsAndTestimonials() {
                         loading="lazy"
                       />
                       <div className="text-center mt-2">
-                        <p className="text-xs font-medium text-white mb-0.5 group-hover:text-[#C9A84C] transition-colors duration-300">
+                        <p className="text-xs font-medium text-[var(--color-text-primary)] mb-0.5 group-hover:text-[#C9A84C] transition-colors duration-300">
                           {client.name}
                         </p>
                         <p className="text-[10px] text-slate-400">
@@ -300,11 +300,11 @@ export default function ClientsAndTestimonials() {
               <button
                 onClick={goToPrevious}
                 disabled={currentIndex === 0}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 lg:-translate-x-8 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#080C14] border border-white/10 shadow-md flex items-center justify-center group transition-all duration-300 ease-out hover:bg-[#C9A84C]/10 hover:border-[#C9A84C]/30 hover:shadow-lg hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-[#080C14] disabled:hover:border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 lg:-translate-x-8 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md flex items-center justify-center group transition-all duration-300 ease-out hover:bg-[#C9A84C]/10 hover:border-[#C9A84C]/30 hover:shadow-lg hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-[var(--color-surface)] disabled:hover:border-[var(--color-border)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]"
                 aria-label="Previous testimonial"
               >
                 <svg
-                  className="w-5 h-5 lg:w-6 lg:h-6 text-slate-400 transition-all duration-300 group-hover:text-[#C9A84C] group-hover:-translate-x-0.5"
+                  className="w-5 h-5 lg:w-6 lg:h-6 text-[var(--color-text-muted)] transition-all duration-300 group-hover:text-[#C9A84C] group-hover:-translate-x-0.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -320,11 +320,11 @@ export default function ClientsAndTestimonials() {
               <button
                 onClick={goToNext}
                 disabled={currentIndex >= maxIndex}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 lg:translate-x-8 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#080C14] border border-white/10 shadow-md flex items-center justify-center group transition-all duration-300 ease-out hover:bg-[#C9A84C]/10 hover:border-[#C9A84C]/30 hover:shadow-lg hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-[#080C14] disabled:hover:border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 lg:translate-x-8 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md flex items-center justify-center group transition-all duration-300 ease-out hover:bg-[#C9A84C]/10 hover:border-[#C9A84C]/30 hover:shadow-lg hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-[var(--color-surface)] disabled:hover:border-[var(--color-border)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]"
                 aria-label="Next testimonial"
               >
                 <svg
-                  className="w-5 h-5 lg:w-6 lg:h-6 text-slate-400 transition-all duration-300 group-hover:text-[#C9A84C] group-hover:translate-x-0.5"
+                  className="w-5 h-5 lg:w-6 lg:h-6 text-[var(--color-text-muted)] transition-all duration-300 group-hover:text-[#C9A84C] group-hover:translate-x-0.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -357,7 +357,7 @@ export default function ClientsAndTestimonials() {
                   className="shrink-0 px-3"
                   style={{ width: `${100 / itemsPerView}%` }}
                 >
-                  <div className="group relative p-8 rounded-xl bg-[#0F1623] border border-white/10 shadow-sm h-full flex flex-col transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 hover:border-[#C9A84C]/20">
+                  <div className="group relative p-8 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm h-full flex flex-col transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 hover:border-[#C9A84C]/20">
                     {/* Large decorative quotation mark */}
                     <div
                       className="absolute top-4 right-4 font-display-black text-8xl text-[#C9A84C]/[0.08] leading-none pointer-events-none select-none"
@@ -376,13 +376,13 @@ export default function ClientsAndTestimonials() {
                     </svg>
 
                     {/* Quote text */}
-                    <p className="font-body text-base sm:text-lg text-slate-300 mb-6 leading-relaxed flex-1 relative z-10">
+                    <p className="font-body text-base sm:text-lg text-[var(--color-text-secondary)] mb-6 leading-relaxed flex-1 relative z-10">
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>
 
                     {/* Author info */}
-                    <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                      <div className="w-12 h-12 rounded-lg bg-white/95 border border-white/10 flex items-center justify-center shrink-0 p-2 transition-all duration-300 group-hover:border-[#C9A84C]/30 group-hover:shadow-sm">
+                    <div className="flex items-center gap-3 pt-4 border-t border-[var(--color-border)]">
+                      <div className="w-12 h-12 rounded-lg bg-[var(--color-surface-elevated)] border border-[var(--color-border)] flex items-center justify-center shrink-0 p-2 transition-all duration-300 group-hover:border-[#C9A84C]/30 group-hover:shadow-sm">
                         <Image
                           src={testimonial.logoPath}
                           alt={`${testimonial.company} logo`}
@@ -399,10 +399,10 @@ export default function ClientsAndTestimonials() {
                           {testimonial.name}
                         </p>
                         {/* Role in muted slate */}
-                        <p className="text-slate-400 text-xs font-medium">
+                        <p className="text-[var(--color-text-muted)] text-xs font-medium">
                           {testimonial.title}
                         </p>
-                        <p className="text-slate-400 text-xs font-medium mt-0.5">
+                        <p className="text-[var(--color-text-muted)] text-xs font-medium mt-0.5">
                           {testimonial.company}
                           {testimonial.location && ` • ${testimonial.location}`}
                         </p>

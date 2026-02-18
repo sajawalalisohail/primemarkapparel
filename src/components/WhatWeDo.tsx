@@ -53,7 +53,7 @@ function ServiceCard({ service, index, shouldReduceMotion }: ServiceCardProps) {
 
   return (
     <motion.div
-      className="group relative p-6 rounded-xl bg-[#0F1623] border border-white/10 shadow-sm overflow-hidden"
+      className="group relative p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm overflow-hidden"
       initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -87,7 +87,7 @@ function ServiceCard({ service, index, shouldReduceMotion }: ServiceCardProps) {
       <div
         className={`mb-4 p-3 inline-block rounded-lg transition-all duration-300 ${isHovered
           ? "bg-[#C9A84C]/10 text-[#C9A84C]"
-          : "bg-white/5 text-slate-300"
+          : "bg-[var(--color-surface-elevated)] text-[var(--color-text-muted)]"
           }`}
       >
         {service.icon}
@@ -95,14 +95,14 @@ function ServiceCard({ service, index, shouldReduceMotion }: ServiceCardProps) {
 
       {/* Title */}
       <h3
-        className={`font-heading text-xl text-white mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
+        className={`font-heading text-xl text-[var(--color-text-primary)] mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
           }`}
       >
         {service.title}
       </h3>
 
       {/* Description */}
-      <p className="font-body text-slate-400 leading-relaxed">
+      <p className="font-body text-[var(--color-text-secondary)] leading-relaxed">
         {service.description}
       </p>
     </motion.div>
@@ -113,7 +113,7 @@ export default function WhatWeDo() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <Section className="bg-[#080C14]">
+    <Section className="bg-[var(--color-bg)]">
       <div>
         {/* Header */}
         <div className="text-center mb-12">
@@ -130,7 +130,7 @@ export default function WhatWeDo() {
 
           {/* Heading */}
           <motion.h2
-            className="font-display text-3xl sm:text-4xl text-white mb-4"
+            className="font-display text-3xl sm:text-4xl text-[var(--color-text-primary)] mb-4"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -141,7 +141,7 @@ export default function WhatWeDo() {
 
           {/* Subtitle */}
           <motion.p
-            className="font-body text-lg text-slate-400 max-w-2xl mx-auto"
+            className="font-body text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}

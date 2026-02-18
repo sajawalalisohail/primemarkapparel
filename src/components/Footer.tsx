@@ -47,7 +47,7 @@ export default function Footer() {
     <>
 
       {/* Pre-Footer CTA Band */}
-      <section className="relative bg-[#0F1623] py-16 sm:py-20 overflow-hidden z-10">
+      <section className="relative bg-[var(--color-surface)] py-16 sm:py-20 overflow-hidden z-10">
         {/* Decorative background elements */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Gold gradient orb */}
@@ -76,7 +76,7 @@ export default function Footer() {
 
           {/* Headline */}
           <motion.h2
-            className="font-display text-3xl sm:text-4xl lg:text-5xl text-white mb-4"
+            className="font-display text-3xl sm:text-4xl lg:text-5xl text-[var(--color-text-primary)] mb-4"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -87,7 +87,7 @@ export default function Footer() {
 
           {/* Subtext */}
           <motion.p
-            className="font-body text-lg text-slate-400 mb-8 max-w-xl mx-auto"
+            className="font-body text-lg text-[var(--color-text-secondary)] mb-8 max-w-xl mx-auto"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -129,7 +129,9 @@ export default function Footer() {
       </section>
 
       {/* Main Footer */}
-      <footer className="relative bg-[#080C14] overflow-hidden">
+      <footer className="relative bg-[var(--color-bg)] overflow-hidden">
+        {/* Light mode accent gradient - Gold Tint */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#C9A84C]/10 via-transparent to-transparent opacity-100 pointer-events-none" />
         {/* Gold gradient top border */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/50 to-transparent" />
 
@@ -148,21 +150,30 @@ export default function Footer() {
               transition={{ duration: 0.6, ease: premiumEase }}
             >
               <Link href="/" className="inline-block mb-6">
+                {/* Light Mode Logo */}
+                <Image
+                  src="/logo/newlogod.svg"
+                  alt="PrimeMark Apparel"
+                  width={200}
+                  height={50}
+                  className="h-16 w-auto dark:hidden"
+                />
+                {/* Dark Mode Logo */}
                 <Image
                   src="/logo/newlogo.svg"
                   alt="PrimeMark Apparel"
                   width={200}
                   height={50}
-                  className="h-16 w-auto"
+                  className="h-16 w-auto hidden dark:block"
                 />
               </Link>
-              <p className="font-body text-sm text-slate-400 mb-6 leading-relaxed">
+              <p className="font-body text-sm text-[var(--color-text-secondary)] mb-6 leading-relaxed">
                 Premium bulk apparel manufacturing from Pakistan. Uniforms,
                 scrubs, workwear, and custom apparel at scale.
               </p>
               {/* Social Media */}
               <div>
-                <h4 className="font-heading text-sm text-white mb-4">
+                <h4 className="font-heading text-sm text-[var(--color-text-primary)] mb-4">
                   Follow Us
                 </h4>
                 <div className="flex flex-wrap gap-3">
@@ -172,7 +183,7 @@ export default function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full border border-white/10 bg-white/5 text-slate-400 flex items-center justify-center transition-all duration-300 hover:border-[#C9A84C] hover:bg-[#C9A84C]/10 hover:text-[#C9A84C] focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
+                      className="w-10 h-10 rounded-full border border-[var(--color-border)] bg-[var(--color-surface-elevated)] text-[var(--color-text-secondary)] flex items-center justify-center transition-all duration-300 hover:border-[#C9A84C] hover:bg-[#C9A84C]/10 hover:text-[#C9A84C] focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[var(--color-bg)]"
                       aria-label={social.name}
                       whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
@@ -199,7 +210,7 @@ export default function Footer() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.1, ease: premiumEase }}
             >
-              <h4 className="font-heading text-sm text-white mb-5">
+              <h4 className="font-heading text-sm text-[var(--color-text-primary)] mb-5">
                 Products & Services
               </h4>
               <ul className="space-y-3">
@@ -213,7 +224,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="group inline-flex items-center gap-1 font-body text-sm text-slate-400 hover:text-[#C9A84C] transition-all duration-300"
+                      className="group inline-flex items-center gap-1 font-body text-sm text-[var(--color-text-secondary)] hover:text-[#C9A84C] transition-all duration-300"
                     >
                       <span className="w-0 h-px bg-[#C9A84C] transition-all duration-300 group-hover:w-2" />
                       <span>{link.label}</span>
@@ -230,7 +241,7 @@ export default function Footer() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.2, ease: premiumEase }}
             >
-              <h4 className="font-heading text-sm text-white mb-5">Company</h4>
+              <h4 className="font-heading text-sm text-[var(--color-text-primary)] mb-5">Company</h4>
               <ul className="space-y-3">
                 {[
                   { href: "/about", label: "About Us" },
@@ -241,7 +252,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="group inline-flex items-center gap-1 font-body text-sm text-slate-400 hover:text-[#C9A84C] transition-all duration-300"
+                      className="group inline-flex items-center gap-1 font-body text-sm text-[var(--color-text-secondary)] hover:text-[#C9A84C] transition-all duration-300"
                     >
                       <span className="w-0 h-px bg-[#C9A84C] transition-all duration-300 group-hover:w-2" />
                       <span>{link.label}</span>
@@ -258,15 +269,15 @@ export default function Footer() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.3, ease: premiumEase }}
             >
-              <h4 className="font-heading text-sm text-white mb-5">Contact</h4>
+              <h4 className="font-heading text-sm text-[var(--color-text-primary)] mb-5">Contact</h4>
               <ul className="space-y-4">
                 <li>
                   <a
                     href="mailto:sales@primemarkapparel.com"
-                    className="inline-flex items-start gap-3 font-body text-sm text-slate-400 hover:text-[#C9A84C] transition-all duration-300 group"
+                    className="inline-flex items-start gap-3 font-body text-sm text-[var(--color-text-secondary)] hover:text-[#C9A84C] transition-all duration-300 group"
                   >
                     <svg
-                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-slate-500 group-hover:text-[#C9A84C] transition-colors"
+                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-[var(--color-text-muted)] group-hover:text-[#C9A84C] transition-colors"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -301,10 +312,10 @@ export default function Footer() {
                 <li>
                   <a
                     href="tel:+923238420000"
-                    className="inline-flex items-start gap-3 font-body text-sm text-slate-400 hover:text-[#C9A84C] transition-all duration-300 group"
+                    className="inline-flex items-start gap-3 font-body text-sm text-[var(--color-text-secondary)] hover:text-[#C9A84C] transition-all duration-300 group"
                   >
                     <svg
-                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-slate-500 group-hover:text-[#C9A84C] transition-colors"
+                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-[var(--color-text-muted)] group-hover:text-[#C9A84C] transition-colors"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -314,9 +325,9 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <div className="inline-flex items-start gap-3 font-body text-sm text-slate-400">
+                  <div className="inline-flex items-start gap-3 font-body text-sm text-[var(--color-text-secondary)]">
                     <svg
-                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-slate-500"
+                      className="w-5 h-5 flex-shrink-0 mt-0.5 text-[var(--color-text-muted)]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -340,7 +351,7 @@ export default function Footer() {
               </ul>
 
               {/* Business Hours Card */}
-              <div className="mt-6 p-4 bg-white/[0.02] border border-white/5 rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <svg
                     className="w-4 h-4 text-[#C9A84C]"
@@ -355,22 +366,22 @@ export default function Footer() {
                       d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <span className="font-heading text-xs text-white">
+                  <span className="font-heading text-xs text-[var(--color-text-primary)]">
                     Business Hours
                   </span>
                 </div>
-                <p className="font-body text-sm text-slate-400">
+                <p className="font-body text-sm text-[var(--color-text-secondary)]">
                   Mon - Sat: 9:00 AM - 6:00 PM
                 </p>
-                <p className="font-body text-xs text-slate-500">PKT (UTC+5)</p>
+                <p className="font-body text-xs text-[var(--color-text-muted)]">PKT (UTC+5)</p>
               </div>
             </motion.div>
           </div>
 
           {/* Bottom Bar */}
-          <div className="pt-8 border-t border-white/5">
+          <div className="pt-8 border-t border-[var(--color-border)]">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-              <p className="font-body text-sm text-slate-500 text-center sm:text-left">
+              <p className="font-body text-sm text-[var(--color-text-muted)] text-center sm:text-left">
                 © {currentYear}{" "}
                 <span className="text-[#C9A84C]">PrimeMark Apparel</span>. All
                 rights reserved.
@@ -378,13 +389,13 @@ export default function Footer() {
               <div className="flex items-center gap-6">
                 <Link
                   href="/privacy"
-                  className="font-body text-xs text-slate-500 hover:text-[#C9A84C] transition-colors"
+                  className="font-body text-xs text-[var(--color-text-muted)] hover:text-[#C9A84C] transition-colors"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/terms"
-                  className="font-body text-xs text-slate-500 hover:text-[#C9A84C] transition-colors"
+                  className="font-body text-xs text-[var(--color-text-muted)] hover:text-[#C9A84C] transition-colors"
                 >
                   Terms of Service
                 </Link>

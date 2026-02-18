@@ -106,7 +106,7 @@ function ProductCard({ product, index, shouldReduceMotion }: ProductCardProps) {
 
   return (
     <motion.div
-      className="group relative rounded-xl bg-[#0F1623] border border-white/10 shadow-sm cursor-default overflow-hidden"
+      className="group relative rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm cursor-default overflow-hidden"
       initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -141,7 +141,7 @@ function ProductCard({ product, index, shouldReduceMotion }: ProductCardProps) {
           }`}
       >
         <div
-          className={`transition-all duration-300 ${isHovered ? "text-[#C9A84C] scale-110" : "text-white/20 opacity-60"
+          className={`transition-all duration-300 ${isHovered ? "text-[#C9A84C] scale-110" : "text-[var(--color-text-muted)] opacity-60"
             }`}
         >
           {product.icon}
@@ -151,14 +151,14 @@ function ProductCard({ product, index, shouldReduceMotion }: ProductCardProps) {
       <div className="p-6">
         {/* Title */}
         <h3
-          className={`font-heading text-xl text-white mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
+          className={`font-heading text-xl text-[var(--color-text-primary)] mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
             }`}
         >
           {product.title}
         </h3>
 
         {/* Description */}
-        <p className="font-body text-slate-400 mb-4">{product.description}</p>
+        <p className="font-body text-[var(--color-text-secondary)] mb-4">{product.description}</p>
 
         {/* B2B Metadata */}
         <div className="space-y-2 pt-4 border-t border-white/10">
@@ -169,13 +169,13 @@ function ProductCard({ product, index, shouldReduceMotion }: ProductCardProps) {
             </span>
           </div>
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-400">Lead Time:</span>
-            <span className="px-2 py-0.5 bg-white/5 text-slate-300 font-medium rounded">
+            <span className="text-[var(--color-text-muted)]">Lead Time:</span>
+            <span className="px-2 py-0.5 bg-[var(--color-surface-elevated)] text-[var(--color-text-secondary)] font-medium rounded">
               {product.leadTime}
             </span>
           </div>
           <div className="text-xs">
-            <span className="text-slate-400 block mb-2">Customization:</span>
+            <span className="text-[var(--color-text-muted)] block mb-2">Customization:</span>
             <div className="flex flex-wrap gap-1.5">
               {product.customization.split(", ").map((item, i) => (
                 <span
@@ -201,7 +201,7 @@ export default function ProductCategories({ hideHeader = false }: ProductCategor
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <Section id="products" className="bg-[#080C14]" animate={false}>
+    <Section id="products" className="bg-[var(--color-bg)]" animate={false}>
       <div>
         {!hideHeader && (
           <div className="text-center mb-12">
@@ -218,7 +218,7 @@ export default function ProductCategories({ hideHeader = false }: ProductCategor
 
             {/* Heading */}
             <motion.h2
-              className="font-display text-3xl sm:text-4xl text-white mb-4"
+              className="font-display text-3xl sm:text-4xl text-[var(--color-text-primary)] mb-4"
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -229,7 +229,7 @@ export default function ProductCategories({ hideHeader = false }: ProductCategor
 
             {/* Subtitle */}
             <motion.p
-              className="font-body text-lg text-slate-400 max-w-2xl mx-auto"
+              className="font-body text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto"
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}

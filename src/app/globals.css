@@ -162,22 +162,53 @@
    ============================================================================= */
 
 :root {
-  /* Legacy - keep for compatibility */
-  --background: #ffffff;
-  --foreground: #0f172a;
+  /* Font family */
+  --font-montserrat: 'Montserrat', system-ui, -apple-system, sans-serif;
 
-  /* New Premium Color Tokens */
-  --color-bg: #080C14;
-  --color-surface: #0F1623;
-  --color-border: rgba(255, 255, 255, 0.07);
+  /* Light Theme (Default) - Premium Off-White */
+  --color-bg: #FCFCFD;
+  --color-bg-rgb: 252, 252, 253;
+  --color-surface: #FFFFFF;
+  --color-surface-rgb: 255, 255, 255;
+  --color-surface-elevated: #F8FAFC;
+  --color-border: rgba(15, 23, 42, 0.08);
+  --color-border-rgb: 15, 23, 42;
+  --color-border-subtle: rgba(15, 23, 42, 0.04);
   --color-accent: #C9A84C;
+  --color-accent-hover: #B8973B;
+  --color-accent-glow: rgba(201, 168, 76, 0.25);
+  /* Text colors need proper contrast in light mode */
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94A3B8;
+  --color-overlay: rgba(255, 255, 255, 0.85);
+
+  /* Legacy - keep for compatibility */
+  --background: var(--color-bg);
+  --foreground: var(--color-text-primary);
+}
+
+/* Dark Theme */
+.dark {
+  --color-bg: #080C14;
+  --color-bg-rgb: 8, 12, 20;
+  --color-surface: #0F1623;
+  --color-surface-rgb: 15, 22, 35;
+  --color-surface-elevated: #151D2E;
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-rgb: 255, 255, 255;
+  --color-border-subtle: rgba(255, 255, 255, 0.03);
+  --color-accent: #C9A84C;
+  --color-accent-hover: #D4B65D;
   --color-accent-glow: rgba(201, 168, 76, 0.25);
   --color-text-primary: #F1F5F9;
   --color-text-secondary: #94A3B8;
   --color-text-muted: #475569;
+  --color-overlay: rgba(0, 0, 0, 0.7);
 
-  /* Font family */
-  --font-montserrat: 'Montserrat', system-ui, -apple-system, sans-serif;
+  /* Legacy - keep for compatibility */
+  --background: var(--color-bg);
+  --foreground: var(--color-text-primary);
 }
 
 /* =============================================================================
@@ -185,18 +216,11 @@
    ============================================================================= */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-montserrat);
 
-  /* Custom color tokens for Tailwind */
-  --color-bg: #080C14;
-  --color-surface: #0F1623;
+  /* Accent colors (consistent across themes) */
   --color-accent: #C9A84C;
   --color-accent-glow: rgba(201, 168, 76, 0.25);
-  --color-text-primary: #F1F5F9;
-  --color-text-secondary: #94A3B8;
-  --color-text-muted: #475569;
 }
 
 /* =============================================================================
@@ -291,7 +315,7 @@ html {
 }
 
 /* =============================================================================
-   CUSTOM SCROLLBAR - Premium Gold Theme
+   CUSTOM SCROLLBAR - Theme Aware
    ============================================================================= */
 
 ::-webkit-scrollbar {
@@ -308,13 +332,25 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4B65D;
+  background: var(--color-accent-hover);
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--color-accent) var(--color-surface);
+}
+
+/* =============================================================================
+   THEME TRANSITION
+   ============================================================================= */
+
+/* Smooth color transitions when theme changes */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
 }
 
 /* =============================================================================
@@ -347,6 +383,7 @@ html {
   0% {
     transform: translate3d(0, 0, 0);
   }
+
   100% {
     transform: translate3d(-50%, 0, 0);
   }
@@ -362,6 +399,7 @@ html {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -373,6 +411,7 @@ html {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -384,6 +423,7 @@ html {
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -392,9 +432,12 @@ html {
 
 /* Bounce for scroll indicator */
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(8px);
   }
@@ -409,27 +452,29 @@ html {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
 }
 
 .animate-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--color-accent-glow) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--color-accent-glow) 50%,
+      transparent 100%);
   background-size: 200% 100%;
   animation: shimmer 2s linear infinite;
 }
 
 /* Pulse glow for WhatsApp widget */
 @keyframes pulseGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
   }
+
   50% {
     box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
   }
@@ -444,6 +489,7 @@ html {
    ============================================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

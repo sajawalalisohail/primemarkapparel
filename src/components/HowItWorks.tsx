@@ -95,7 +95,7 @@ function StepCard({ step, index, totalSteps }: { step: Step; index: number; tota
         <motion.div
           className={`w-16 h-16 rounded-full border-2 flex items-center justify-center mb-6 transition-all duration-300 ${isHovered
             ? "border-[#C9A84C] bg-[#C9A84C]/10"
-            : "border-[#C9A84C]/30 bg-[#0F1623]"
+            : "border-[#C9A84C]/30 bg-[var(--color-surface)]"
             }`}
           style={{ scale: iconScale }}
         >
@@ -104,7 +104,7 @@ function StepCard({ step, index, totalSteps }: { step: Step; index: number; tota
 
         {/* Icon */}
         <div
-          className={`w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${isHovered ? "bg-[#C9A84C] text-[#080C14]" : "bg-white/5 text-slate-300"
+          className={`w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${isHovered ? "bg-[#C9A84C] text-[#080C14]" : "bg-[var(--color-surface-elevated)] text-[var(--color-text-muted)]"
             }`}
         >
           {step.icon}
@@ -112,14 +112,14 @@ function StepCard({ step, index, totalSteps }: { step: Step; index: number; tota
 
         {/* Title */}
         <h3
-          className={`font-heading text-lg text-white mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
+          className={`font-heading text-lg text-[var(--color-text-primary)] mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
             }`}
         >
           {step.title}
         </h3>
 
         {/* Description */}
-        <p className="font-body text-slate-400 text-sm max-w-xs">{step.description}</p>
+        <p className="font-body text-[var(--color-text-secondary)] text-sm max-w-xs">{step.description}</p>
       </motion.div>
     </motion.div>
   );
@@ -135,7 +135,7 @@ export default function HowItWorks({ hideHeader = false }: HowItWorksProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <Section id="process" className="bg-[#0F1623]" animate={false}>
+    <Section id="process" className="bg-[var(--color-surface-elevated)]" animate={false}>
       <div ref={sectionRef}>
         {!hideHeader && (
           <div className="text-center mb-16">
@@ -152,7 +152,7 @@ export default function HowItWorks({ hideHeader = false }: HowItWorksProps) {
 
             {/* Heading */}
             <motion.h2
-              className="font-display text-3xl sm:text-4xl text-white mb-4"
+              className="font-display text-3xl sm:text-4xl text-[var(--color-text-primary)] mb-4"
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -163,7 +163,7 @@ export default function HowItWorks({ hideHeader = false }: HowItWorksProps) {
 
             {/* Subtitle */}
             <motion.p
-              className="font-body text-lg text-slate-400 max-w-2xl mx-auto"
+              className="font-body text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto"
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}

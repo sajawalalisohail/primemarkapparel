@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -43,7 +44,7 @@ function NavLink({ href, label, isActive, onClick, children }: NavLinkProps) {
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative font-nav text-sm transition-colors duration-300 ${isActive ? "text-[#C9A84C]" : "text-slate-300 hover:text-white"
+      className={`relative font-nav text-sm transition-colors duration-300 ${isActive ? "text-[#C9A84C]" : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
         }`}
     >
       <span className="relative">
@@ -99,8 +100,8 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 w-full"
       style={{
         backgroundColor: shouldReduceMotion
-          ? "rgba(8, 12, 20, 0.85)"
-          : useTransform(bgOpacity, (v) => `rgba(8, 12, 20, ${v})`),
+          ? "rgba(var(--color-bg-rgb), 0.85)"
+          : useTransform(bgOpacity, (v) => `rgba(var(--color-bg-rgb), ${v})`),
         backdropFilter: shouldReduceMotion
           ? "blur(12px)"
           : useTransform(backdropBlur, (v) => `blur(${v}px)`),
@@ -108,14 +109,17 @@ export default function Navbar() {
           ? "blur(12px)"
           : useTransform(backdropBlur, (v) => `blur(${v}px)`),
         borderBottom: shouldReduceMotion
-          ? "1px solid rgba(255, 255, 255, 0.05)"
-          : useTransform(borderOpacity, (v) => `1px solid rgba(255, 255, 255, ${v})`),
+          ? "1px solid rgba(var(--color-border-rgb), 0.05)"
+          : useTransform(borderOpacity, (v) => `1px solid rgba(var(--color-border-rgb), ${v})`),
         boxShadow: shouldReduceMotion
           ? "0 4px 30px rgba(0, 0, 0, 0.2)"
           : useTransform(shadowOpacity, (v) => `0 4px 30px rgba(0, 0, 0, ${v})`),
         WebkitTapHighlightColor: "transparent",
       }}
     >
+      {/* Light mode bottom border accent */}
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C9A84C]/20 to-transparent opacity-0 dark:opacity-0 transition-opacity duration-300 group-[.light]:opacity-100" />
+
       <div className="mx-auto max-w-[1920px] px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
@@ -124,13 +128,23 @@ export default function Navbar() {
             onClick={handleHomeClick}
             className="flex items-center -ml-5 group"
           >
+            {/* Light Mode Logo (Dark Text) */}
+            <Image
+              src="/logo/newlogod.svg"
+              alt="PrimeMark Apparel"
+              width={200}
+              height={50}
+              priority
+              className="h-16 w-auto transition-transform duration-300 ease-out group-hover:scale-[1.02] dark:hidden"
+            />
+            {/* Dark Mode Logo (White Text) */}
             <Image
               src="/logo/newlogo.svg"
               alt="PrimeMark Apparel"
               width={200}
               height={50}
               priority
-              className="h-16 w-auto transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+              className="h-16 w-auto transition-transform duration-300 ease-out group-hover:scale-[1.02] hidden dark:block"
             />
           </Link>
 
@@ -159,8 +173,8 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       className={`inline-flex items-center gap-1 font-nav text-sm transition-all duration-300 ${isActive || isProductsHovered
-                          ? "text-[#C9A84C]"
-                          : "text-slate-300 hover:text-white"
+                        ? "text-[#C9A84C]"
+                        : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                         }`}
                     >
                       <span className="relative">
@@ -264,6 +278,9 @@ export default function Navbar() {
               );
             })}
 
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
             {/* CTA Button with gold styling */}
             <motion.div
               className="relative overflow-hidden rounded-lg"
@@ -349,7 +366,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <motion.div
-        className="md:hidden w-full overflow-hidden bg-[#080C14]/95 backdrop-blur-xl"
+        className="md:hidden w-full overflow-hidden bg-[var(--color-bg)]/95 backdrop-blur-xl"
         initial={false}
         animate={{
           height: isOpen ? "auto" : 0,
@@ -379,8 +396,8 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setIsOpen(false)}
                   className={`block py-3 px-2 rounded-lg font-nav transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]/30 ${isActive
-                      ? "text-[#C9A84C] font-medium bg-[#C9A84C]/10"
-                      : "text-slate-300 hover:text-white active:text-white hover:bg-white/5 active:bg-white/10"
+                    ? "text-[#C9A84C] font-medium bg-[#C9A84C]/10"
+                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-elevated)] active:bg-[var(--color-surface-elevated)]"
                     }`}
                 >
                   {link.label}
@@ -388,6 +405,7 @@ export default function Navbar() {
               </motion.div>
             );
           })}
+          {/* Theme Toggle for Mobile */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{
@@ -397,6 +415,23 @@ export default function Navbar() {
             transition={{
               duration: 0.3,
               delay: isOpen ? navLinks.length * 0.05 : 0,
+              ease: premiumEase,
+            }}
+            className="flex items-center justify-between py-3 px-2 mt-2 border-t border-white/10"
+          >
+            <span className="text-sm text-[var(--color-text-muted)]">Theme</span>
+            <ThemeToggle />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{
+              opacity: isOpen ? 1 : 0,
+              y: isOpen ? 0 : -10,
+            }}
+            transition={{
+              duration: 0.3,
+              delay: isOpen ? (navLinks.length + 1) * 0.05 : 0,
               ease: premiumEase,
             }}
           >

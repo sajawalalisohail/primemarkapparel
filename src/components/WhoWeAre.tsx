@@ -17,7 +17,7 @@ export default function WhoWeAre() {
   };
 
   return (
-    <Section className="bg-[#0F1623] relative overflow-hidden">
+    <Section className="bg-[var(--color-surface-elevated)] relative overflow-hidden">
       {/* Large decorative watermark */}
       <div
         className="absolute top-1/2 left-0 -translate-y-1/2 font-display-black text-[20rem] leading-none text-white/[0.03] pointer-events-none select-none hidden lg:block"
@@ -41,10 +41,10 @@ export default function WhoWeAre() {
             <div className="absolute bottom-0 right-0 w-24 h-24 border-b-4 border-r-4 border-[#C9A84C]" />
 
             {/* Inner content */}
-            <div className="absolute inset-8 bg-[#080C14] border border-white/10 rounded-lg flex items-center justify-center">
+            <div className="absolute inset-8 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg flex items-center justify-center">
               <div className="text-center p-8">
                 <div className="font-stat text-6xl text-[#C9A84C] mb-2">20+</div>
-                <div className="font-heading text-lg text-white">Years of Excellence</div>
+                <div className="font-heading text-lg text-[var(--color-text-primary)]">Years of Excellence</div>
               </div>
             </div>
 
@@ -66,7 +66,7 @@ export default function WhoWeAre() {
 
           {/* Heading */}
           <motion.h2
-            className="font-display text-3xl sm:text-4xl lg:text-5xl text-white mb-6"
+            className="font-display text-3xl sm:text-4xl lg:text-5xl text-[var(--color-text-primary)] mb-6"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -77,7 +77,7 @@ export default function WhoWeAre() {
 
           {/* Body text */}
           <motion.p
-            className="font-body text-lg text-slate-400 leading-relaxed mb-6"
+            className="font-body text-lg text-[var(--color-text-secondary)] leading-relaxed mb-6"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -89,7 +89,7 @@ export default function WhoWeAre() {
           </motion.p>
 
           <motion.p
-            className="font-body text-lg text-slate-400 leading-relaxed"
+            className="font-body text-lg text-[var(--color-text-secondary)] leading-relaxed"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -113,11 +113,11 @@ export default function WhoWeAre() {
           >
             <div className="text-center">
               <div className="font-stat text-4xl text-[#C9A84C]">20+</div>
-              <div className="text-sm text-slate-400 uppercase tracking-wider">Years</div>
+              <div className="text-sm text-[var(--color-text-muted)] uppercase tracking-wider">Years</div>
             </div>
             <div className="text-center">
               <div className="font-stat text-4xl text-[#C9A84C]">10M+</div>
-              <div className="text-sm text-slate-400 uppercase tracking-wider">Units</div>
+              <div className="text-sm text-[var(--color-text-muted)] uppercase tracking-wider">Units</div>
             </div>
           </motion.div>
         </div>

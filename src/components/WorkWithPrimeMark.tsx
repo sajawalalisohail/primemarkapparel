@@ -115,7 +115,7 @@ export default function WorkWithPrimeMark() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="bg-[#080C14] border-t border-white/10 relative overflow-hidden">
+    <section className="bg-[var(--color-bg)] border-t border-[var(--color-border)] relative overflow-hidden">
       {/* Background accent - blurred gold circle */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#C9A84C]/5 blur-3xl pointer-events-none"
@@ -138,7 +138,7 @@ export default function WorkWithPrimeMark() {
 
           {/* Heading */}
           <motion.h2
-            className="font-display text-3xl sm:text-4xl text-white mb-3"
+            className="font-display text-3xl sm:text-4xl text-[var(--color-text-primary)] mb-3"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -149,7 +149,7 @@ export default function WorkWithPrimeMark() {
 
           {/* Subtitle */}
           <motion.p
-            className="font-body text-lg text-slate-400 max-w-xl mx-auto"
+            className="font-body text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -178,10 +178,10 @@ export default function WorkWithPrimeMark() {
               <AnimatedCheck delay={0.4 + index * 0.1} shouldReduceMotion={shouldReduceMotion} />
 
               <div>
-                <h3 className="font-heading text-base text-white mb-1 group-hover:text-[#C9A84C] transition-colors duration-300">
+                <h3 className="font-heading text-base text-[var(--color-text-primary)] mb-1 group-hover:text-[#C9A84C] transition-colors duration-300">
                   {point.title}
                 </h3>
-                <p className="font-body text-sm text-slate-400 leading-relaxed">
+                <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed">
                   {point.description}
                 </p>
               </div>

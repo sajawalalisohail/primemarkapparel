@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import StickyCTA from "@/components/StickyCTA";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+
+// FOUC prevention script - runs before React hydration
+const themeScript = `
+(function() {
+  try {
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = stored === 'light' ? 'light' : stored === 'dark' ? 'dark' : (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  } catch (e) {}
+})();
+`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://primemarkapparel.com"),
@@ -56,12 +71,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/icon.png" />
         <link rel="apple-touch-icon" href="/icon.png" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="antialiased bg-white text-slate-900 min-h-screen flex flex-col">
+      <body className="antialiased bg-bg text-text-primary min-h-screen flex flex-col">
         {/* Google Analytics - Replace G-XXXXXXXXXX with your actual GA4 Measurement ID */}
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>
@@ -79,9 +95,11 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        {children}
-        <StickyCTA />
-        <WhatsAppWidget />
+        <ThemeProvider>
+          {children}
+          <StickyCTA />
+          <WhatsAppWidget />
+        </ThemeProvider>
       </body>
     </html>
   );
