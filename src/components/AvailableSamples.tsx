@@ -7,30 +7,35 @@ const samples = [
     spec: "Premium cotton blend, multiple color options",
     moq: "200 units",
     customization: "Embroidery / Print",
+    href: "/products/hoodies",
   },
   {
     title: "Baseball Hats",
     spec: "Adjustable fit, structured cap",
     moq: "300 units",
     customization: "Embroidery / Patches",
+    href: "/products/hats",
   },
   {
     title: "Work Pants",
     spec: "Durable fabric, reinforced seams",
     moq: "250 units",
     customization: "Custom fit / Logo",
+    href: "/products/work-pants",
   },
   {
     title: "White T-Shirts",
     spec: "100% cotton, various weights",
     moq: "200 units",
     customization: "Print / Embroidery",
+    href: "/products/tshirts",
   },
   {
     title: "Embroidery Sample / Patches",
     spec: "High-quality thread, custom designs",
     moq: "100 units",
     customization: "Full custom",
+    href: "/services",
   },
 ];
 
@@ -69,7 +74,7 @@ export default function AvailableSamples() {
             className="group rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-sm hover:shadow-md hover:border-[#C9A84C]/50 transition-all duration-300 overflow-hidden"
           >
             {/* Media Area */}
-            <div className="aspect-video bg-[var(--color-surface-elevated)] border-b border-[var(--color-border)] flex items-center justify-center">
+            <Link href={sample.href} className="block aspect-video bg-[var(--color-surface-elevated)] border-b border-[var(--color-border)] flex items-center justify-center group-hover:bg-[#C9A84C]/5 transition-colors">
               <svg
                 className="w-10 h-10 text-[var(--color-text-muted)] group-hover:text-[#C9A84C] transition-colors"
                 fill="none"
@@ -83,14 +88,16 @@ export default function AvailableSamples() {
                   d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-            </div>
+            </Link>
 
             {/* Content */}
             <div className="p-4 space-y-3">
               <div>
-                <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-1">
-                  {sample.title}
-                </h3>
+                <Link href={sample.href} className="block">
+                  <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-1 hover:text-[#C9A84C] transition-colors">
+                    {sample.title}
+                  </h3>
+                </Link>
                 <p className="text-sm text-[var(--color-text-secondary)]">{sample.spec}</p>
               </div>
 

@@ -76,6 +76,7 @@ function NavLink({ href, label, isActive, className, activeClassName, underlineC
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductsHovered, setIsProductsHovered] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
 
@@ -340,7 +341,10 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-white/70 hover:text-white active:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]/50 rounded-lg transition-colors duration-200"
+            className={`md:hidden p-2 rounded-lg transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]/50 ${isHeroVisible
+              ? "text-white/90 hover:text-white"
+              : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+              }`}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
@@ -387,6 +391,80 @@ export default function Navbar() {
         <div className="px-6 py-4 space-y-1">
           {navLinks.map((link, index) => {
             const isActive = pathname === link.href;
+
+            // Mobile Products Dropdown
+            if (link.href === "/products") {
+              return (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -20 }}
+                  transition={{ duration: 0.3, delay: isOpen ? index * 0.05 : 0, ease: premiumEase }}
+                >
+                  <div className={`flex items-center justify-between w-full py-3 px-2 rounded-lg font-nav transition-all duration-200 focus-within:ring-2 focus-within:ring-[#C9A84C]/30 ${isActive || isMobileProductsOpen
+                    ? "text-[#C9A84C] font-medium bg-[#C9A84C]/10"
+                    : "text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-elevated)]"
+                    }`}>
+                    <Link
+                      href="/products"
+                      onClick={() => setIsOpen(false)}
+                      className="flex-1 hover:text-[var(--color-text-primary)] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsMobileProductsOpen(!isMobileProductsOpen);
+                      }}
+                      className="p-1 -mr-1 rounded-md hover:bg-black/5 dark:hover:bg-white/10 transition-colors focus:outline-none"
+                      aria-label="Toggle products menu"
+                    >
+                      <motion.svg
+                        className="w-4 h-4 ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        animate={{ rotate: isMobileProductsOpen ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </motion.svg>
+                    </button>
+                  </div>
+
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: isMobileProductsOpen ? "auto" : 0,
+                      opacity: isMobileProductsOpen ? 1 : 0,
+                      marginBottom: isMobileProductsOpen ? 8 : 0
+                    }}
+                    transition={{ duration: 0.3, ease: premiumEase }}
+                    className="overflow-hidden pl-4 border-l-2 border-[var(--color-border)] ml-2 space-y-1 bg-black/5 dark:bg-white/5 rounded-r-lg"
+                  >
+                    {productCategories.map((category) => (
+                      <Link
+                        key={category.href}
+                        href={category.href}
+                        onClick={() => setIsOpen(false)}
+                        className="block py-2.5 px-3 text-sm text-[var(--color-text-secondary)] hover:text-[#C9A84C] transition-colors"
+                      >
+                        {category.label}
+                      </Link>
+                    ))}
+                    <div className="border-t border-[var(--color-border)] my-1 mx-2" />
+                    <Link
+                      href="/products"
+                      onClick={() => setIsOpen(false)}
+                      className="block py-2.5 px-3 text-sm font-medium text-[var(--color-text-primary)] hover:text-[#C9A84C] transition-colors"
+                    >
+                      View All Products →
+                    </Link>
+                  </motion.div>
+                </motion.div>
+              );
+            }
 
             return (
               <motion.div

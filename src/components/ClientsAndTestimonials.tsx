@@ -266,7 +266,7 @@ export default function ClientsAndTestimonials() {
                     key={`second-${index}`}
                     className="flex-shrink-0 w-40 sm:w-48 lg:w-56 group"
                   >
-                    <div className="relative w-full flex flex-col items-center justify-center p-4 bg-[#0F1623] rounded-lg border border-white/10 shadow-sm transition-all duration-300 hover:border-[#C9A84C]/30 hover:shadow-md">
+                    <div className="relative w-full flex flex-col items-center justify-center p-4 bg-[var(--color-surface)] rounded-lg border border-[var(--color-border)] shadow-sm transition-all duration-300 hover:border-[#C9A84C]/30 hover:shadow-md">
                       <Image
                         src={client.logoPath}
                         alt={`${client.name} logo`}
@@ -280,7 +280,7 @@ export default function ClientsAndTestimonials() {
                         <p className="text-xs font-medium text-[var(--color-text-primary)] mb-0.5 group-hover:text-[#C9A84C] transition-colors duration-300">
                           {client.name}
                         </p>
-                        <p className="text-[10px] text-slate-400">
+                        <p className="text-[10px] text-[var(--color-text-muted)]">
                           {client.industry}
                         </p>
                       </div>
