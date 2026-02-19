@@ -93,11 +93,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Transform values for smooth background transition - start after hero section (~800px)
-  const bgOpacity = useTransform(scrollY, [700, 850], [0, 0.9]);
-  const backdropBlur = useTransform(scrollY, [700, 850], [0, 12]);
-  const borderOpacity = useTransform(scrollY, [700, 850], [0, 0.05]);
-  const shadowOpacity = useTransform(scrollY, [700, 850], [0, 0.2]);
+  // Transform values for smooth background transition - start early in hero section
+  const bgOpacity = useTransform(scrollY, [50, 150], [0, 0.9]);
+  const backdropBlur = useTransform(scrollY, [50, 150], [0, 12]);
+  const borderOpacity = useTransform(scrollY, [50, 150], [0, 0.05]);
+  const shadowOpacity = useTransform(scrollY, [50, 150], [0, 0.2]);
 
   // Close mobile menu on route change
   useEffect(() => {

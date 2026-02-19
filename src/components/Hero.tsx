@@ -10,7 +10,7 @@ const stats = [
     label: "20+ Years",
     description: "Experience",
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
@@ -19,7 +19,7 @@ const stats = [
     label: "10M+ Units",
     description: "Produced",
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
       </svg>
     ),
@@ -28,7 +28,7 @@ const stats = [
     label: "100+ Clients",
     description: "Worldwide",
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
@@ -37,7 +37,7 @@ const stats = [
     label: "99%+ Quality",
     description: "Pass Rate",
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
     ),
@@ -48,7 +48,7 @@ const trustItems = [
   {
     label: "Competitive FOB/CIF Freight",
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
       </svg>
     ),
@@ -56,7 +56,7 @@ const trustItems = [
   {
     label: "No Pattern Development Fee",
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
       </svg>
     ),
@@ -64,7 +64,7 @@ const trustItems = [
   {
     label: "Branding Solutions",
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z" />
       </svg>
     ),
@@ -72,7 +72,7 @@ const trustItems = [
   {
     label: "Premium Quality",
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
     ),
@@ -138,13 +138,13 @@ export default function Hero() {
       <div className="relative z-10 flex-1 flex items-center justify-center">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 md:py-12 w-full">
           <div className="max-w-2xl">
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Eyebrow label - delay 0s */}
               <motion.div
-                className="inline-flex items-center px-4 py-1.5 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-full"
+                className="inline-flex items-center px-3 py-1 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-full"
                 {...fadeInUp(0)}
               >
-                <span className="font-eyebrow text-[#C9A84C]">
+                <span className="font-eyebrow text-sm text-[#C9A84C]">
                   Bulk Apparel Manufacturer
                 </span>
               </motion.div>
@@ -164,7 +164,7 @@ export default function Hero() {
 
               {/* Sub-copy - delay 0.6s */}
               <motion.p
-                className="font-body text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed"
+                className="font-body text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed"
                 {...fadeInUp(0.6)}
               >
                 Custom Apparel, Uniforms, Industrial Workwear and Denim. Top-tier
@@ -173,7 +173,7 @@ export default function Hero() {
 
               {/* Trust line - delay 0.7s */}
               <motion.p
-                className="text-base sm:text-lg text-[#C9A84C] font-medium max-w-xl"
+                className="text-sm sm:text-base text-[#C9A84C] font-medium max-w-xl"
                 {...fadeInUp(0.7)}
               >
                 Trusted by 100+ businesses worldwide for consistent quality and
@@ -181,11 +181,11 @@ export default function Hero() {
               </motion.p>
 
               {/* Stats Grid - stagger starting at 0.8s */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
-                    className="group relative flex flex-col items-center justify-center p-5 bg-[var(--color-surface)]/10 backdrop-blur-sm rounded-xl cursor-default overflow-hidden border border-white/10 transition-all duration-300"
+                    className="group relative flex flex-col items-center justify-center p-3 sm:p-4 bg-[var(--color-surface)]/10 backdrop-blur-sm rounded-lg cursor-default overflow-hidden border border-white/10 transition-all duration-300"
                     {...fadeInUp(0.8 + index * 0.1)}
                     whileHover={
                       shouldReduceMotion
@@ -198,20 +198,20 @@ export default function Hero() {
                     }
                   >
                     {/* Gold left border */}
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#C9A84C]" />
+                    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#C9A84C]" />
 
                     {/* Icon */}
-                    <div className="text-[#C9A84C] mb-3 shrink-0 transition-transform duration-300 ease-out group-hover:scale-110">
+                    <div className="text-[#C9A84C] mb-2 shrink-0 transition-transform duration-300 ease-out group-hover:scale-110">
                       {stat.icon}
                     </div>
 
                     {/* Number - Montserrat Black */}
-                    <div className="font-stat text-xl sm:text-2xl text-white text-center mb-1 leading-tight">
+                    <div className="font-stat text-base sm:text-lg text-white text-center mb-0.5 leading-tight">
                       {stat.label}
                     </div>
 
                     {/* Description */}
-                    <div className="text-xs text-slate-400 text-center leading-tight uppercase tracking-wider">
+                    <div className="text-[10px] sm:text-xs text-slate-400 text-center leading-tight uppercase tracking-wider">
                       {stat.description}
                     </div>
                   </motion.div>
@@ -220,7 +220,7 @@ export default function Hero() {
 
               {/* CTA Buttons - delay 1.1s */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-3"
                 {...fadeInUp(1.1)}
               >
                 {/* Primary Button - Solid Gold */}
@@ -230,11 +230,11 @@ export default function Hero() {
                 >
                   <Link
                     href="/rfq"
-                    className="group inline-flex items-center justify-center px-6 py-3 font-button text-base bg-[#C9A84C] text-[#080C14] rounded-lg transition-all duration-300 ease-out hover:bg-[#D4B65D] hover:shadow-xl hover:shadow-[#C9A84C]/30 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
+                    className="group inline-flex items-center justify-center px-5 py-2.5 font-button text-sm bg-[#C9A84C] text-[#080C14] rounded-lg transition-all duration-300 ease-out hover:bg-[#D4B65D] hover:shadow-xl hover:shadow-[#C9A84C]/30 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
                   >
                     <span>Request a Quote</span>
                     <svg
-                      className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                      className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -265,11 +265,11 @@ export default function Hero() {
                   />
                   <Link
                     href="/samples"
-                    className="relative z-10 group inline-flex items-center justify-center px-6 py-3 font-button text-base border-2 border-[#C9A84C] text-[#C9A84C] hover:text-[#080C14] rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
+                    className="relative z-10 group inline-flex items-center justify-center px-5 py-2.5 font-button text-sm border-2 border-[#C9A84C] text-[#C9A84C] hover:text-[#080C14] rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
                   >
                     <span>Request Samples</span>
                     <svg
-                      className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                      className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -296,7 +296,7 @@ export default function Hero() {
           backgroundColor: "rgba(15, 22, 35, 0.7)",
         }}
       >
-        <div className="py-4">
+        <div className="py-3">
           <motion.div
             className="flex whitespace-nowrap"
             animate={shouldReduceMotion ? {} : { x: [0, "-50%"] }}
@@ -312,10 +312,8 @@ export default function Hero() {
             {/* Duplicate items for seamless loop - 4x for safety on wide screens */}
             {[...trustItems, ...trustItems, ...trustItems, ...trustItems].map((item, index) => (
               <div key={index} className="flex items-center mx-6 sm:mx-8">
-                {/* Bullet separator */}
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mr-6 sm:mr-8" />
-                <div className="text-[#C9A84C] mr-3">{item.icon}</div>
-                <span className="text-sm font-medium text-white/90">
+                <div className="text-[#C9A84C] mr-2">{item.icon}</div>
+                <span className="text-xs font-medium text-white/90">
                   {item.label}
                 </span>
               </div>

@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, useReducedMotion, useInView } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import Section from "./Section";
 
 const steps = [
@@ -10,44 +11,28 @@ const steps = [
     title: "Requirements & Consultation",
     description:
       "Share your product needs, specifications, and quantities. We discuss materials, customization, and timelines.",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-      </svg>
-    ),
+    image: "/how it works/Requirements & Consultation.png",
   },
   {
     number: "02",
     title: "Sampling & Approvals",
     description:
       "We create physical samples for your review. Refine fit, fabric, and finish before bulk production.",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
+    image: "/how it works/Sampling & Approvals.png",
   },
   {
     number: "03",
     title: "Production",
     description:
       "Manufacturing begins with rigorous quality control at every stage. Regular progress updates provided.",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-      </svg>
-    ),
+    image: "/how it works/Production.png",
   },
   {
     number: "04",
     title: "Inspection & Delivery",
     description:
       "Final QC inspection, careful packaging, and worldwide shipping with full documentation.",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-      </svg>
-    ),
+    image: "/how it works/Inspection & Delivery.png",
   },
 ];
 
@@ -56,26 +41,13 @@ const premiumEase = [0.25, 0.1, 0.25, 1] as const;
 
 type Step = (typeof steps)[number];
 
-function StepCard({ step, index, totalSteps }: { step: Step; index: number; totalSteps: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
+function StepCard({ step, index }: { step: Step; index: number }) {
   const shouldReduceMotion = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
 
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"],
-  });
-
-  const iconScale = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    shouldReduceMotion ? [1, 1, 1] : [0.8, 1, 0.8]
-  );
-
   return (
     <motion.div
-      ref={cardRef}
-      className="relative"
+      className="relative rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm overflow-hidden"
       initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -86,41 +58,49 @@ function StepCard({ step, index, totalSteps }: { step: Step; index: number; tota
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      whileHover={
+        shouldReduceMotion
+          ? {}
+          : {
+            y: -6,
+            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
+            borderColor: "rgba(201, 168, 76, 0.3)",
+          }
+      }
     >
-      <motion.div
-        className="relative z-10 flex flex-col items-center text-center group"
-        whileHover={shouldReduceMotion ? {} : { y: -6 }}
-      >
-        {/* Step number circle with gold border */}
-        <motion.div
-          className={`w-16 h-16 rounded-full border-2 flex items-center justify-center mb-6 transition-all duration-300 ${isHovered
-            ? "border-[#C9A84C] bg-[#C9A84C]/10"
-            : "border-[#C9A84C]/30 bg-[var(--color-surface)]"
-            }`}
-          style={{ scale: iconScale }}
-        >
-          <span className="font-stat text-2xl text-[#C9A84C]">{step.number}</span>
-        </motion.div>
-
-        {/* Icon */}
-        <div
-          className={`w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${isHovered ? "bg-[#C9A84C] text-[#080C14]" : "bg-[var(--color-surface-elevated)] text-[var(--color-text-muted)]"
-            }`}
-        >
-          {step.icon}
+      {/* Image container */}
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <Image
+          src={step.image}
+          alt={step.title}
+          fill
+          className={`object-cover transition-transform duration-300 ease-out ${
+            isHovered ? "scale-[1.02]" : "scale-100"
+          }`}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        />
+        {/* Step number badge */}
+        <div className="absolute top-3 left-3 w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center shadow-lg">
+          <span className="font-stat text-lg text-[#080C14]">{step.number}</span>
         </div>
+      </div>
 
+      {/* Content */}
+      <div className="p-5 text-center">
         {/* Title */}
         <h3
-          className={`font-heading text-lg text-[var(--color-text-primary)] mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
-            }`}
+          className={`font-heading text-lg text-[var(--color-text-primary)] mb-2 transition-colors duration-300 ${
+            isHovered ? "text-[#C9A84C]" : ""
+          }`}
         >
           {step.title}
         </h3>
 
         {/* Description */}
-        <p className="font-body text-[var(--color-text-secondary)] text-sm max-w-xs">{step.description}</p>
-      </motion.div>
+        <p className="font-body text-[var(--color-text-secondary)] text-sm">
+          {step.description}
+        </p>
+      </div>
     </motion.div>
   );
 }
@@ -131,7 +111,6 @@ interface HowItWorksProps {
 
 export default function HowItWorks({ hideHeader = false }: HowItWorksProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -186,7 +165,6 @@ export default function HowItWorks({ hideHeader = false }: HowItWorksProps) {
                 key={index}
                 step={step}
                 index={index}
-                totalSteps={steps.length}
               />
             ))}
           </div>

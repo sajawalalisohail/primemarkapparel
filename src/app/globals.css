@@ -165,25 +165,26 @@
   /* Font family */
   --font-montserrat: 'Montserrat', system-ui, -apple-system, sans-serif;
 
-  /* Light Theme (Default) - High Contrast Banding */
-  --color-bg: #FFFFFF;
-  --color-bg-rgb: 255, 255, 255;
-  --color-surface: #FAFAFA;
-  /* Neutral 50 - Subtle/Warm-neutral for banding */
-  --color-surface-rgb: 250, 250, 250;
-  --color-surface-elevated: #F3F4F6;
-  /* Gray 100 */
-  --color-border: rgba(15, 23, 42, 0.12);
+  /* Light Theme (Default) - Premium Gold-Accented */
+  --color-bg: #FFFEF9;
+  /* Warm cream white */
+  --color-bg-rgb: 255, 254, 249;
+  --color-surface: #FBF8F0;
+  /* Warm ivory with gold undertone */
+  --color-surface-rgb: 251, 248, 240;
+  --color-surface-elevated: #F5F0E4;
+  /* Warm beige for elevated sections */
+  --color-border: rgba(15, 23, 42, 0.15);
   --color-border-rgb: 15, 23, 42;
   --color-border-subtle: rgba(15, 23, 42, 0.08);
   --color-accent: #C9A84C;
   --color-accent-hover: #B8973B;
   --color-accent-glow: rgba(201, 168, 76, 0.25);
-  /* Text colors need proper contrast in light mode */
-  --color-text-primary: #0F172A;
-  --color-text-secondary: #334155;
-  --color-text-muted: #64748B;
-  --color-overlay: rgba(255, 255, 255, 0.85);
+  /* Text colors - stronger contrast for better readability */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #2D3748;
+  --color-text-muted: #4A5568;
+  --color-overlay: rgba(255, 255, 255, 0.90);
 
   /* Legacy - keep for compatibility */
   --background: var(--color-bg);
