@@ -1,77 +1,65 @@
-# AI Context & Repository Guide
+# PrimeMark Apparel: AI Agent Development Context
 
-## 1. Project Overview
-PrimeMark Apparel is a premium bulk apparel manufacturing website connecting mid-market buyers with factories in Pakistan.
-- **Core Business:** B2B manufacturing (Uniforms, Hoodies, Workwear).
-- **Key Features:** Product catalog, RFQ forms, Dark/Light mode theming, Premium animations.
+This document provides essential context for AI agents working on the PrimeMark Apparel codebase. Adherence to these guidelines is critical for maintaining code quality, consistency, and stability.
 
-## 2. Tech Stack
-- **Framework:** Next.js 16.1.3 (App Router)
-- **Language:** TypeScript ^5.0
-- **Styling:** Tailwind CSS v4 (configured via CSS variables and `@theme` in `src/app/globals.css`)
-- **Animations:** Framer Motion ^12.0
-- **Database/Backend:** Supabase (Client in `src/lib`, SQL migrations in root)
-- **Icons:** Inline SVGs / Heroicons (pattern based on existing components)
+## 1. Core Stack & Versions
 
-## 3. Folder Architecture
-```
-/
-├── src/
-│   ├── app/              # Next.js App Router (pages, layouts, routes)
-│   ├── components/       # Reusable UI components
-│   └── lib/              # Utilities, Supabase client, helpers
-├── public/               # Static assets (images, branding, fonts)
-├── next.config.ts        # Next.js configuratio
-├── globals.css           # Global styles & Tailwind @theme configuration
-└── package.json          # Dependencies & scripts
-```
+- **Next.js:** `16.1.3` (App Router)
+- **React:** `19.2.3`
+- **TypeScript:** `^5`
+- **Tailwind CSS:** `v4`
+- **Framer Motion:** `^12.29.0`
+- **Supabase:** `@supabase/supabase-js: ^2.90.1`
 
-## 4. Architectural Patterns
-1.  **App Router:** Use `page.tsx` for routes, `layout.tsx` for wrapping. Prefer Server Components where possible; add `"use client"` only when interactivity is needed.
-2.  **Theming:** 
-    -   Strictly use CSS variables for colors (e.g., `var(--color-bg)`, `var(--color-text-primary)`). 
-    -   **NEVER** hardcode hex colors for backgrounds or text unless specific to a brand/logo.
-    -   Support both Light and Dark modes.
-3.  **Components:** 
-    -   Function components with TypeScript interfaces.
-    -   Keep components small and focused.
-    -   Use `premiumEase` constant for consistent animation timing.
-4.  **Styling:** 
-    -   Use Tailwind utility classes. 
-    -   Use `font-display`, `font-body`, `font-heading` for typography (configured in globals).
-5.  **Server vs Client Components:**
-    -   Default to Server Components.
-    -   Only add `"use client"` when required for:
-        -   event handlers
-        -   state
-        -   browser APIs
-        -   Framer Motion animations
-    -   Avoid promoting entire trees to client unnecessarily.
+## 2. Project Structure
 
-## 5. Development Workflow
-### Commands
--   **Install:** `npm install`
--   **Development:** `npm run dev`
--   **Linting:** `npm run lint`
--   **Build:** `npm run build` (Must pass before completion)
+- **`src/app/`**: Main application source. Uses the Next.js App Router file-system-based routing.
+  - `layout.tsx`: Root layout, shared across all pages.
+  - `page.tsx`: Entry point for a specific route.
+  - `globals.css`: Global styles and Tailwind CSS theme configuration.
+- **`src/components/`**: Shared, reusable React components.
+- **`src/lib/`**: Utility functions and library initializations.
+  - `supabase.ts`: Supabase client instance.
+  - `motion/`: Framer Motion variants and constants.
+- **`public/`**: Static assets (images, fonts, etc.).
+- **`eslint.config.mjs`, `next.config.ts`, `tsconfig.json`**: Core configuration files. Treat as protected.
 
-### Common Pitfalls
--   **Tailwind v4:** This repo uses Tailwind v4. Configuration is largely in CSS, not `tailwind.config.js`.
--   **Hydration Errors:** Ensure standard HTML nesting rules are followed (no `div` inside `p`).
--   **Font Loading:** Detailed in `globals.css` via local font files.
--   **Images:** Use `next/image` for all bitmaps. Use `fill` + parent relative container for responsive sizing.
+## 3. Development Scripts
 
-## 6. Environment
--   `NEXT_PUBLIC_SUPABASE_URL`
--   `NEXT_PUBLIC_SUPABASE_ANON_KEY`
--   `NEXT_PUBLIC_GA_MEASUREMENT_ID`
-*Do not commit actual secrets.*
+- **Development Server:** `npm run dev`
+- **Linting:** `npm run lint`
+- **Type Checking:** `npx tsc --noEmit`
+- **Production Build:** `npm run build`
 
-## 7. Protected / Sensitive Areas
-Agents should be cautious when modifying:
--   `src/app/layout.tsx` (global layout stability)
--   `src/app/globals.css` (theme tokens and Tailwind v4 setup)
--   `src/lib/supabase` (authentication and database wiring)
--   Any animation timing constants (e.g., `premiumEase`)
+## 4. Key Architectural Conventions
 
-If modification is required, prefer minimal diffs and preserve existing patterns.
+### Next.js App Router
+
+- **Server Components by Default:** All components in `src/app` are React Server Components (RSCs) unless explicitly marked with a `"use client"` directive.
+- **Client Components:** Only use the `"use client"` directive for components that require interactivity (event handlers like `onClick`, `onChange`), state (`useState`, `useEffect`), or browser-only APIs.
+- **Minimize Client Boundary:** Do not promote large component trees to the client. Keep client components as small and leaf-level as possible to preserve the benefits of server rendering (performance, reduced bundle size).
+- **Hydration:** Be vigilant against hydration errors. Ensure valid HTML nesting (e.g., no `<div>` inside `<p>`) and correct use of server/client boundaries.
+
+### Styling & Theming
+
+- **CSS Variables:** All semantic colors for the UI *must* be applied using the variables defined in `src/app/globals.css` (e.g., `var(--color-background)`, `var(--color-text-primary)`).
+- **No Hardcoded Colors:** Do not use hardcoded hex codes (e.g., `#FFFFFF`, `bg-blue-500`) for UI elements that are part of the theme. This ensures consistency and proper theming behavior (e.g., dark/light mode).
+- **Tailwind CSS:** Use Tailwind v4 utility classes for styling. The theme is configured in `globals.css`.
+
+### Animation
+
+- **Framer Motion:** Use Framer Motion for animations. To maintain a consistent "premium" feel, use the `premiumEase` constant from `src/lib/motion/variants.ts` for transitions where appropriate.
+- **Performance:** Prioritize `transform` and `opacity` for animations to avoid layout thrashing.
+
+## 5. Protected Areas
+
+The following files and folders are critical to the project's configuration and stability. Do not modify them without explicit user instruction and a clear understanding of the impact:
+
+- `next.config.ts`
+- `tsconfig.json`
+- `package.json`
+- `eslint.config.mjs`
+- `postcss.config.mjs`
+- `src/app/globals.css` (especially theme variables)
+
+Modifying these files can have wide-ranging effects on the build process, type safety, and overall application behavior.
