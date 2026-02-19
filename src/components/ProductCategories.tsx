@@ -201,7 +201,7 @@ export default function ProductCategories({ hideHeader = false }: ProductCategor
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <Section id="products" className="bg-[var(--color-bg)]" animate={false}>
+    <Section id="products" className="bg-section-primary" animate={false}>
       <div>
         {!hideHeader && (
           <div className="text-center mb-12">

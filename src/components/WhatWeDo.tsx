@@ -108,7 +108,7 @@ export default function WhatWeDo() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <Section className="bg-[var(--color-bg)]">
+    <Section className="bg-section-primary">
       <div>
         {/* Header */}
         <div className="text-center mb-12">

@@ -114,7 +114,7 @@ export default function HowItWorks({ hideHeader = false }: HowItWorksProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <Section id="process" className="bg-[var(--color-surface-elevated)]" animate={false}>
+    <Section id="process" className="bg-section-elevated" animate={false}>
       <div ref={sectionRef}>
         {!hideHeader && (
           <div className="text-center mb-16">

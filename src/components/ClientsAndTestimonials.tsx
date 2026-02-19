@@ -167,7 +167,7 @@ export default function ClientsAndTestimonials() {
   };
 
   return (
-    <Section className="bg-[var(--color-surface-elevated)]" animate={false}>
+    <Section className="bg-section-elevated" animate={false}>
       <div>
         {/* Section Header */}
         <div className="text-center mb-12">

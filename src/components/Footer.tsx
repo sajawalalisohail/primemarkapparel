@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import BrandLogo from "./BrandLogo";
 import { usePathname } from "next/navigation";
+import { useTheme } from "./ThemeProvider";
 
 // Premium easing curve
 const premiumEase = [0.25, 0.1, 0.25, 1] as const;
@@ -12,6 +13,8 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const shouldReduceMotion = useReducedMotion();
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   const socialLinks = [
     {
@@ -46,70 +49,102 @@ export default function Footer() {
   return (
     <>
 
-      {/* Pre-Footer CTA Band */}
-      <section className="relative bg-[var(--color-surface)] py-16 sm:py-20 overflow-hidden z-10">
-        {/* Decorative background elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Gold gradient orb */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#C9A84C]/5 rounded-full blur-3xl" />
-          {/* Subtle grid pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.01]"
-            style={{
-              backgroundImage: `linear-gradient(#C9A84C 1px, transparent 1px), linear-gradient(90deg, #C9A84C 1px, transparent 1px)`,
-              backgroundSize: "60px 60px",
-            }}
-          />
-        </div>
+      {/* Pre-Footer CTA Band - Theme Aware Premium Design */}
+      <section className="relative py-20 sm:py-24 overflow-hidden z-10">
+        {/* Background - conditionally rendered based on theme */}
+        {isDark ? (
+          /* Dark mode background - rich dark gradient */
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0A0F1A] via-[#0F1623] to-[#1A1F2E]" />
+        ) : (
+          /* Light mode background - warm cream with gold accents */
+          <div className="absolute inset-0 bg-gradient-to-br from-[#F9F6ED] via-[#F5F0E4] to-[#EDE8DA]" />
+        )}
+
+        {/* Gold accent gradients - conditionally rendered */}
+        {isDark ? (
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#C9A84C]/20 rounded-full blur-[100px]" />
+            <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-[#C9A84C]/15 rounded-full blur-[100px]" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#C9A84C]/5 rounded-full blur-3xl" />
+          </div>
+        ) : (
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#C9A84C]/10 rounded-full blur-[100px]" />
+            <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-[#C9A84C]/8 rounded-full blur-[100px]" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#C9A84C]/5 rounded-full blur-3xl" />
+          </div>
+        )}
+
+        {/* Decorative lines */}
+        <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${isDark ? 'via-[#C9A84C]/40' : 'via-[#C9A84C]/30'} to-transparent`} />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/20 to-transparent" />
+
+        {/* Subtle pattern overlay */}
+        <div
+          className={`absolute inset-0 ${isDark ? 'opacity-[0.02]' : 'opacity-[0.015]'}`}
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, #C9A84C 1px, transparent 0)`,
+            backgroundSize: "40px 40px",
+          }}
+        />
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          {/* Eyebrow */}
+          {/* Eyebrow with decorative lines */}
           <motion.div
-            className="font-eyebrow text-[#C9A84C] mb-4"
+            className="flex items-center justify-center gap-4 mb-6"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: premiumEase }}
           >
-            {pathname === "/" && "Get Started Today"}
+            <span className="w-12 h-px bg-gradient-to-r from-transparent to-[#C9A84C]/60" />
+            <span className="font-eyebrow text-[#C9A84C]">
+              {pathname === "/" ? "Get Started Today" : "Ready to Start?"}
+            </span>
+            <span className="w-12 h-px bg-gradient-to-l from-transparent to-[#C9A84C]/60" />
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline with gradient text accent */}
           <motion.h2
-            className="font-display text-3xl sm:text-4xl lg:text-5xl text-[var(--color-text-primary)] mb-4"
+            className={`font-display text-3xl sm:text-4xl lg:text-5xl mb-5 ${isDark ? 'text-white' : 'text-[var(--color-text-primary)]'}`}
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: premiumEase }}
           >
-            Ready to manufacture at scale?
+            Let&apos;s Build Something{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A84C] via-[#E8D5A3] to-[#C9A84C]">
+              Great Together
+            </span>
           </motion.h2>
 
           {/* Subtext */}
           <motion.p
-            className="font-body text-lg text-[var(--color-text-secondary)] mb-8 max-w-xl mx-auto"
+            className={`font-body text-lg mb-10 max-w-xl mx-auto ${isDark ? 'text-slate-400' : 'text-[var(--color-text-secondary)]'}`}
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.2, ease: premiumEase }}
           >
-            Get a quote in 24 hours - no commitments.
+            Get your custom quote within 24 hours. No commitments, no hidden fees.
           </motion.p>
 
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.3, ease: premiumEase }}
           >
+            {/* Primary CTA */}
             <Link
               href="/rfq"
-              className="group relative inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] text-[#080C14] font-button text-sm rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,168,76,0.3)]"
+              className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#C9A84C] to-[#D4B65D] text-[#080C14] font-button text-sm rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(201,168,76,0.4)] hover:scale-[1.02]"
             >
-              <span className="relative z-10">Start Your Order</span>
+              <span className="relative z-10 font-semibold">Request a Quote</span>
               <svg
-                className="relative z-10 w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
+                className="relative z-10 w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -121,9 +156,58 @@ export default function Footer() {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-              {/* Hover shine effect */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              {/* Shine effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             </Link>
+
+            {/* Secondary CTA - Theme aware */}
+            <Link
+              href="/samples"
+              className={`group inline-flex items-center gap-2 px-6 py-4 border ${isDark ? 'border-[#C9A84C]/40' : 'border-[#C9A84C]/60'} text-[#C9A84C] font-button text-sm rounded-lg transition-all duration-300 hover:border-[#C9A84C] hover:bg-[#C9A84C]/10`}
+            >
+              <span>Request Samples</span>
+              <svg
+                className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                />
+              </svg>
+            </Link>
+          </motion.div>
+
+          {/* Trust badges - Theme aware */}
+          <motion.div
+            className={`mt-10 flex items-center justify-center gap-8 ${isDark ? 'text-slate-500' : 'text-[var(--color-text-muted)]'}`}
+            initial={shouldReduceMotion ? {} : { opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.5, ease: premiumEase }}
+          >
+            <div className="flex items-center gap-2 text-xs">
+              <svg className="w-4 h-4 text-[#C9A84C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>No MOQ for Samples</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs">
+              <svg className="w-4 h-4 text-[#C9A84C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>24hr Response</span>
+            </div>
+            <div className="hidden sm:flex items-center gap-2 text-xs">
+              <svg className="w-4 h-4 text-[#C9A84C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Worldwide Shipping</span>
+            </div>
           </motion.div>
         </div>
       </section>

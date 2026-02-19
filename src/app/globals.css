@@ -594,3 +594,70 @@ html.theme-transition *::after {
   opacity: 0.04;
   pointer-events: none;
 }
+
+/* =============================================================================
+   PREMIUM SECTION BACKGROUNDS - Light Mode Gradients
+   ============================================================================= */
+
+/* Primary section - subtle warm gradient */
+.bg-section-primary {
+  background: linear-gradient(180deg, #FFFEF9 0%, #FBF8F0 100%);
+}
+
+/* Alternate section - cream to ivory */
+.bg-section-alternate {
+  background: linear-gradient(180deg, #FBF8F0 0%, #F7F3E8 50%, #FBF8F0 100%);
+}
+
+/* Elevated section - subtle gold tint */
+.bg-section-elevated {
+  background: linear-gradient(135deg, #F9F6ED 0%, #F5F0E4 50%, #F2EDE0 100%);
+}
+
+/* Premium surface with radial accent */
+.bg-premium-surface {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.03) 0%, transparent 70%),
+    linear-gradient(180deg, #FFFEF9 0%, #FBF8F0 100%);
+}
+
+/* Dark mode overrides for section backgrounds */
+.dark .bg-section-primary,
+.dark .bg-section-alternate,
+.dark .bg-section-elevated,
+.dark .bg-premium-surface {
+  background: var(--color-bg);
+}
+
+/* Section with subtle top accent line */
+.section-accent-top {
+  position: relative;
+}
+
+.section-accent-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent);
+}
+
+/* Section with radial glow */
+.section-glow {
+  position: relative;
+}
+
+.section-glow::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(201, 168, 76, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}

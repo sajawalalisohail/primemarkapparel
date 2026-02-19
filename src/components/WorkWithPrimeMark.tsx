@@ -115,7 +115,7 @@ export default function WorkWithPrimeMark() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="bg-[var(--color-bg)] border-t border-[var(--color-border)] relative overflow-hidden">
+    <section className="bg-premium-surface border-t border-[var(--color-border)] relative overflow-hidden">
       {/* Background accent - blurred gold circle */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#C9A84C]/5 blur-3xl pointer-events-none"
