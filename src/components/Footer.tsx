@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import BrandLogo from "./BrandLogo";
 import { usePathname } from "next/navigation";
 
 // Premium easing curve
@@ -93,7 +93,7 @@ export default function Footer() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.2, ease: premiumEase }}
           >
-            Get a quote in 24 hours — no commitments.
+            Get a quote in 24 hours - no commitments.
           </motion.p>
 
           {/* CTA Button */}
@@ -149,24 +149,7 @@ export default function Footer() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, ease: premiumEase }}
             >
-              <Link href="/" className="inline-block mb-6">
-                {/* Light Mode Logo */}
-                <Image
-                  src="/logo/newlogod.svg"
-                  alt="PrimeMark Apparel"
-                  width={200}
-                  height={50}
-                  className="h-16 w-auto dark:hidden"
-                />
-                {/* Dark Mode Logo */}
-                <Image
-                  src="/logo/newlogo.svg"
-                  alt="PrimeMark Apparel"
-                  width={200}
-                  height={50}
-                  className="h-16 w-auto hidden dark:block"
-                />
-              </Link>
+              <BrandLogo variant="footer" className="inline-block mb-6" />
               <p className="font-body text-sm text-[var(--color-text-secondary)] mb-6 leading-relaxed">
                 Premium bulk apparel manufacturing from Pakistan. Uniforms,
                 scrubs, workwear, and custom apparel at scale.

@@ -6,7 +6,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import Link from "next/link";
 
 export const metadata = {
-  title: "FAQ | Common Questions About Bulk Apparel Manufacturing — PrimeMark Apparel",
+  title: "FAQ | Common Questions About Bulk Apparel Manufacturing - PrimeMark Apparel",
   description:
     "Answers to common questions about bulk apparel manufacturing: MOQ, lead times, payment terms, sampling, shipping, and customization options.",
 };

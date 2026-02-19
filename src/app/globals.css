@@ -173,16 +173,16 @@
   --color-surface-rgb: 250, 250, 250;
   --color-surface-elevated: #F3F4F6;
   /* Gray 100 */
-  --color-border: rgba(15, 23, 42, 0.08);
+  --color-border: rgba(15, 23, 42, 0.12);
   --color-border-rgb: 15, 23, 42;
-  --color-border-subtle: rgba(15, 23, 42, 0.04);
+  --color-border-subtle: rgba(15, 23, 42, 0.08);
   --color-accent: #C9A84C;
   --color-accent-hover: #B8973B;
   --color-accent-glow: rgba(201, 168, 76, 0.25);
   /* Text colors need proper contrast in light mode */
   --color-text-primary: #0F172A;
-  --color-text-secondary: #475569;
-  --color-text-muted: #94A3B8;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748B;
   --color-overlay: rgba(255, 255, 255, 0.85);
 
   /* Legacy - keep for compatibility */
@@ -342,6 +342,26 @@ html {
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--color-accent) var(--color-surface);
+}
+
+/* =============================================================================
+   LOGO THEME SWITCHING
+   ============================================================================= */
+
+/* Light mode: show dark logo, hide white logo */
+.logo-light {
+  display: block;
+}
+.logo-dark {
+  display: none;
+}
+
+/* Dark mode: show white logo, hide dark logo */
+.dark .logo-light {
+  display: none;
+}
+.dark .logo-dark {
+  display: block;
 }
 
 /* =============================================================================

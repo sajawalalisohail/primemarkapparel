@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const stats = [
   {
@@ -86,26 +86,6 @@ export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
-  // Scroll-driven animations
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Parallax: image moves at 30% scroll speed
-  const imageY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    shouldReduceMotion ? ["0%", "0%"] : ["0%", "30%"]
-  );
-
-  // Scroll indicator fade out
-  const scrollIndicatorOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.1],
-    [1, 0]
-  );
-
   // Animation helper
   const fadeInUp = (delay: number) => ({
     initial: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
@@ -123,16 +103,13 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col pt-20 overflow-hidden"
       style={{ backgroundColor: "var(--color-bg)" }}
     >
-      {/* Background Image with Parallax */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ y: imageY }}
-      >
+      {/* Background Image */}
+      <div className="absolute inset-0">
         <Image
           src="/branding/home2.png"
           alt="PrimeMark Apparel - Manufacturing Facility"
           fill
-          className="object-cover scale-110"
+          className="object-cover"
           priority
           quality={90}
         />
@@ -155,7 +132,7 @@ export default function Hero() {
             opacity: 0.03,
           }}
         />
-      </motion.div>
+      </div>
 
       {/* Main Content */}
       <div className="relative z-10 flex-1 flex items-center justify-center">
@@ -190,7 +167,7 @@ export default function Hero() {
                 className="font-body text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed"
                 {...fadeInUp(0.6)}
               >
-                Custom Apparel, uniforms, Industrial Workwear and Denim. Top-tier
+                Custom Apparel, Uniforms, Industrial Workwear and Denim. Top-tier
                 quality, competitive bulk pricing, and reliable delivery.
               </motion.p>
 
@@ -253,7 +230,7 @@ export default function Hero() {
                 >
                   <Link
                     href="/rfq"
-                    className="group inline-flex items-center justify-center px-8 py-4 font-button text-lg bg-[#C9A84C] text-[#080C14] rounded-lg transition-all duration-300 ease-out hover:bg-[#D4B65D] hover:shadow-xl hover:shadow-[#C9A84C]/30 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
+                    className="group inline-flex items-center justify-center px-6 py-3 font-button text-base bg-[#C9A84C] text-[#080C14] rounded-lg transition-all duration-300 ease-out hover:bg-[#D4B65D] hover:shadow-xl hover:shadow-[#C9A84C]/30 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
                   >
                     <span>Request a Quote</span>
                     <svg
@@ -288,7 +265,7 @@ export default function Hero() {
                   />
                   <Link
                     href="/samples"
-                    className="relative z-10 group inline-flex items-center justify-center px-8 py-4 font-button text-lg border-2 border-[#C9A84C] text-[#C9A84C] hover:text-[#080C14] rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
+                    className="relative z-10 group inline-flex items-center justify-center px-6 py-3 font-button text-base border-2 border-[#C9A84C] text-[#C9A84C] hover:text-[#080C14] rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:ring-offset-2 focus:ring-offset-[#080C14]"
                   >
                     <span>Request Samples</span>
                     <svg
@@ -314,10 +291,9 @@ export default function Hero() {
 
       {/* Infinite Marquee Ticker Bar */}
       <div
-        className="relative z-10 border-t border-b overflow-hidden"
+        className="relative z-10 border-t border-b border-white/20 overflow-hidden"
         style={{
-          borderColor: "var(--color-border)",
-          backgroundColor: "rgba(var(--color-surface-rgb), 0.6)",
+          backgroundColor: "rgba(15, 22, 35, 0.7)",
         }}
       >
         <div className="py-4">
@@ -336,10 +312,10 @@ export default function Hero() {
             {/* Duplicate items for seamless loop - 4x for safety on wide screens */}
             {[...trustItems, ...trustItems, ...trustItems, ...trustItems].map((item, index) => (
               <div key={index} className="flex items-center mx-6 sm:mx-8">
-                {/* Bullet separator - Dark/Muted in light mode, Gold in dark mode */}
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-text-secondary)] dark:bg-[#C9A84C] mr-6 sm:mr-8" />
-                <div className="text-[var(--color-text-primary)] dark:text-[#C9A84C] mr-3">{item.icon}</div>
-                <span className="text-sm font-medium text-[var(--color-text-secondary)]">
+                {/* Bullet separator */}
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mr-6 sm:mr-8" />
+                <div className="text-[#C9A84C] mr-3">{item.icon}</div>
+                <span className="text-sm font-medium text-white/90">
                   {item.label}
                 </span>
               </div>

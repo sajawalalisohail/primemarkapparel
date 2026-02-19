@@ -31,7 +31,7 @@ const processSteps = [
     title: "Sampling & Approvals",
     color: "emerald",
     description:
-      "We develop a physical sample to your specifications — typically within 7–14 days of confirmed requirements. You'll receive the sample by courier for physical review. Feedback is collected, and revisions are incorporated in a counter-sample if needed. Bulk production begins only after you sign off on the approved sample.",
+      "We develop a physical sample to your specifications - typically within 7–14 days of confirmed requirements. You'll receive the sample by courier for physical review. Feedback is collected, and revisions are incorporated in a counter-sample if needed. Bulk production begins only after you sign off on the approved sample.",
     listTitle: "What's included in sampling:",
     listItems: [
       "Fit sample in your specified size(s)",

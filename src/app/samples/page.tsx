@@ -4,7 +4,7 @@ import Section from "@/components/Section";
 import SamplesForm from "./SamplesForm";
 
 export const metadata = {
-  title: "Request Samples | Evaluate Quality Before Bulk Orders — PrimeMark Apparel",
+  title: "Request Samples | Evaluate Quality Before Bulk Orders - PrimeMark Apparel",
   description:
     "Request physical samples before committing to bulk production. Evaluate fabric quality, fit, and customization options. Free samples for qualified buyers planning 500+ units.",
 };

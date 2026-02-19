@@ -6,12 +6,12 @@ const faqs = [
   {
     question: "What is your minimum order quantity (MOQ)?",
     answer:
-      "Our standard MOQ is 200–300 units depending on the product type. Hoodies and t-shirts start at 200 units. Workwear and denim typically start at 300 units. For first-time orders or market testing, contact us — we'll do our best to accommodate your situation.",
+      "Our standard MOQ is 200–300 units depending on the product type. Hoodies and t-shirts start at 200 units. Workwear and denim typically start at 300 units. For first-time orders or market testing, contact us - we'll do our best to accommodate your situation.",
   },
   {
     question: "Do you own your own factories?",
     answer:
-      "No. We work with a network of vetted partner factories in Pakistan. This means we can match your order to the right facility for your product type, and scale capacity across partners for large orders. You deal with one point of contact — us — throughout the entire process.",
+      "No. We work with a network of vetted partner factories in Pakistan. This means we can match your order to the right facility for your product type, and scale capacity across partners for large orders. You deal with one point of contact - us - throughout the entire process.",
   },
   {
     question: "How long does production take?",
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "What customization options are available?",
     answer:
-      "Most of our products support embroidery, screen printing, heat transfer printing, woven labels, hangtags, custom packaging, and size grading. Customization options vary by product — see individual product pages for specifics, or contact us with your requirements.",
+      "Most of our products support embroidery, screen printing, heat transfer printing, woven labels, hangtags, custom packaging, and size grading. Customization options vary by product - see individual product pages for specifics, or contact us with your requirements.",
   },
   {
     question: "What export documents do you provide?",
@@ -51,7 +51,7 @@ const faqs = [
   {
     question: "I have a tech pack. Can you work from it?",
     answer:
-      "Yes — if you have a tech pack, send it with your RFQ and it speeds up the sampling process significantly. If you don't have one, we can work from reference samples, detailed descriptions, or reference images and develop one for you.",
+      "Yes - if you have a tech pack, send it with your RFQ and it speeds up the sampling process significantly. If you don't have one, we can work from reference samples, detailed descriptions, or reference images and develop one for you.",
   },
 ];
 

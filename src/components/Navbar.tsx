@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import BrandLogo from "./BrandLogo";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 
@@ -104,12 +104,16 @@ export default function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
+  // Home click handler
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: shouldReduceMotion ? "auto" : "smooth" });
     }
   };
+
+  // Determine if we are in the Hero section (Light Mode needs White text here)
+  const isHeroVisible = !isScrolled && pathname === "/";
 
   return (
     <motion.nav
@@ -139,30 +143,12 @@ export default function Navbar() {
       <div className="mx-auto max-w-[1920px] px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            onClick={handleHomeClick}
+          <BrandLogo
+            variant="navbar"
+            isHeroVisible={isHeroVisible}
             className="flex items-center -ml-5 group"
-          >
-            {/* Light Mode Logo (Dark Text) */}
-            <Image
-              src="/logo/newlogod.svg"
-              alt="PrimeMark Apparel"
-              width={200}
-              height={50}
-              priority
-              className="h-16 w-auto transition-transform duration-300 ease-out group-hover:scale-[1.02] dark:hidden"
-            />
-            {/* Dark Mode Logo (White Text) */}
-            <Image
-              src="/logo/newlogo.svg"
-              alt="PrimeMark Apparel"
-              width={200}
-              height={50}
-              priority
-              className="h-16 w-auto transition-transform duration-300 ease-out group-hover:scale-[1.02] hidden dark:block"
-            />
-          </Link>
+            onClick={handleHomeClick}
+          />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10 lg:gap-12">

@@ -98,7 +98,7 @@ export default function WhoWeAre() {
             With over 20 years of hands-on manufacturing experience, our
             operations are built on proven production systems, skilled labor, and
             long-term industry knowledge. Our manufacturing foundation predates
-            this platform — we launched PrimeMark to give mid-market buyers direct
+            this platform - we launched PrimeMark to give mid-market buyers direct
             access to the same Pakistan supply chain traditionally reserved for
             large enterprises.
           </motion.p>
