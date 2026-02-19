@@ -3,11 +3,7 @@
 
 import { Variants } from "framer-motion";
 
-// Check for reduced motion preference
-const prefersReducedMotion =
-  typeof window !== "undefined"
-    ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    : false;
+
 
 // Soft easing curve - premium feel
 export const easeOut = [0.16, 1, 0.3, 1] as const;

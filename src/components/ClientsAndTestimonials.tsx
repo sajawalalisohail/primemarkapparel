@@ -167,7 +167,7 @@ export default function ClientsAndTestimonials() {
   };
 
   return (
-    <Section className="bg-section-elevated" animate={false}>
+    <Section className="bg-section-primary" animate={false}>
       <div>
         {/* Section Header */}
         <div className="text-center mb-12">

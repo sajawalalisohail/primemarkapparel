@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import Section from "./Section";
 
@@ -13,13 +14,8 @@ const products = [
     moq: "200-300 units",
     leadTime: "4-6 weeks",
     customization: "Logo embroidery, screen printing, custom colors, size grading",
-    placeholderColor: "bg-[#C9A84C]/5",
     href: "/products",
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-      </svg>
-    ),
+    image: "/products/Uniforms.png",
   },
   {
     title: "Scrubs",
@@ -28,13 +24,8 @@ const products = [
     moq: "250-350 units",
     leadTime: "4-6 weeks",
     customization: "Medical-grade fabrics, color options, logo placement, pocket styles",
-    placeholderColor: "bg-[#C9A84C]/5",
     href: "/products",
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-      </svg>
-    ),
+    image: "/products/Scrubs.png",
   },
   {
     title: "Industrial Workwear",
@@ -43,14 +34,8 @@ const products = [
     moq: "300-400 units",
     leadTime: "5-7 weeks",
     customization: "High-visibility options, reinforced seams, safety certifications, custom sizing",
-    placeholderColor: "bg-[#C9A84C]/5",
     href: "/products/work-pants",
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
+    image: "/products/industrial workwear.png",
   },
   {
     title: "Hoodies",
@@ -58,13 +43,8 @@ const products = [
     moq: "200-300 units",
     leadTime: "3-5 weeks",
     customization: "Fabric weight options, drawstring colors, zipper styles, embroidery or printing",
-    placeholderColor: "bg-[#C9A84C]/5",
     href: "/products/hoodies",
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-      </svg>
-    ),
+    image: "/products/Hoodies.png",
   },
   {
     title: "Denim / Jeans",
@@ -72,13 +52,8 @@ const products = [
     moq: "300-400 units",
     leadTime: "5-7 weeks",
     customization: "Wash options, fit variations, hardware choices, distressing, custom labels",
-    placeholderColor: "bg-[#C9A84C]/5",
     href: "/products",
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-      </svg>
-    ),
+    image: "/products/Denim.png",
   },
   {
     title: "Custom Apparel",
@@ -87,13 +62,8 @@ const products = [
     moq: "200-300 units",
     leadTime: "4-8 weeks",
     customization: "Full branding, custom labels, packaging, hangtags",
-    placeholderColor: "bg-[#C9A84C]/5",
     href: "/products",
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-      </svg>
-    ),
+    image: "/products/Custom Apparel.png",
   },
 ];
 
@@ -142,17 +112,19 @@ function ProductCard({ product, index, shouldReduceMotion }: ProductCardProps) {
           transition={{ duration: 0.3, ease: premiumEase }}
         />
 
-        {/* Placeholder image area */}
-        <div
-          className={`w-full h-40 ${product.placeholderColor} flex items-center justify-center transition-colors duration-300 ${isHovered ? "bg-[#C9A84C]/10" : ""
+        {/* Image container */}
+        <div className="relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-elevated)]">
+          <Image
+            src={product.image}
+            alt={product.title}
+            fill
+            className={`object-cover transition-transform duration-500 ease-out ${
+              isHovered ? "scale-105" : "scale-100"
             }`}
-        >
-          <div
-            className={`transition-all duration-300 ${isHovered ? "text-[#C9A84C] scale-110" : "text-[var(--color-text-muted)] opacity-60"
-              }`}
-          >
-            {product.icon}
-          </div>
+             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+          {/* Overlay to ensure text readability if needed, though most is below */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </div>
 
         <div className="p-6">

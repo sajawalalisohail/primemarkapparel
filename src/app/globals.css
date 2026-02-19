@@ -197,8 +197,8 @@
   --color-bg-rgb: 8, 12, 20;
   --color-surface: #0F1623;
   --color-surface-rgb: 15, 22, 35;
-  --color-surface-elevated: #0F1623;
-  /* Matching Final CTA */
+  --color-surface-elevated: #141C2E;
+  /* Slightly lighter dark for elevated cards */
   --color-border: rgba(255, 255, 255, 0.07);
   --color-border-rgb: 255, 255, 255;
   --color-border-subtle: rgba(255, 255, 255, 0.03);
@@ -353,6 +353,7 @@ html {
 .logo-light {
   display: block;
 }
+
 .logo-dark {
   display: none;
 }
@@ -361,6 +362,7 @@ html {
 .dark .logo-light {
   display: none;
 }
+
 .dark .logo-dark {
   display: block;
 }
@@ -599,34 +601,14 @@ html.theme-transition *::after {
    PREMIUM SECTION BACKGROUNDS - Light Mode Gradients
    ============================================================================= */
 
-/* Primary section - subtle warm gradient */
+/* Primary section - base background */
 .bg-section-primary {
-  background: linear-gradient(180deg, #FFFEF9 0%, #FBF8F0 100%);
+  background-color: var(--color-bg);
 }
 
-/* Alternate section - cream to ivory */
-.bg-section-alternate {
-  background: linear-gradient(180deg, #FBF8F0 0%, #F7F3E8 50%, #FBF8F0 100%);
-}
-
-/* Elevated section - subtle gold tint */
-.bg-section-elevated {
-  background: linear-gradient(135deg, #F9F6ED 0%, #F5F0E4 50%, #F2EDE0 100%);
-}
-
-/* Premium surface with radial accent */
-.bg-premium-surface {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.03) 0%, transparent 70%),
-    linear-gradient(180deg, #FFFEF9 0%, #FBF8F0 100%);
-}
-
-/* Dark mode overrides for section backgrounds */
-.dark .bg-section-primary,
-.dark .bg-section-alternate,
-.dark .bg-section-elevated,
-.dark .bg-premium-surface {
-  background: var(--color-bg);
+/* Dark mode: single premium canvas */
+.dark .bg-section-primary {
+  background-color: var(--color-bg);
 }
 
 /* Section with subtle top accent line */

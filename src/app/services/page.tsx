@@ -15,6 +15,7 @@ export default function ServicesPage() {
       <Navbar />
       <main className="flex-1 bg-[var(--color-bg)]">
         <PageHeader
+          eyebrow="Our Services"
           title="Services"
           subtitle="End-to-end manufacturing services from sampling to bulk production"
         />

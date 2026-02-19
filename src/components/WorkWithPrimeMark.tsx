@@ -93,7 +93,7 @@ const premiumEase = [0.25, 0.1, 0.25, 1] as const;
 function AnimatedCheck({ delay, shouldReduceMotion }: { delay: number; shouldReduceMotion: boolean | null }) {
   return (
     <motion.div
-      className="w-6 h-6 rounded-full bg-[#C9A84C] flex items-center justify-center shrink-0"
+      className="w-6 h-6 rounded-full bg-[var(--color-accent)] flex items-center justify-center shrink-0"
       initial={shouldReduceMotion ? {} : { scale: 0 }}
       whileInView={{ scale: 1 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -115,19 +115,14 @@ export default function WorkWithPrimeMark() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="bg-premium-surface border-t border-[var(--color-border)] relative overflow-hidden">
-      {/* Background accent - blurred gold circle */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#C9A84C]/5 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
+    <section className="bg-section-primary border-t border-[var(--color-border)] relative overflow-hidden">
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           {/* Eyebrow */}
           <motion.div
-            className="font-eyebrow text-[#C9A84C] mb-4"
+            className="font-eyebrow text-[var(--color-accent)] mb-4"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -178,7 +173,7 @@ export default function WorkWithPrimeMark() {
               <AnimatedCheck delay={0.4 + index * 0.1} shouldReduceMotion={shouldReduceMotion} />
 
               <div>
-                <h3 className="font-heading text-base text-[var(--color-text-primary)] mb-1 group-hover:text-[#C9A84C] transition-colors duration-300">
+                <h3 className="font-heading text-base text-[var(--color-text-primary)] mb-1 group-hover:text-[var(--color-accent)] transition-colors duration-300">
                   {point.title}
                 </h3>
                 <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed">

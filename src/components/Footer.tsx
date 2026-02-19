@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import BrandLogo from "./BrandLogo";
 import { usePathname } from "next/navigation";
 import { useTheme } from "./ThemeProvider";
+import ThemeToggle from "./ThemeToggle";
 
 // Premium easing curve
 const premiumEase = [0.25, 0.1, 0.25, 1] as const;
@@ -315,6 +316,7 @@ export default function Footer() {
                   { href: "/process", label: "Our Process" },
                   { href: "/quality", label: "Quality Standards" },
                   { href: "/faq", label: "FAQ" },
+                  { href: "/admin/login", label: "Admin" },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link
@@ -466,6 +468,9 @@ export default function Footer() {
                 >
                   Terms of Service
                 </Link>
+                <div className="pl-6 border-l border-[var(--color-border)]">
+                  <ThemeToggle />
+                </div>
               </div>
             </div>
           </div>

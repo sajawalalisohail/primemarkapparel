@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import BrandLogo from "./BrandLogo";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -289,9 +288,6 @@ export default function Navbar() {
               );
             })}
 
-            {/* Theme Toggle */}
-            <ThemeToggle />
-
             {/* CTA Button with gold styling */}
             <motion.div
               className="relative overflow-hidden rounded-lg"
@@ -493,24 +489,6 @@ export default function Navbar() {
               </motion.div>
             );
           })}
-          {/* Theme Toggle for Mobile */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{
-              opacity: isOpen ? 1 : 0,
-              y: isOpen ? 0 : -10,
-            }}
-            transition={{
-              duration: 0.3,
-              delay: isOpen ? navLinks.length * 0.05 : 0,
-              ease: premiumEase,
-            }}
-            className="flex items-center justify-between py-3 px-2 mt-2 border-t border-white/10"
-          >
-            <span className="text-sm text-[var(--color-text-muted)]">Theme</span>
-            <ThemeToggle />
-          </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{

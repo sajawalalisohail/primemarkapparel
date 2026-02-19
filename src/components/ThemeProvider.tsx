@@ -68,7 +68,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Initialize theme on mount
   useEffect(() => {
     const stored = getStoredTheme();
-    const initialTheme = stored || "system";
+    // Default to "dark" if no preference is stored
+    const initialTheme = stored || "dark";
+    // eslint-disable-next-line
     setThemeState(initialTheme);
     setResolvedTheme(resolveTheme(initialTheme));
     setMounted(true);

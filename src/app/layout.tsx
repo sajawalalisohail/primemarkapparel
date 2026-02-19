@@ -11,7 +11,7 @@ const themeScript = `
   try {
     var stored = localStorage.getItem('theme');
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme = stored === 'light' ? 'light' : stored === 'dark' ? 'dark' : (prefersDark ? 'dark' : 'light');
+    var theme = stored === 'light' ? 'light' : 'dark';
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     }

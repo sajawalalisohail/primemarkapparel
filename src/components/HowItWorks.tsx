@@ -74,9 +74,8 @@ function StepCard({ step, index }: { step: Step; index: number }) {
           src={step.image}
           alt={step.title}
           fill
-          className={`object-cover transition-transform duration-300 ease-out ${
-            isHovered ? "scale-[1.02]" : "scale-100"
-          }`}
+          className={`object-cover transition-transform duration-300 ease-out ${isHovered ? "scale-[1.02]" : "scale-100"
+            }`}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
         {/* Step number badge */}
@@ -89,9 +88,8 @@ function StepCard({ step, index }: { step: Step; index: number }) {
       <div className="p-5 text-center">
         {/* Title */}
         <h3
-          className={`font-heading text-lg text-[var(--color-text-primary)] mb-2 transition-colors duration-300 ${
-            isHovered ? "text-[#C9A84C]" : ""
-          }`}
+          className={`font-heading text-lg text-[var(--color-text-primary)] mb-2 transition-colors duration-300 ${isHovered ? "text-[#C9A84C]" : ""
+            }`}
         >
           {step.title}
         </h3>
@@ -114,7 +112,7 @@ export default function HowItWorks({ hideHeader = false }: HowItWorksProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <Section id="process" className="bg-section-elevated" animate={false}>
+    <Section id="process" className="bg-section-primary" animate={false}>
       <div ref={sectionRef}>
         {!hideHeader && (
           <div className="text-center mb-16">

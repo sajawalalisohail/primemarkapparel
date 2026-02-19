@@ -17,6 +17,7 @@ export default function ProductsPage() {
       <Navbar />
       <main className="flex-1 bg-[var(--color-bg)]">
         <PageHeader
+          eyebrow="Our Products"
           title="Products"
           subtitle="From corporate uniforms to custom streetwear, we manufacture it all at scale."
         />

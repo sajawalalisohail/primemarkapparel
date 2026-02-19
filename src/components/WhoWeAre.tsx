@@ -17,14 +17,14 @@ export default function WhoWeAre() {
   };
 
   return (
-    <Section className="bg-section-alternate relative overflow-hidden">
+    <Section className="bg-section-primary relative overflow-hidden">
       {/* Large decorative watermark */}
-      <div
+      {/* <div
         className="absolute top-1/2 left-0 -translate-y-1/2 font-display-black text-[20rem] leading-none text-white/[0.03] pointer-events-none select-none hidden lg:block"
         aria-hidden="true"
       >
         01
-      </div>
+      </div> */}
 
       <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left side - Decorative element with gold accent */}

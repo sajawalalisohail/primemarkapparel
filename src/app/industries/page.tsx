@@ -15,6 +15,7 @@ export default function IndustriesPage() {
       <Navbar />
       <main className="flex-1 bg-[var(--color-bg)]">
         <PageHeader
+          eyebrow="Industries Served"
           title="Industries"
           subtitle="Trusted by businesses across diverse sectors for reliable bulk apparel supply."
         />
