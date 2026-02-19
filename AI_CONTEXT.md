@@ -1,65 +1,61 @@
 # PrimeMark Apparel: AI Agent Development Context
 
-This document provides essential context for AI agents working on the PrimeMark Apparel codebase. Adherence to these guidelines is critical for maintaining code quality, consistency, and stability.
+This document provides *mandatory* context for AI agents working on the PrimeMark Apparel codebase. You must adhere to these guidelines to maintain code quality, consistency, and stability.
 
 ## 1. Core Stack & Versions
-
 - **Next.js:** `16.1.3` (App Router)
 - **React:** `19.2.3`
-- **TypeScript:** `^5`
-- **Tailwind CSS:** `v4`
+- **TypeScript:** `^5` (Strict mode)
+- **Tailwind CSS:** `v4` (Configuration via `@theme` in `global.css`)
 - **Framer Motion:** `^12.29.0`
-- **Supabase:** `@supabase/supabase-js: ^2.90.1`
+- **Supabase:** `@supabase/supabase-js` `^2.90.1`
 
 ## 2. Project Structure
+- **`src/app/`**: App Router routes.
+  - `layout.tsx`: Root layout & providers.
+  - `globals.css`: **Single Source of Truth** for styles & theme variables.
+- **`src/components/`**: Reusable UI components (shadcn-like or custom).
+- **`src/lib/`**: Utilities.
+  - `supabase.ts`: Supabase client.
+  - `motion/variants.ts`: Shared animation constants.
+- **`public/`**: Static assets.
 
-- **`src/app/`**: Main application source. Uses the Next.js App Router file-system-based routing.
-  - `layout.tsx`: Root layout, shared across all pages.
-  - `page.tsx`: Entry point for a specific route.
-  - `globals.css`: Global styles and Tailwind CSS theme configuration.
-- **`src/components/`**: Shared, reusable React components.
-- **`src/lib/`**: Utility functions and library initializations.
-  - `supabase.ts`: Supabase client instance.
-  - `motion/`: Framer Motion variants and constants.
-- **`public/`**: Static assets (images, fonts, etc.).
-- **`eslint.config.mjs`, `next.config.ts`, `tsconfig.json`**: Core configuration files. Treat as protected.
+## 3. Architecture & Conventions (CRITICAL)
 
-## 3. Development Scripts
+### Server vs. Client Components
+- **Default to Server Components:** Do not add `"use client"` unless absolutely necessary.
+- **Client Boundaries:** Add `"use client"` *only* for:
+  - Event listeners (`onClick`, `onChange`, `onSubmit`).
+  - React Hooks (`useState`, `useEffect`, `useRef`).
+  - Browser-only APIs (`window`, `document`, `localStorage`).
+  - Framer Motion components (often requires client side for layout animations).
+- **Optimization:** Keep client components leaf-level. Pass Server Components as `children` to Client Components where possible.
 
-- **Development Server:** `npm run dev`
-- **Linting:** `npm run lint`
-- **Type Checking:** `npx tsc --noEmit`
-- **Production Build:** `npm run build`
+### Styling & Theming (Tailwind v4)
+- **CSS Variables:** You **MUST** use the defined semantic variables in `src/app/globals.css`.
+  - Backgrounds: `var(--color-bg)`, `var(--color-surface)`, `var(--color-surface-elevated)`
+  - Text: `var(--color-text-primary)`, `var(--color-text-secondary)`, `var(--color-text-muted)`
+  - Accents: `var(--color-accent)`, `var(--color-accent-hover)`, `var(--color-accent-glow)`
+  - UI: `var(--color-border)`, `var(--color-overlay)`
+- **NO Hardcoded Colors:** Never use hex codes (e.g., `#FFFFFF`) directly in classes. Use the CSS variables to ensure dark mode compatibility.
+- **Responsive Design:** Mobile-first approach. Verify at `375px`, `768px`, and `1280px`.
 
-## 4. Key Architectural Conventions
+### Animation (Framer Motion)
+- **Consistency:** Import and use shared variants/easing from `src/lib/motion/variants.ts`.
+  - **Easing:** Use `easeOut` for a consistent "premium" feel.
+  - **Variants:** Use `fadeInUp`, `staggerContainer`, `scaleIn` where appropriate.
+- **Performance:** Animate `opacity` and `transform` only. Avoid animating layout properties (`width`, `height`, `top`) that trigger reflows.
 
-### Next.js App Router
+## 4. Required Checks Before Committing
+1. **Hydration Errors:** Ensure HTML validity (e.g., no `<div>` inside `<p>`).
+2. **Linter:** `npm run lint` must pass.
+3. **Type Check:** `npx tsc --noEmit` must pass.
+4. **Build:** `npm run build` must pass.
 
-- **Server Components by Default:** All components in `src/app` are React Server Components (RSCs) unless explicitly marked with a `"use client"` directive.
-- **Client Components:** Only use the `"use client"` directive for components that require interactivity (event handlers like `onClick`, `onChange`), state (`useState`, `useEffect`), or browser-only APIs.
-- **Minimize Client Boundary:** Do not promote large component trees to the client. Keep client components as small and leaf-level as possible to preserve the benefits of server rendering (performance, reduced bundle size).
-- **Hydration:** Be vigilant against hydration errors. Ensure valid HTML nesting (e.g., no `<div>` inside `<p>`) and correct use of server/client boundaries.
-
-### Styling & Theming
-
-- **CSS Variables:** All semantic colors for the UI *must* be applied using the variables defined in `src/app/globals.css` (e.g., `var(--color-background)`, `var(--color-text-primary)`).
-- **No Hardcoded Colors:** Do not use hardcoded hex codes (e.g., `#FFFFFF`, `bg-blue-500`) for UI elements that are part of the theme. This ensures consistency and proper theming behavior (e.g., dark/light mode).
-- **Tailwind CSS:** Use Tailwind v4 utility classes for styling. The theme is configured in `globals.css`.
-
-### Animation
-
-- **Framer Motion:** Use Framer Motion for animations. To maintain a consistent "premium" feel, use the `premiumEase` constant from `src/lib/motion/variants.ts` for transitions where appropriate.
-- **Performance:** Prioritize `transform` and `opacity` for animations to avoid layout thrashing.
-
-## 5. Protected Areas
-
-The following files and folders are critical to the project's configuration and stability. Do not modify them without explicit user instruction and a clear understanding of the impact:
-
+## 5. Protected Files
+Do not modify these configuration files unless explicitly instructed:
 - `next.config.ts`
+- `tailwind.config.ts` (if present) / `postcss.config.mjs`
 - `tsconfig.json`
 - `package.json`
 - `eslint.config.mjs`
-- `postcss.config.mjs`
-- `src/app/globals.css` (especially theme variables)
-
-Modifying these files can have wide-ranging effects on the build process, type safety, and overall application behavior.
