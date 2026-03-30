@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import StickyCTA from "@/components/StickyCTA";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -97,6 +98,7 @@ export default function RootLayout({
         )}
         {children}
         <StickyCTA />
+        <Analytics />
       </body>
     </html>
   );
